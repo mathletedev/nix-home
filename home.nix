@@ -11,7 +11,11 @@
 			discord
 			dolphin
 			font-awesome
+			gcc
+			gimp
 			haskellPackages.xmobar
+			libsForQt5.qtstyleplugin-kvantum
+			lxappearance
 			(nerdfonts.override { fonts = [ "CascadiaCode" ]; })
 			nitrogen
 			notify-desktop
@@ -30,11 +34,13 @@
 			size = 16;
 			x11.enable = true;
 		};
+		sessionPath = [ "$HOME/.config/nixpkgs/bin" ];
 		sessionVariables = {
 			BAT_THEME = "catppuccin";
 			EDITOR = "nvim";
 			NIXPKGS_ALLOW_UNFREE = 1;
 			PF_INFO = "ascii title os uptime pkgs de shell editor";
+			QT_STYLE_OVERRIDE = "kvantum";
 		};
 		shellAliases = { ls = "exa --all --long --git"; };
 		stateVersion = "22.11";
