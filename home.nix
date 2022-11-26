@@ -7,6 +7,7 @@
 		packages = with pkgs; [
 			betterdiscordctl
 			brave
+			cascadia-code
 			discord
 			dolphin
 			font-awesome
@@ -14,6 +15,7 @@
 			(nerdfonts.override { fonts = [ "CascadiaCode" ]; })
 			nitrogen
 			notify-desktop
+			obsidian
 			papirus-icon-theme
 			pfetch
 			rustup
@@ -57,6 +59,7 @@
 		};
 		git = {
 			enable = true;
+			extraConfig.credential.helper = "store";
 			userName = "Neal Wang";
 			userEmail = "nealwang.sh@protonmail.com";
 		};
