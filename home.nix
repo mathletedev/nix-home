@@ -62,6 +62,7 @@
 				"-" = "cd -";
 				n = "kitty &";
 			};
+			shellAliases = { home = "nvim ~/.config/nixpkgs"; };
 		};
 		git = {
 			enable = true;

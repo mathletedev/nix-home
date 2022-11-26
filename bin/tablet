@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 stylus="`xsetwacom --list devices | grep 'type: STYLUS' | sed 's/.*id: \([0-9][0-9]*\).*/\1/'`"
 
