@@ -14,6 +14,7 @@
 			(nerdfonts.override { fonts = [ "CascadiaCode" ]; })
 			nitrogen
 			notify-desktop
+			papirus-icon-theme
 			pfetch
 			rustup
 			rust-analyzer
@@ -21,6 +22,12 @@
 			spotify
 			xdotool
 		];
+		pointerCursor = {
+			name = "Bibata-Modern-Classic";
+			package = pkgs.bibata-cursors;
+			size = 16;
+			x11.enable = true;
+		};
 		sessionVariables = {
 			BAT_THEME = "catppuccin";
 			EDITOR = "nvim";
@@ -40,10 +47,8 @@
 		fish = {
 			enable = true;
 			functions = {
-				__fish_user_key_bindings_handler = {
-					body = "fish_vi_key_bindings";
-					onEvent = "fish_user_key_bindings";
-				};
+				fish_user_key_bindings = "fish_vi_key_bindings";
+				fish_greeting = "echo\npfetch";
 			};
 			shellAbbrs = {
 				"-" = "cd -";
@@ -62,7 +67,21 @@
 			extraConfig = builtins.readFile ./src/kitty.conf;
 		};
 		neovim.enable = true;
-		rofi.enable = true;
+		rofi = {
+			enable = true;
+			extraConfig = {
+				disable-history = false;
+				display-drun = "   Apps ";
+				display-run = "   Run ";
+				hide-scrollbar = true;
+				icon-theme = "Papirus";
+				location = 0;
+				modi = "run,drun";
+				show-icons = true;
+				sidebar-mode = true;
+			};
+			theme = ~/.config/nixpkgs/assets/catppuccin.rasi;
+		};
 		starship = {
 			enable = true;
 			enableFishIntegration = true;
@@ -111,7 +130,7 @@
 
 	xsession = {
 		enable = true;
-		profileExtra = "xrandr --output DP-1 --left-of VGA-1";
+		profileExtra = "xrandr --output DP-1 --left-of VGA-1\nnitrogen --restore";
 		windowManager.xmonad = {
 			enable = true;
 			config = ~/.config/nixpkgs/src/xmonad.hs;
