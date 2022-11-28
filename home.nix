@@ -30,6 +30,7 @@ in
       gimp
       go
       haskellPackages.xmobar
+      libqalculate
       libsForQt5.qtstyleplugin-kvantum
       lua
       lxappearance
@@ -38,7 +39,7 @@ in
       nitrogen
       nodejs
       nodePackages.eslint_d
-      nodePackages.prettier_d_slim
+      nodePackages.prettier
       notify-desktop
       obsidian
       papirus-icon-theme
@@ -47,6 +48,7 @@ in
       rust-analyzer
       screenkey
       spotify
+      steam
       stylua
       sumneko-lua-language-server
       unzip
@@ -59,7 +61,7 @@ in
       size = 16;
       x11.enable = true;
     };
-    sessionPath = [ "$HOME/.config/nixpkgs/bin" ];
+    sessionPath = [ "$HOME/.config/nixpkgs/bin" "$HOME/.bun/bin" ];
     sessionVariables = {
       BAT_THEME = "catppuccin";
       EDITOR = "nvim";
@@ -157,6 +159,7 @@ in
         round-borders = 1;
         rounded-corners-exclude = [ "class_i = 'screenkey'" ];
         shadow = true;
+        vSync = true;
       };
     };
   };

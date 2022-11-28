@@ -51,7 +51,7 @@ db.custom_center = {
 	{
 		icon = " ",
 		desc = "Configure Neovim    ",
-		action = "edit ~/.config/nvim/lua/init.lua",
+		action = "edit ~/.config/nixpkgs/src/nvim/lua/init.lua",
 		shortcut = "SPC v",
 	},
 	{
