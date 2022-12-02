@@ -20,6 +20,7 @@ in
     homeDirectory = "/home/neo";
     keyboard.options = [ "caps:swapescape" ];
     packages = with pkgs; [
+      asciiquarium
       betterdiscordctl
       brave
       cascadia-code
@@ -43,6 +44,7 @@ in
       notify-desktop
       obsidian
       papirus-icon-theme
+      pipes
       pfetch
       rustup
       rust-analyzer
@@ -145,6 +147,7 @@ in
         urgency_low = { frame_color = "#a6e3a1"; };
       };
     };
+    flameshot.enable = true;
     picom = {
       enable = true;
       settings = {
@@ -155,7 +158,8 @@ in
         corner-radius = 10;
         fading = true;
         focus-exclude = [ "class_i = 'rofi'" "x = 0 && y = 0 && override_redirect = true" ];
-        opacity-rule = [ "100:class_i = 'screenkey'" ];
+        inactive-opacity = 0.6;
+        opacity-rule = [ "100:class_i = 'screenkey'" "100:name *= 'Discord'" ];
         round-borders = 1;
         rounded-corners-exclude = [ "class_i = 'screenkey'" ];
         shadow = true;
@@ -169,7 +173,7 @@ in
     profileExtra = "xrandr --output DP-1 --left-of VGA-1\nnitrogen --restore";
     windowManager.xmonad = {
       enable = true;
-      config = ~/.config/nixpkgs/src/xmonad.hs;
+      config = ./src/xmonad.hs;
       enableContribAndExtras = true;
       extraPackages = hp: [ hp.alsa-core hp.alsa-mixer hp.xmobar ];
     };

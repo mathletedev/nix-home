@@ -104,7 +104,8 @@ myKeys = [
 	("M-f", withFocused toggleFloat),
 	("M-t", withFocused $ windows . (flip W.float $ W.RationalRect 0 0 1 1)),
 	("M-l", spawn "slock"),
-	("<Print>", spawn "spectacle"),
+	("<Print>", spawn "flameshot screen"),
+	("S-<Print>", spawn "flameshot gui"),
 	("<XF86AudioRaiseVolume>", spawn "amixer set Master 5%+ unmute"),
 	("<XF86AudioLowerVolume>", spawn "amixer set Master 5%- unmute"),
 	("<XF86AudioMute>", spawn "amixer set Master toggle"),
@@ -125,4 +126,4 @@ main = do
 		layoutHook = myLayoutHook,
 		startupHook = myStartupHook,
 		logHook = myLogHook xmproc0 xmproc1
-	} `additionalKeysP` myKeys
+		} `additionalKeysP` myKeys
