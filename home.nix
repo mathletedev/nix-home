@@ -9,7 +9,7 @@ let
     configure = {
       customRC = "lua require \"init\"";
       packages.myPlugins = with pkgs.vimPlugins; {
-        start = [ myConfig ];
+        start = [ myConfig packer-nvim ];
         opt = [ ];
       };
     };
@@ -43,6 +43,7 @@ in
       nodePackages.prettier
       notify-desktop
       obsidian
+      onlyoffice-bin
       papirus-icon-theme
       pipes
       pfetch
@@ -53,6 +54,7 @@ in
       steam
       stylua
       sumneko-lua-language-server
+      tty-clock
       unzip
       xclip
       xdotool

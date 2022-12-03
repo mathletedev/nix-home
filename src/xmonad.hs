@@ -115,8 +115,8 @@ myKeys = [
 	]
 
 main = do
-	xmproc0 <- spawnPipe "xmobar -x 0 -p \"Static { xpos = 1290, ypos = 10, width = 1660, height = 24 }\" ~/.config/nixpkgs/src/xmobar.hs"
-	xmproc1 <- spawnPipe "xmobar -x 1 -p \"Static { xpos = 10, ypos = 10, width = 1260, height = 24 }\" ~/.config/nixpkgs/src/xmobar.hs"
+	xmproc0 <- spawnPipe "xmobar -x 0 -p \"Static { xpos = 1290, ypos = 10, width = 1660, height = 30 }\" ~/.config/nixpkgs/src/xmobar.hs"
+	xmproc1 <- spawnPipe "xmobar -x 1 -p \"Static { xpos = 10, ypos = 10, width = 1260, height = 30 }\" ~/.config/nixpkgs/src/xmobar.hs"
 	xmonad $ ewmhFullscreen . docks $ def {
 		terminal = myTerminal,
 		modMask = myModMask,
