@@ -85,5 +85,5 @@ main = do
     { widgetSpacing = 0
     , startWidgets  = [ workspaces, textW " ", layout ]
     , centerWidgets = [ clock ]
-    , endWidgets    = [ tray, textW " ", network, memory, cpu, textW " ", battery, textW "  ", volume ]
+    , endWidgets    = [ tray, network, memory, cpu, textW " ", battery, textW "  ", volume ]
     }

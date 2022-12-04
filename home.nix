@@ -43,6 +43,7 @@ in
       nodePackages.eslint_d
       nodePackages.prettier
       notify-desktop
+      obs-studio
       obsidian
       onlyoffice-bin
       papirus-icon-theme
@@ -58,6 +59,7 @@ in
       taffybar
       tty-clock
       unzip
+      vlc
       xclip
       xdotool
     ];
