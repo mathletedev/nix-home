@@ -1,28 +1,28 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-import Control.Monad.IO.Class
+import           Control.Monad.IO.Class
 
-import Data.Default (def)
-import qualified Data.Text as T
+import           Data.Default                                (def)
+import qualified Data.Text                                   as T
 
-import System.Taffybar
-import System.Taffybar.Information.CPU
-import System.Taffybar.Information.Memory
-import System.Taffybar.SimpleConfig
-import System.Taffybar.Widget
-import System.Taffybar.Widget.Generic.Graph
-import System.Taffybar.Widget.Generic.PollingGraph
-import System.Taffybar.Widget.Generic.PollingLabel
-import System.Taffybar.Widget.Layout
+import           System.Taffybar
+import           System.Taffybar.Information.CPU
+import           System.Taffybar.Information.Memory
+import           System.Taffybar.SimpleConfig
+import           System.Taffybar.Widget
+import           System.Taffybar.Widget.Generic.Graph
+import           System.Taffybar.Widget.Generic.PollingGraph
+import           System.Taffybar.Widget.Generic.PollingLabel
+import           System.Taffybar.Widget.Layout
 
-import System.Process
+import           System.Process
 
-import qualified GI.Gtk as Gtk
+import qualified GI.Gtk                                      as Gtk
 
 parseRGB (r, g, b) = (r / 256, g / 256, b / 256, 1)
-colors "red" = parseRGB (243, 139, 168)
-colors "peach" = parseRGB (250, 179, 135)
-colors "mauve" = parseRGB (203, 166, 247)
+colors "red"    = parseRGB (243, 139, 168)
+colors "peach"  = parseRGB (250, 179, 135)
+colors "mauve"  = parseRGB (203, 166, 247)
 colors "yellow" = parseRGB (249, 226, 175)
 
 icon x = "<span font_desc='Font Awesome 6 Free Solid'>" ++ x ++ "</span>"
@@ -85,5 +85,5 @@ main = do
     { widgetSpacing = 0
     , startWidgets  = [ workspaces, textW " ", layout ]
     , centerWidgets = [ clock ]
-    , endWidgets    = [ tray, network, memory, cpu, textW " ", battery, textW "  ", volume ]
+    , endWidgets    = [ tray, network, memory, cpu, textW "  ", battery, textW "  ", volume ]
     }

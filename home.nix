@@ -55,6 +55,7 @@ in
       spotify
       steam
       stylua
+      stylish-haskell
       sumneko-lua-language-server
       taffybar
       tty-clock

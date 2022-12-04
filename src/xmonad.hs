@@ -1,27 +1,27 @@
-import System.IO
+import           System.IO
 
-import qualified Data.Map as M
+import qualified Data.Map                           as M
 
-import XMonad hiding ((|||))
-import XMonad.Actions.CopyWindow
-import XMonad.Actions.NoBorders
-import XMonad.Actions.SpawnOn
-import XMonad.Hooks.DynamicLog
-import XMonad.Hooks.EwmhDesktops
-import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.ManageHelpers
-import XMonad.Layout.GridVariants
-import XMonad.Layout.LayoutCombinators
-import XMonad.Layout.Renamed
-import XMonad.Layout.ResizableTile
-import XMonad.Layout.Spacing
-import qualified XMonad.StackSet as W
-import XMonad.Util.EZConfig
-import XMonad.Util.Run
+import           XMonad                             hiding ((|||))
+import           XMonad.Actions.CopyWindow
+import           XMonad.Actions.NoBorders
+import           XMonad.Actions.SpawnOn
+import           XMonad.Hooks.DynamicLog
+import           XMonad.Hooks.EwmhDesktops
+import           XMonad.Hooks.ManageDocks
+import           XMonad.Hooks.ManageHelpers
+import           XMonad.Layout.GridVariants
+import           XMonad.Layout.LayoutCombinators
+import           XMonad.Layout.Renamed
+import           XMonad.Layout.ResizableTile
+import           XMonad.Layout.Spacing
+import qualified XMonad.StackSet                    as W
+import           XMonad.Util.EZConfig
+import           XMonad.Util.Run
 
-import System.Taffybar.Support.PagerHints (pagerHints)
+import           System.Taffybar.Support.PagerHints (pagerHints)
 
-import Graphics.X11.ExtraTypes.XF86
+import           Graphics.X11.ExtraTypes.XF86
 
 myTerminal = "kitty"
 myBrowser = "brave"
