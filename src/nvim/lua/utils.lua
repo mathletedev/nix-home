@@ -33,6 +33,7 @@ vim.api.nvim_create_autocmd("InsertLeave", { command = "set relativenumber", pat
 vim.api.nvim_create_autocmd("TermOpen", { command = "startinsert", pattern = "*" })
 
 vim.api.nvim_create_autocmd("BufWinEnter", { command = "set filetype=astro", pattern = "*.astro" })
+vim.api.nvim_create_autocmd("BufWinEnter", { command = "set expandtab", pattern = "*.hs" })
 vim.api.nvim_create_autocmd("BufWinEnter", { command = "set noexpandtab tabstop=2 shiftwidth=2", pattern = "*.rs" })
 
 vim.api.nvim_command "sign define DiagnosticSignError text=● texthl=DiagnosticSignError"

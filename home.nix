@@ -38,6 +38,7 @@ in
       myNeovim
       (nerdfonts.override { fonts = [ "CascadiaCode" ]; })
       nitrogen
+      nmap
       nodejs
       nodePackages.eslint_d
       nodePackages.prettier
@@ -54,6 +55,7 @@ in
       steam
       stylua
       sumneko-lua-language-server
+      taffybar
       tty-clock
       unzip
       xclip
@@ -161,13 +163,14 @@ in
         fading = true;
         focus-exclude = [ "class_i = 'rofi'" "x = 0 && y = 0 && override_redirect = true" ];
         inactive-opacity = 0.6;
-        opacity-rule = [ "100:class_i = 'screenkey'" "100:name *= 'Discord'" ];
+        opacity-rule = [ "100:window_type = 'dock'" "100:class_i = 'screenkey'" "100:name *= 'Discord'" ];
         round-borders = 1;
-        rounded-corners-exclude = [ "class_i = 'screenkey'" ];
+        rounded-corners-exclude = [ "window_type = 'dock'" "class_i = 'screenkey'" ];
         shadow = true;
         vSync = true;
       };
     };
+    status-notifier-watcher.enable = true;
   };
 
   xsession = {
@@ -177,7 +180,12 @@ in
       enable = true;
       config = ./src/xmonad.hs;
       enableContribAndExtras = true;
-      extraPackages = hp: [ hp.alsa-core hp.alsa-mixer hp.xmobar ];
+      extraPackages = hp: [ hp.alsa-core hp.alsa-mixer hp.taffybar ];
     };
+  };
+
+  xdg.configFile = {
+    "taffybar/taffybar.hs".source = ./src/taffybar.hs;
+    "taffybar/taffybar.css".source = ./assets/taffybar.css;
   };
 }
