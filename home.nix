@@ -178,7 +178,7 @@ in
 
   xsession = {
     enable = true;
-    profileExtra = "xrandr --output DP-1 --left-of VGA-1\nnitrogen --restore";
+    profileExtra = "nitrogen --restore";
     windowManager.xmonad = {
       enable = true;
       config = ./src/xmonad.hs;
