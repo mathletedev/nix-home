@@ -18,7 +18,7 @@ in
 {
   home = {
     homeDirectory = "/home/neo";
-    keyboard.options = [ "caps:swapescape" ];
+    keyboard.options = [ "caps:escape" ];
     packages = with pkgs; [
       asciiquarium
       betterdiscordctl
