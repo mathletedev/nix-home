@@ -48,16 +48,15 @@ customW interval f = do
   return l
 
 volumeIcon x
-  | mute == "[off]" = icon "\xf6a9" ++ " " ++ font "MUTE"
-  | read num > 50   = icon "\xf028" ++ " " ++ font (num ++ "%")
-  | read num > 0    = icon "\xf027" ++ " " ++ font (num ++ "%")
-  | otherwise       = icon "\xf026" ++ " " ++ font (num ++ "%")
+  | T.isInfixOf "off" (T.pack x) = icon "\xf6a9" ++ " " ++ font "MUTE"
+  | read num > 50                = icon "\xf028" ++ " " ++ font (num ++ "%")
+  | read num > 0                 = icon "\xf027" ++ " " ++ font (num ++ "%")
+  | otherwise                    = icon "\xf026" ++ " " ++ font (num ++ "%")
   where
-    mute = dropWhile (/= '[') . reverse . dropWhile (/= ']') . reverse $ x
     num  = takeWhile (/= '%') x
 getVolume = do
   output1 <- readProcess "amixer" ["sget", "Master"] []
-  output2 <- readProcess "egrep" ["-o", "[0-9]+%\\] \\[[a-z]+\\]"] output1
+  output2 <- readProcess "egrep" ["-o", "[0-9]+%\\] \\[.*"] output1
   output3 <- readProcess "head" ["-n", "1"] output2
   let volume = colorize "#a6e3a1" "" . volumeIcon $ output3
   return . T.pack $ volume
