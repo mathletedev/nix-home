@@ -36,6 +36,7 @@
       displayManager = {
         autoLogin.enable = true;
         autoLogin.user = "neo";
+        setupCommands = "${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --left-of VGA-1";
       };
       wacom.enable = true;
       windowManager.xmonad.enable = true;
