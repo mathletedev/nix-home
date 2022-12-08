@@ -21,17 +21,20 @@ in
     keyboard.options = [ "caps:escape" ];
     packages = with pkgs; [
       asciiquarium
+      audacity
       betterdiscordctl
       brave
       cascadia-code
+      cmatrix
       discord
-      dolphin
       font-awesome
       gcc
       gimp
       go
       haskellPackages.xmobar
       libqalculate
+      libsForQt5.dolphin
+      libsForQt5.dolphin-plugins
       libsForQt5.qtstyleplugin-kvantum
       lua
       lxappearance
