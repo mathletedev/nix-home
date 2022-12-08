@@ -77,7 +77,7 @@ in
     sessionVariables = {
       BAT_THEME = "catppuccin";
       EDITOR = "nvim";
-      PF_INFO = "ascii title os uptime pkgs de shell editor";
+      PF_INFO = "ascii title os uptime pkgs wm shell editor";
       QT_STYLE_OVERRIDE = "kvantum";
     };
     shellAliases = { ls = "exa --all --long --git"; };
