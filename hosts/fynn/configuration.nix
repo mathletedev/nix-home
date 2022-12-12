@@ -30,6 +30,7 @@
       ports = [ 8128 ];
     };
     udev.packages = [ pkgs.libwacom ];
+    udisks2.enable = true;
     xserver = {
       enable = true;
       digimend.enable = true;

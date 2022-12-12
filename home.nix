@@ -177,6 +177,7 @@ in
       };
     };
     status-notifier-watcher.enable = true;
+    udiskie.enable = true;
   };
 
   xsession = {
