@@ -12,6 +12,7 @@
 		firewall.enable = true;
 		hostName = "orca";
 		networkmanager.enable = true;
+		resolvconf.dnsExtensionMechanism = false;
 	};
 
 	time.timeZone = "America/Los_Angeles";
@@ -40,6 +41,11 @@
 	};
 
 	sound.enable = true;
+
+	hardware = {
+		opengl.driSupport32Bit = true;
+		pulseaudio.enable = true;
+	};
 
 	users = {
 		defaultUserShell = pkgs.fish;
