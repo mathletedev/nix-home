@@ -32,6 +32,7 @@ in
       gimp
       go
       haskellPackages.xmobar
+      kdenlive
       libqalculate
       libsForQt5.dolphin
       libsForQt5.dolphin-plugins
