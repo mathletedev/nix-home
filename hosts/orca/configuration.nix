@@ -1,63 +1,66 @@
 { config, pkgs, ... }:
 
 {
-	imports = [ ./hardware-configuration.nix ];
+  imports = [
+    <nixos-hardware/microsoft/surface>
+    ./hardware-configuration.nix
+  ];
 
-	boot.loader = {
-		efi.canTouchEfiVariables = true;
-		systemd-boot.enable = true;
-	};
+  boot.loader = {
+    efi.canTouchEfiVariables = true;
+    systemd-boot.enable = true;
+  };
 
-	networking = {
-		firewall.enable = true;
-		hostName = "orca";
-		networkmanager.enable = true;
-		resolvconf.dnsExtensionMechanism = false;
-	};
+  networking = {
+    firewall.enable = true;
+    hostName = "orca";
+    networkmanager.enable = true;
+    resolvconf.dnsExtensionMechanism = false;
+  };
 
-	time.timeZone = "America/Los_Angeles";
+  time.timeZone = "America/Los_Angeles";
 
-	console = {
-		font = "Lat2-Terminus16";
-		useXkbConfig = true;
-	};
+  console = {
+    font = "Lat2-Terminus16";
+    useXkbConfig = true;
+  };
 
-	services = {
-		udisks2.enable = true;
-		upower.enable = true;
-		xserver = {
-			enable = true;
-			libinput = {
-				enable = true;
-				touchpad = {
-					middleEmulation = true;
-					naturalScrolling = true;
-					tapping = true;
-				};
-			};
-			windowManager.xmonad.enable = true;
-			xkbOptions = "caps:escape";
-		};
-	};
+  services = {
+    udisks2.enable = true;
+    upower.enable = true;
+    xserver = {
+      enable = true;
+      libinput = {
+        enable = true;
+        touchpad = {
+          middleEmulation = true;
+          naturalScrolling = true;
+          tapping = true;
+        };
+      };
+      windowManager.xmonad.enable = true;
+      xkbOptions = "caps:escape";
+    };
+  };
 
-	sound.enable = true;
+  sound.enable = true;
 
-	hardware = {
-		opengl.driSupport32Bit = true;
-		pulseaudio.enable = true;
-	};
+  hardware = {
+    opengl.driSupport32Bit = true;
+    pulseaudio.enable = true;
+  };
 
-	users = {
-		defaultUserShell = pkgs.fish;
-		users.neo = {
-			extraGroups = [ "wheel" "networkmanager" "audio" ];
-			isNormalUser = true;
-		};
-	};
+  users = {
+    defaultUserShell = pkgs.fish;
+    users.neo = {
+      extraGroups = [ "wheel" "networkmanager" "audio" ];
+      isNormalUser = true;
+    };
+  };
 
-	environment.systemPackages = with pkgs; [ git neovim ];
+  environment.systemPackages = with pkgs; [ git iptsd neovim ];
 
-	programs.slock.enable = true;
+  programs.slock.enable = true;
 
-	system.stateVersion = "22.11";
+  system.stateVersion = "22.11";
 }
