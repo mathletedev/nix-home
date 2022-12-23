@@ -91,7 +91,7 @@ myKeys =
   ]
 
 main = do
-  xmonad $ ewmh $ pagerHints $ docks $ def
+  xmonad $ ewmh $ ewmhFullscreen $ pagerHints $ docks $ def
     { terminal    = myTerminal
     , modMask     = myModMask
     , borderWidth = myBorderWidth
