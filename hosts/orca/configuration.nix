@@ -58,7 +58,7 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [ git iptsd neovim ];
+  environment.systemPackages = with pkgs; [ git neovim ];
 
   programs.slock.enable = true;
 
