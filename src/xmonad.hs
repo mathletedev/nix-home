@@ -24,7 +24,7 @@ import           System.Taffybar.Support.PagerHints (pagerHints)
 import           Graphics.X11.ExtraTypes.XF86
 
 myTerminal = "kitty"
-myBrowser = "brave"
+myBrowser = "firefox-devedition"
 myModMask = mod4Mask
 myBorderWidth = 0
 myWorkspaces = map show [1..9]

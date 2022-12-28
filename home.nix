@@ -22,11 +22,13 @@ in
     packages = with pkgs; [
       asciiquarium
       audacity
+      bat
       betterdiscordctl
-      brave
       cascadia-code
       cmatrix
       discord
+      exa
+      firefox-devedition-bin
       font-awesome
       gcc
       gimp
@@ -89,8 +91,6 @@ in
   fonts.fontconfig.enable = true;
 
   programs = {
-    bat.enable = true;
-    exa.enable = true;
     fish = {
       enable = true;
       functions = {
@@ -170,7 +170,7 @@ in
         fading = true;
         focus-exclude = [ "class_i = 'rofi'" "x = 0 && y = 0 && override_redirect = true" ];
         inactive-opacity = 0.6;
-        opacity-rule = [ "100:window_type = 'dock'" "100:class_i = 'screenkey'" "100:name *= 'Discord'" ];
+        opacity-rule = [ "100:window_type = 'dock'" "100:class_i = 'screenkey'" "100:name *= 'Discord'" "100:name *= 'YouTube'" ];
         round-borders = 1;
         rounded-corners-exclude = [ "window_type = 'dock'" "class_i = 'screenkey'" ];
         shadow = true;
