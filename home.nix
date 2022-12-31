@@ -53,8 +53,9 @@ in
       obsidian
       onlyoffice-bin
       papirus-icon-theme
-      pipes
       pfetch
+      pipes
+      ripgrep
       rustup
       rust-analyzer
       screenkey

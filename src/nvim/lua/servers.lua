@@ -31,9 +31,9 @@ cmp.setup {
 local null_ls = require "null-ls"
 null_ls.setup {
 	sources = {
-		null_ls.builtins.diagnostics.eslint_d.with { extra_filetypes = { "astro" } },
+		null_ls.builtins.diagnostics.eslint_d.with { extra_filetypes = { "astro", "svelte" } },
 		null_ls.builtins.formatting.autopep8,
-		null_ls.builtins.formatting.eslint_d.with { extra_filetypes = { "astro" } },
+		null_ls.builtins.formatting.eslint_d.with { extra_filetypes = { "astro", "svelte" } },
 		null_ls.builtins.formatting.gofmt,
 		null_ls.builtins.formatting.prettier,
 		null_ls.builtins.formatting.rustfmt,
@@ -43,18 +43,6 @@ null_ls.setup {
 }
 
 local lspconfig = require "lspconfig"
-
-local telescope = require "telescope"
-telescope.setup {
-	defaults = {
-		mappings = { n = { ["o"] = require("telescope.actions").select_default } },
-		initial_mode = "normal",
-		file_ignore_patterns = { "dist/", ".git/", "node_modules/", "target/" },
-	},
-	pickers = { find_files = { hidden = true } },
-	extensions = { file_browser = { hidden = true } },
-}
-telescope.load_extension "file_browser"
 
 require("nvim-treesitter.configs").setup {
 	ensure_installed = {
@@ -69,6 +57,7 @@ require("nvim-treesitter.configs").setup {
 		"nix",
 		"python",
 		"rust",
+		"svelte",
 		"tsx",
 		"typescript",
 		"yaml",
@@ -91,6 +80,7 @@ local servers = {
 	"rnix",
 	"rust_analyzer",
 	"sumneko_lua",
+	"svelte",
 	"tailwindcss",
 	"tsserver",
 }
@@ -101,7 +91,7 @@ require("mason-lspconfig").setup {
 }
 
 local lsp_formatting = function(bufnr)
-	local deny_formatting = { "astro", "gopls", "html", "rust_analyzer", "sumneko_lua", "tsserver" }
+	local deny_formatting = { "astro", "gopls", "html", "rust_analyzer", "sumneko_lua", "svelte", "tsserver" }
 	vim.lsp.buf.format {
 		filter = function(client)
 			for _, value in pairs(deny_formatting) do
@@ -112,6 +102,7 @@ local lsp_formatting = function(bufnr)
 			return true
 		end,
 		bufnr = bufnr,
+		timeout_ms = 4000,
 	}
 end
 
