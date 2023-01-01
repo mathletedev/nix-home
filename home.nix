@@ -20,6 +20,7 @@ in
     homeDirectory = "/home/neo";
     keyboard.options = [ "caps:escape" ];
     packages = with pkgs; [
+      android-file-transfer
       asciiquarium
       audacity
       bat
