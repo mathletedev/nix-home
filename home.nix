@@ -29,7 +29,6 @@ in
       clang-tools
       cmatrix
       discord
-      etcher
       exa
       firefox-devedition-bin
       font-awesome
