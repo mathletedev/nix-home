@@ -52,6 +52,7 @@ require("nvim-treesitter.configs").setup {
 		"css",
 		"go",
 		"html",
+		"java",
 		"lua",
 		"make",
 		"nix",

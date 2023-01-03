@@ -1,15 +1,15 @@
 { pkgs, ... }:
 
 let
-  myConfig = pkgs.vimUtils.buildVimPlugin {
+  neovimConfig = pkgs.vimUtils.buildVimPlugin {
     name = "fynn";
     src = ./src/nvim;
   };
-  myNeovim = pkgs.neovim.override {
+  neovim = pkgs.neovim.override {
     configure = {
       customRC = "lua require \"init\"";
       packages.myPlugins = with pkgs.vimPlugins; {
-        start = [ myConfig packer-nvim ];
+        start = [ neovimConfig packer-nvim ];
         opt = [ ];
       };
     };
@@ -26,8 +26,10 @@ in
       bat
       betterdiscordctl
       cascadia-code
+      clang-tools
       cmatrix
       discord
+      etcher
       exa
       firefox-devedition-bin
       font-awesome
@@ -35,6 +37,7 @@ in
       gimp
       go
       haskellPackages.xmobar
+      jdk11
       kdenlive
       libqalculate
       libsForQt5.dolphin
@@ -42,7 +45,7 @@ in
       libsForQt5.qtstyleplugin-kvantum
       lua
       lxappearance
-      myNeovim
+      neovim
       (nerdfonts.override { fonts = [ "CascadiaCode" ]; })
       nitrogen
       nmap
