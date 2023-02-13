@@ -13,52 +13,8 @@ vim.g.catppuccin_flavour = "mocha"
 require("catppuccin").setup()
 vim.api.nvim_command "colorscheme catppuccin"
 
-local db = require "dashboard"
-db.custom_header = {
-	"",
-	"",
-	"",
-	"",
-	" ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗",
-	" ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║",
-	" ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║",
-	" ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║",
-	" ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║",
-	" ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝",
-	"",
-	"",
-	"",
-}
-db.custom_center = {
-	{
-		icon = " ",
-		desc = "New File            ",
-		action = "DashboardNewFile",
-		shortcut = "SPC o",
-	},
-	{
-		icon = " ",
-		desc = "Browse Files        ",
-		action = "Telescope file_browser",
-		shortcut = "SPC n",
-	},
-	{
-		icon = " ",
-		desc = "Find File           ",
-		action = "Telescope find_files",
-		shortcut = "SPC f",
-	},
-	{
-		icon = " ",
-		desc = "Configure Neovim    ",
-		action = "edit ~/.config/nixpkgs/src/nvim/lua/init.lua",
-		shortcut = "SPC v",
-	},
-	{
-		icon = " ",
-		desc = "Exit Neovim              ",
-		action = "quit",
-	},
+require("dashboard").setup {
+	config = { week_header = { enable = true } },
 }
 
 require("gitsigns").setup {

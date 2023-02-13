@@ -32,7 +32,7 @@ local null_ls = require "null-ls"
 null_ls.setup {
 	sources = {
 		null_ls.builtins.diagnostics.eslint_d.with { extra_filetypes = { "astro", "svelte" } },
-		null_ls.builtins.formatting.autopep8,
+		null_ls.builtins.formatting.black,
 		null_ls.builtins.formatting.eslint_d.with { extra_filetypes = { "astro", "svelte" } },
 		null_ls.builtins.formatting.gofmt,
 		null_ls.builtins.formatting.prettier,
@@ -77,12 +77,23 @@ local servers = {
 	"cssls",
 	"gopls",
 	"html",
-	"pyright",
+	"jedi_language_server",
+	"lua_ls",
 	"rnix",
 	"rust_analyzer",
-	"sumneko_lua",
 	"svelte",
 	"tailwindcss",
+	"tsserver",
+}
+
+local deny_formatting = {
+	"astro",
+	"gopls",
+	"html",
+	"rust_analyzer",
+	"lua_ls",
+	"jedi_language_server",
+	"svelte",
 	"tsserver",
 }
 
@@ -92,7 +103,6 @@ require("mason-lspconfig").setup {
 }
 
 local lsp_formatting = function(bufnr)
-	local deny_formatting = { "astro", "gopls", "html", "rust_analyzer", "sumneko_lua", "svelte", "tsserver" }
 	vim.lsp.buf.format {
 		filter = function(client)
 			for _, value in pairs(deny_formatting) do
@@ -107,18 +117,18 @@ local lsp_formatting = function(bufnr)
 	}
 end
 
-local opts = {
-	on_attach = function(client, bufnr)
-		vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-		local opts = { buffer = bufnr }
+for _, server in pairs(servers) do
+	local opts = {
+		on_attach = function(client, bufnr)
+			vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+			local opts = { buffer = bufnr }
 
-		vim.keymap.set("n", "<Leader>h", vim.lsp.buf.hover, opts)
-		vim.keymap.set("n", "<Leader>i", vim.lsp.buf.definition, opts)
-		vim.keymap.set("n", "<Leader>r", vim.lsp.buf.rename, opts)
+			vim.keymap.set("n", "<Leader>h", vim.lsp.buf.hover, opts)
+			vim.keymap.set("n", "<Leader>i", vim.lsp.buf.definition, opts)
+			vim.keymap.set("n", "<Leader>r", vim.lsp.buf.rename, opts)
 
-		local augroup = vim.api.nvim_create_augroup("LspFormatting", { clear = false })
+			local augroup = vim.api.nvim_create_augroup("LspFormatting", { clear = false })
 
-		if client.supports_method "textDocument/formatting" then
 			vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
 			vim.api.nvim_create_autocmd("BufWritePre", {
 				group = augroup,
@@ -127,12 +137,10 @@ local opts = {
 					lsp_formatting(bufnr)
 				end,
 			})
-		end
-	end,
-	capabilities = require("cmp_nvim_lsp").default_capabilities(),
-}
+		end,
+		capabilities = require("cmp_nvim_lsp").default_capabilities(),
+	}
 
-for _, server in pairs(servers) do
 	if server == "sumneko_lua" then
 		opts.settings = { Lua = { diagnostics = { globals = { "vim" } } } }
 	end

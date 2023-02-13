@@ -25,6 +25,7 @@ in
       audacity
       bat
       betterdiscordctl
+      black
       cascadia-code
       cava
       clang-tools
@@ -34,11 +35,11 @@ in
       firefox-devedition-bin
       font-awesome
       gcc
-      gimp
       go
       haskellPackages.xmobar
       jdk11
       kdenlive
+      krita
       libqalculate
       libsForQt5.dolphin
       libsForQt5.dolphin-plugins
@@ -59,6 +60,7 @@ in
       papirus-icon-theme
       pfetch
       pipes
+      python311
       ripgrep
       rustup
       rust-analyzer
