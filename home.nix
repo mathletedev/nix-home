@@ -61,6 +61,7 @@ in
       pfetch
       pipes
       python311
+      redshift
       ripgrep
       rustup
       rust-analyzer
