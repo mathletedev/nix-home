@@ -58,6 +58,7 @@ in
       obsidian
       onlyoffice-bin
       papirus-icon-theme
+      pavucontrol
       pfetch
       pipes
       python311
