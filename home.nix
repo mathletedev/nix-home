@@ -21,6 +21,7 @@ in
     keyboard.options = [ "caps:escape" ];
     packages = with pkgs; [
       android-file-transfer
+      arduino-cli
       asciiquarium
       audacity
       bat
@@ -35,6 +36,7 @@ in
       firefox-devedition-bin
       font-awesome
       gcc
+      gimp
       go
       haskellPackages.xmobar
       jdk11
@@ -179,7 +181,7 @@ in
         fading = true;
         focus-exclude = [ "class_i = 'rofi'" "x = 0 && y = 0 && override_redirect = true" ];
         inactive-opacity = 0.6;
-        opacity-rule = [ "100:window_type = 'dock'" "100:class_i = 'screenkey'" "100:name *= 'Discord'" "100:name *= 'YouTube'" "100:name *= 'Bilibili'" "100:name *= 'Animefever'" ];
+        opacity-rule = [ "100:window_type = 'dock'" "100:class_i = 'screenkey'" "100:name *= 'Discord'" "100:name *= 'YouTube'" "100:name *= 'Bilibili'" "100:name *= 'Animefever'" "100:name *= 'Zoro.to'" ];
         round-borders = 1;
         rounded-corners-exclude = [ "window_type = 'dock'" "class_i = 'screenkey'" ];
         shadow = true;
