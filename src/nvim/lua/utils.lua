@@ -1,16 +1,17 @@
 local lang_maps = {
-	cpp = { build = "g++ % -o %:r", exec = "./%:r" },
-	typescript = { exec = "bun %" },
-	javascript = { exec = "bun %" },
-	python = { exec = "python %" },
-	java = { build = "javac %", exec = "java %:r" },
-	sh = { exec = "./%" },
-	go = { build = "go build", exec = "go run %" },
-	rust = { exec = "cargo run" },
 	arduino = {
 		build = "arduino-cli compile --fqbn arduino:avr:uno %:r",
 		exec = "arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:uno %:r",
 	},
+	c = { build = "gcc % -o %:r", exec = "./%:r" },
+	cpp = { build = "g++ % -o %:r", exec = "./%:r" },
+	go = { build = "go build", exec = "go run %" },
+	java = { build = "javac %", exec = "java %:r" },
+	javascript = { exec = "bun %" },
+	python = { exec = "python %" },
+	rust = { exec = "cargo run" },
+	sh = { exec = "./%" },
+	typescript = { exec = "bun %" },
 }
 
 for lang, data in pairs(lang_maps) do

@@ -112,7 +112,11 @@ in
         "-" = "cd -";
         n = "kitty &";
       };
-      shellAliases = { home = "nvim ~/.config/nixpkgs"; };
+      shellAliases = {
+        home = "nvim ~/.config/nixpkgs";
+        vi = "nvim";
+        vim = "nvim";
+      };
     };
     git = {
       enable = true;
