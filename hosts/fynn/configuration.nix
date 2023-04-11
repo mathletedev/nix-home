@@ -3,9 +3,14 @@
 {
   imports = [ ./hardware-configuration.nix ];
 
-  boot.loader = {
-    efi.canTouchEfiVariables = true;
-    systemd-boot.enable = true;
+  boot = {
+    kernelPackages = pkgs.linuxPackages_5_4;
+    blacklistedKernelModules = [ "rtl8xxxu" ];
+    extraModulePackages = [ config.boot.kernelPackages.rtl88x2bu ];
+    loader = {
+      efi.canTouchEfiVariables = true;
+      systemd-boot.enable = true;
+    };
   };
 
   networking = {
