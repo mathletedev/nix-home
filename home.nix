@@ -48,6 +48,7 @@ in
       libsForQt5.qtstyleplugin-kvantum
       lua
       lxappearance
+      musescore
       neovim
       (nerdfonts.override { fonts = [ "CascadiaCode" ]; })
       nitrogen
@@ -58,7 +59,9 @@ in
       notify-desktop
       obs-studio
       obsidian
+      oneko
       onlyoffice-bin
+      openssl
       papirus-icon-theme
       pavucontrol
       pfetch
