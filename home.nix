@@ -70,7 +70,6 @@ in
       redshift
       ripgrep
       rustup
-      #      rust-analyzer
       screenkey
       spotify
       steam
