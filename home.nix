@@ -70,7 +70,7 @@ in
       redshift
       ripgrep
       rustup
-      rust-analyzer
+      #      rust-analyzer
       screenkey
       spotify
       steam
@@ -90,7 +90,7 @@ in
       size = 16;
       x11.enable = true;
     };
-    sessionPath = [ "$HOME/.config/nixpkgs/bin" "$HOME/.bun/bin" ];
+    sessionPath = [ "$HOME/.config/home-manager/bin" "$HOME/.bun/bin" ];
     sessionVariables = {
       BAT_THEME = "catppuccin";
       EDITOR = "nvim";
@@ -98,7 +98,7 @@ in
       QT_STYLE_OVERRIDE = "kvantum";
     };
     shellAliases = { ls = "exa --all --long --git"; };
-    stateVersion = "22.11";
+    stateVersion = "23.05";
     username = "neo";
   };
 
@@ -116,7 +116,7 @@ in
         n = "kitty &";
       };
       shellAliases = {
-        home = "nvim ~/.config/nixpkgs";
+        home = "nvim ~/.config/home-manager";
         vi = "nvim";
         vim = "nvim";
       };
@@ -146,7 +146,7 @@ in
         show-icons = true;
         sidebar-mode = true;
       };
-      theme = ~/.config/nixpkgs/assets/catppuccin.rasi;
+      theme = ~/.config/home-manager/assets/catppuccin.rasi;
     };
     starship = {
       enable = true;
