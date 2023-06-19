@@ -69,7 +69,9 @@ require("nvim-treesitter.configs").setup {
 
 require("rust-tools").setup {}
 
-require("mason").setup {}
+require("mason").setup {
+	PATH = "append",
+}
 
 local servers = {
 	"astro",
@@ -120,7 +122,7 @@ end
 
 for _, server in pairs(servers) do
 	local opts = {
-		on_attach = function(client, bufnr)
+		on_attach = function(_, bufnr)
 			vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 			local opts = { buffer = bufnr }
 
@@ -142,7 +144,7 @@ for _, server in pairs(servers) do
 		capabilities = require("cmp_nvim_lsp").default_capabilities(),
 	}
 
-	if server == "sumneko_lua" then
+	if server == "lua_ls" then
 		opts.settings = { Lua = { diagnostics = { globals = { "vim" } } } }
 	end
 
