@@ -3,14 +3,14 @@ local lang_maps = {
 		build = "arduino-cli compile --fqbn arduino:avr:uno %:r",
 		exec = "arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:uno %:r",
 	},
-	c = { build = "gcc % -o %:r", exec = "./%:r" },
-	cpp = { build = "g++ % -o %:r", exec = "./%:r" },
+	c = { build = "gcc % -o %:r", exec = "%:r" },
+	cpp = { build = "g++ % -o %:r", exec = "%:r" },
 	go = { build = "go build", exec = "go run %" },
 	java = { build = "javac %", exec = "java %:r" },
 	javascript = { exec = "bun %" },
 	python = { exec = "python %" },
 	rust = { exec = "cargo run" },
-	sh = { exec = "./%" },
+	sh = { exec = "%" },
 	typescript = { exec = "bun %" },
 }
 
