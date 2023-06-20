@@ -1,7 +1,14 @@
 #!/bin/sh
 
-stylus="`xsetwacom --list devices | grep 'type: STYLUS' | sed 's/.*id: \([0-9][0-9]*\).*/\1/'`"
+stylus="`xsetwacom --list devices | grep 'stylus' | sed 's/.*id: \([0-9][0-9]*\).*/\1/'`"
+pad="`xsetwacom --list devices | grep 'Pad pad' | sed 's/.*id: \([0-9][0-9]*\).*/\1/'`"
 
 xsetwacom set $stylus MapToOutput 1680x1050+1280+0
-xsetwacom set $stylus Button 2 "key p"
-xsetwacom set $stylus Button 3 "key shift e"
+xsetwacom set $stylus Button 2 "key ctrl z"
+xsetwacom set $stylus Button 3 "key shift ctrl z"
+xsetwacom set $pad Button 1 "key ctrl alt 1"
+xsetwacom set $pad Button 2 "key ctrl alt 2"
+xsetwacom set $pad Button 3 "key ctrl alt 3"
+xsetwacom set $pad Button 8 "key ctrl alt 4"
+xsetwacom set $pad Button 9 "key ctrl alt 5"
+xsetwacom set $pad Button 10 "key ctrl alt 6"
