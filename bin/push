@@ -1,7 +1,6 @@
 #!/bin/sh
 
-echo -n "> "
-read msg
+read -e msg
 
 [ $(pwd) == "/home/neo" ] && pushd ~/.config/nixpkgs
 
