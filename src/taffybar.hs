@@ -20,10 +20,9 @@ import           System.Process
 import qualified GI.Gtk                                      as Gtk
 
 parseRGB (r, g, b) = (r / 256, g / 256, b / 256, 1)
-colors "red"    = parseRGB (243, 139, 168)
-colors "peach"  = parseRGB (250, 179, 135)
-colors "mauve"  = parseRGB (203, 166, 247)
-colors "yellow" = parseRGB (249, 226, 175)
+colours "red"    = parseRGB (243, 139, 168)
+colours "mauve"  = parseRGB (203, 166, 247)
+colours "sapphire" = parseRGB (116, 199, 236)
 
 icon x = "<span font_desc='Font Awesome 6 Free Solid'>" ++ x ++ "</span>"
 font x = "<span font_desc='CaskaydiaCove NF Bold 10'>" ++ x ++ "</span>"
@@ -75,9 +74,9 @@ main = do
       clock      = textClockNew Nothing (font "%a %b %d %H:%M:%S") 1
       volume     = customW 1 getVolume
       battery    = textBatteryNew ("<span fgcolor='#f9e2af'>" ++ icon "\xe0b7" ++ " " ++ font "$percentage$%" ++ "</span>")
-      cpu        = pollingGraphNew myGraphConfig { graphDataColors = [ colors "red" ], graphLabel = Just "CPU" } 0.5 cpuCallback
-      memory     = pollingGraphNew myGraphConfig { graphDataColors = [ colors "peach" ], graphLabel = Just "MEM" } 0.5 memCallback
-      network    = networkGraphNew myGraphConfig { graphDataColors = [ colors "mauve" ], graphLabel = Just "NET" } Nothing
+      cpu        = pollingGraphNew myGraphConfig { graphDataColors = [ colours "red" ], graphLabel = Just "CPU" } 0.5 cpuCallback
+      memory     = pollingGraphNew myGraphConfig { graphDataColors = [ colours "mauve" ], graphLabel = Just "MEM" } 0.5 memCallback
+      network    = networkGraphNew myGraphConfig { graphDataColors = [ colours "sapphire" ], graphLabel = Just "NET" } Nothing
       tray       = sniTrayNew
 
   simpleTaffybar def
