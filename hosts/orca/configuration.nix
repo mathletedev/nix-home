@@ -2,13 +2,17 @@
 
 {
   imports = [
-    <nixos-hardware/microsoft/surface>
+    /* <nixos-hardware/microsoft/surface/common> */
     ./hardware-configuration.nix
   ];
 
-  boot.loader = {
-    efi.canTouchEfiVariables = true;
-    systemd-boot.enable = true;
+  /* microsoft-surface.kernelVersion = "6.1.18"; */
+
+  boot = {
+    loader = {
+      efi.canTouchEfiVariables = true;
+      systemd-boot.enable = true;
+    };
   };
 
   networking = {
@@ -26,6 +30,7 @@
   };
 
   services = {
+    logind.lidSwitch = "suspend";
     udisks2.enable = true;
     upower.enable = true;
     xserver = {
@@ -60,7 +65,10 @@
 
   environment.systemPackages = with pkgs; [ git neovim ];
 
-  programs.slock.enable = true;
+  programs = {
+    fish.enable = true;
+    slock.enable = true;
+  };
 
-  system.stateVersion = "22.11";
+  system.stateVersion = "23.05";
 }
