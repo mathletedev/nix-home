@@ -3,7 +3,7 @@
 stylus="`xsetwacom --list devices | grep 'stylus' | sed 's/.*id: \([0-9][0-9]*\).*/\1/'`"
 pad="`xsetwacom --list devices | grep 'Pad pad' | sed 's/.*id: \([0-9][0-9]*\).*/\1/'`"
 
-xsetwacom set $stylus MapToOutput 1680x1050+1280+0
+xsetwacom set $stylus MapToOutput 1920x1080+1280+0
 xsetwacom set $stylus Button 2 "key ctrl z"
 xsetwacom set $stylus Button 3 "key shift ctrl z"
 xsetwacom set $pad Button 1 "key ctrl alt 1"

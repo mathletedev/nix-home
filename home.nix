@@ -38,7 +38,6 @@ in
       gcc
       gimp
       go
-      godot_4
       haskellPackages.xmobar
       jdk11
       kdenlive
