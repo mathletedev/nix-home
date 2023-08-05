@@ -16,7 +16,7 @@
   networking = {
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 3000 8080 8128 ];
+      allowedTCPPorts = [ 3000 8080 ];
     };
     hostName = "fynn";
     networkmanager.enable = true;
@@ -30,10 +30,7 @@
   };
 
   services = {
-    openssh = {
-      enable = true;
-      ports = [ 8128 ];
-    };
+    openssh.enable = true;
     postgresql = {
       enable = true;
       authentication = lib.mkForce ''
