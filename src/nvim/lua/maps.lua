@@ -19,8 +19,6 @@ vim.keymap.set("n", "j", "gj", { silent = true })
 vim.keymap.set("n", "<Leader>l", ":vsplit term://fish <CR>", { silent = true })
 vim.keymap.set("t", "<Leader><Esc>", "<C-\\><C-n>", { silent = true })
 
-vim.keymap.set("n", "<Leader>v", ":edit ~/.config/home-manager/src/nvim/lua/init.lua<CR>", { silent = true })
-
 vim.keymap.set("n", "<Leader>n", require("telescope").extensions.file_browser.file_browser)
 vim.keymap.set("n", "<Leader>f", require("telescope.builtin").find_files)
 vim.keymap.set("n", "<Leader>t", require("telescope.builtin").treesitter)

@@ -58,6 +58,7 @@ require("nvim-treesitter.configs").setup {
 		"go",
 		"html",
 		"java",
+		"json",
 		"lua",
 		"make",
 		"nix",
@@ -91,6 +92,7 @@ local servers = {
 	"svelte",
 	"tailwindcss",
 	"tsserver",
+	"yamlls",
 }
 
 local deny_formatting = {
@@ -102,6 +104,7 @@ local deny_formatting = {
 	"jedi_language_server",
 	"svelte",
 	"tsserver",
+	"yamlls",
 }
 
 require("mason-lspconfig").setup {
