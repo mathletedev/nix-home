@@ -2,11 +2,11 @@
 
 {
   imports = [
-    /* <nixos-hardware/microsoft/surface/common> */
+    <nixos-hardware/microsoft/surface/common>
     ./hardware-configuration.nix
   ];
 
-  /* microsoft-surface.kernelVersion = "6.1.18"; */
+  microsoft-surface.kernelVersion = "6.1.18";
 
   boot = {
     loader = {
@@ -30,6 +30,7 @@
   };
 
   services = {
+    blueman.enable = true;
     logind.lidSwitch = "suspend";
     udisks2.enable = true;
     upower.enable = true;
@@ -51,6 +52,7 @@
   sound.enable = true;
 
   hardware = {
+    bluetooth.enable = true;
     opengl.driSupport32Bit = true;
     pulseaudio.enable = true;
   };
