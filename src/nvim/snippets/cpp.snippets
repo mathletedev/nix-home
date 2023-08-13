@@ -1,0 +1,15 @@
+snippet cp
+	#include <iostream>
+
+	int main() {
+		std::ios::sync_with_stdio(0);
+		std::cin.tie(NULL);
+
+		${0}
+
+		return 0;
+	}
+
+snippet rf
+	freopen("${0}.in", "r", stdin);
+	freopen("$0.out", "w", stdout);
