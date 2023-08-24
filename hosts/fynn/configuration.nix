@@ -29,6 +29,14 @@
     useXkbConfig = true;
   };
 
+  users = {
+    defaultUserShell = pkgs.fish;
+    users.neo = {
+      extraGroups = [ "wheel" "networkmanager" "audio" "vboxusers" ];
+      isNormalUser = true;
+    };
+  };
+
   services = {
     openssh.enable = true;
     postgresql = {
@@ -64,14 +72,6 @@
     pulseaudio.enable = true;
   };
 
-  users = {
-    defaultUserShell = pkgs.fish;
-    users.neo = {
-      extraGroups = [ "wheel" "networkmanager" "audio" ];
-      isNormalUser = true;
-    };
-  };
-
   environment.systemPackages = with pkgs; [ neovim ];
 
   programs = {
@@ -79,6 +79,8 @@
     fish.enable = true;
     slock.enable = true;
   };
+
+  virtualisation.virtualbox.host.enable = true;
 
   system.stateVersion = "23.05";
 }
