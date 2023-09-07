@@ -71,7 +71,6 @@ in
       ripgrep
       rustup
       screenkey
-      spotify
       steam
       stylua
       stylish-haskell
