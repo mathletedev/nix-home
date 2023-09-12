@@ -48,6 +48,7 @@ in
       libsForQt5.qtstyleplugin-kvantum
       lua
       lxappearance
+      lxgw-wenkai
       musescore
       neovim
       (nerdfonts.override { fonts = [ "CascadiaCode" ]; })
@@ -71,6 +72,7 @@ in
       ripgrep
       rustup
       screenkey
+      spotify
       steam
       stylua
       stylish-haskell

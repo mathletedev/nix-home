@@ -80,6 +80,11 @@
     slock.enable = true;
   };
 
+  i18n.inputMethod = {
+    enabled = "ibus";
+    ibus.engines = with pkgs.ibus-engines; [ libpinyin ];
+  };
+
   virtualisation.virtualbox.host.enable = true;
 
   system.stateVersion = "23.05";

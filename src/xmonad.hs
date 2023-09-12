@@ -58,6 +58,7 @@ myLayoutHook = avoidStruts $ tall ||| wide ||| grid ||| full
 
 myStartupHook = do
   spawn "taffybar"
+  spawn "ibus start"
 
 toggleFloat w = windows (\s ->
   if M.member w (W.floating s) then W.sink w s
