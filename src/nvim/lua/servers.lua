@@ -34,20 +34,6 @@ cmp.setup {
 
 require("luasnip.loaders.from_snipmate").lazy_load { paths = "~/.config/home-manager/src/nvim/snippets" }
 
-local null_ls = require "null-ls"
-null_ls.setup {
-	sources = {
-		null_ls.builtins.diagnostics.eslint_d.with { extra_filetypes = { "astro", "svelte" } },
-		null_ls.builtins.formatting.black,
-		null_ls.builtins.formatting.eslint_d.with { extra_filetypes = { "astro", "svelte" } },
-		null_ls.builtins.formatting.gofmt,
-		null_ls.builtins.formatting.prettier.with { extra_filetypes = { "astro", "svelte" } },
-		null_ls.builtins.formatting.rustfmt,
-		null_ls.builtins.formatting.stylua,
-		null_ls.builtins.formatting.stylish_haskell,
-	},
-}
-
 local lspconfig = require "lspconfig"
 
 require("nvim-treesitter.configs").setup {
@@ -74,6 +60,19 @@ require("nvim-treesitter.configs").setup {
 	highlight = { enable = true },
 }
 
+local ft = require "guard.filetype"
+
+ft("python"):fmt "black"
+ft("go"):fmt "gofmt"
+ft("typescript,javascript,json,yaml,astro,svelte"):fmt "prettier"
+ft("rust"):fmt "rustfmt"
+ft("lua"):fmt "stylua"
+
+require("guard").setup {
+	fmt_on_save = true,
+	lsp_as_default_formatter = true,
+}
+
 require("rust-tools").setup {}
 
 require("mason").setup {
@@ -85,6 +84,7 @@ local servers = {
 	"bashls",
 	"clangd",
 	"cssls",
+	"eslint",
 	"gopls",
 	"html",
 	"jedi_language_server",
@@ -97,37 +97,10 @@ local servers = {
 	"yamlls",
 }
 
-local deny_formatting = {
-	"astro",
-	"gopls",
-	"html",
-	"rust_analyzer",
-	"lua_ls",
-	"jedi_language_server",
-	"svelte",
-	"tsserver",
-	"yamlls",
-}
-
 require("mason-lspconfig").setup {
 	ensure_installed = servers,
 	automatic_installation = true,
 }
-
-local lsp_formatting = function(bufnr)
-	vim.lsp.buf.format {
-		filter = function(client)
-			for _, value in pairs(deny_formatting) do
-				if client.name == value then
-					return false
-				end
-			end
-			return true
-		end,
-		bufnr = bufnr,
-		timeout_ms = 4000,
-	}
-end
 
 for _, server in pairs(servers) do
 	local opts = {
@@ -138,17 +111,6 @@ for _, server in pairs(servers) do
 			vim.keymap.set("n", "<Leader>h", vim.lsp.buf.hover, opts)
 			vim.keymap.set("n", "<Leader>i", vim.lsp.buf.definition, opts)
 			vim.keymap.set("n", "<Leader>r", vim.lsp.buf.rename, opts)
-
-			local augroup = vim.api.nvim_create_augroup("LspFormatting", { clear = false })
-
-			vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
-			vim.api.nvim_create_autocmd("BufWritePre", {
-				group = augroup,
-				buffer = bufnr,
-				callback = function()
-					lsp_formatting(bufnr)
-				end,
-			})
 		end,
 		capabilities = require("cmp_nvim_lsp").default_capabilities(),
 	}

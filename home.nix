@@ -32,7 +32,7 @@ in
       clang-tools
       cmatrix
       discord
-      exa
+      eza
       firefox-devedition-bin
       font-awesome
       gcc
@@ -67,6 +67,7 @@ in
       pavucontrol
       pfetch
       pipes
+      prettierd
       python311
       redshift
       ripgrep
@@ -97,8 +98,8 @@ in
       PF_INFO = "ascii title os uptime pkgs wm shell editor";
       QT_STYLE_OVERRIDE = "kvantum";
     };
-    shellAliases = { ls = "exa --all --long --git"; };
-    stateVersion = "23.05";
+    shellAliases = { ls = "eza --all --long --git"; };
+    stateVersion = "23.11";
     username = "neo";
   };
 
