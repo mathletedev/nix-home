@@ -84,6 +84,7 @@ in
       vlc
       xclip
       xdotool
+      zip
     ];
     pointerCursor = {
       name = "Bibata-Modern-Classic";
@@ -211,6 +212,11 @@ in
       enableContribAndExtras = true;
       extraPackages = hp: [ hp.alsa-core hp.alsa-mixer hp.taffybar ];
     };
+  };
+
+  gtk = {
+    enable = true;
+    iconTheme.name = "Papirus";
   };
 
   xdg.configFile = {

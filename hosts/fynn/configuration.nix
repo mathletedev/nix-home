@@ -59,11 +59,14 @@
         autoLogin.user = "neo";
         setupCommands = "${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --left-of VGA-1";
       };
+      gdk-pixbuf.modulePackages = with pkgs; [ librsvg ];
       wacom.enable = true;
       windowManager.xmonad.enable = true;
       xkbOptions = "caps:escape";
     };
   };
+
+  gtk.iconCache.enable = true;
 
   sound.enable = true;
 
