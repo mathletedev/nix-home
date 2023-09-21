@@ -92,7 +92,7 @@ in
       size = 16;
       x11.enable = true;
     };
-    sessionPath = [ "$HOME/.config/home-manager/bin" "$HOME/.bun/bin" ];
+    sessionPath = [ "$HOME/.config/home-manager/bin" "$HOME/bin" ];
     sessionVariables = {
       BAT_THEME = "catppuccin";
       EDITOR = "nvim";

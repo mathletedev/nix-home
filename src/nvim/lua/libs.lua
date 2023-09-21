@@ -16,6 +16,7 @@ require("packer").startup(function(use)
 	use "nvim-telescope/telescope-file-browser.nvim"
 	use "nvim-treesitter/nvim-treesitter"
 	use "nvimdev/guard.nvim"
+	use "nvimdev/guard-collection"
 	use "onsails/lspkind-nvim"
 	use "romainl/vim-cool"
 	use "ryanoasis/vim-devicons"
