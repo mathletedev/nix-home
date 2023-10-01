@@ -75,6 +75,17 @@ require("guard").setup {
 
 require("rust-tools").setup {}
 
+vim.api.nvim_create_autocmd("BufWinEnter", { command = "nnoremap <Leader>h :RustHoverActions<CR>", pattern = "*.rs" })
+vim.api.nvim_create_autocmd(
+	"BufWinEnter",
+	{ command = "nnoremap <Leader>i :lua vim.lsp.buf.definition()<CR>", pattern = "*.rs" }
+)
+vim.api.nvim_create_autocmd(
+	"BufWinEnter",
+	{ command = "nnoremap <Leader>r :lua vim.lsp.buf.rename()<CR>", pattern = "*.rs" }
+)
+vim.api.nvim_create_autocmd("BufWinEnter", { command = "nnoremap <Leader>e :RustRun<CR>", pattern = "*.rs" })
+
 require("mason").setup {
 	PATH = "append",
 }
@@ -90,7 +101,6 @@ local servers = {
 	"jedi_language_server",
 	"lua_ls",
 	"rnix",
-	"rust_analyzer",
 	"svelte",
 	"tailwindcss",
 	"tsserver",

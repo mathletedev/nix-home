@@ -9,7 +9,6 @@ local lang_maps = {
 	java = { build = "javac %", exec = "java %:r" },
 	javascript = { exec = "bun %" },
 	python = { exec = "python %" },
-	rust = { exec = "cargo run" },
 	sh = { exec = "%" },
 	typescript = { exec = "bun %" },
 }
