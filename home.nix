@@ -63,6 +63,7 @@ in
       oneko
       onlyoffice-bin
       openssl
+      p7zip
       papirus-icon-theme
       pavucontrol
       pfetch
