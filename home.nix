@@ -17,6 +17,7 @@ let
 in
 {
   home = {
+    file.".npmrc".text = "prefix=~/.npm-packages";
     homeDirectory = "/home/neo";
     keyboard.options = [ "caps:escape" ];
     packages = with pkgs; [
@@ -93,7 +94,7 @@ in
       size = 16;
       x11.enable = true;
     };
-    sessionPath = [ "$HOME/.config/home-manager/bin" "$HOME/bin" ];
+    sessionPath = [ "$HOME/.config/home-manager/bin" "$HOME/bin" "$HOME/.npm-packages/bin" ];
     sessionVariables = {
       BAT_THEME = "catppuccin";
       EDITOR = "nvim";

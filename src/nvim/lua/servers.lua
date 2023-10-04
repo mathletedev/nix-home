@@ -1,5 +1,54 @@
-local ls = require "luasnip"
+require("mason").setup {
+	PATH = "append",
+}
 
+local servers = {
+	"astro",
+	"bashls",
+	"clangd",
+	"cssls",
+	"eslint",
+	"gopls",
+	"html",
+	"jedi_language_server",
+	"lua_ls",
+	"rnix",
+	"svelte",
+	"tailwindcss",
+	"tsserver",
+	"yamlls",
+}
+
+require("mason-lspconfig").setup {
+	ensure_installed = servers,
+	automatic_installation = true,
+}
+
+local lspconfig = require "lspconfig"
+for _, server in pairs(servers) do
+	local opts = {
+		on_attach = function(_, bufnr)
+			vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+			local opts = { buffer = bufnr }
+
+			vim.keymap.set("n", "<Leader>h", vim.lsp.buf.hover, opts)
+			vim.keymap.set("n", "<Leader>i", vim.lsp.buf.definition, opts)
+			vim.keymap.set("n", "<Leader>r", vim.lsp.buf.rename, opts)
+			vim.keymap.set("n", "<Leader>a", vim.lsp.buf.code_action, opts)
+		end,
+		capabilities = require("cmp_nvim_lsp").default_capabilities(),
+	}
+
+	if server == "lua_ls" then
+		opts.settings = { Lua = { diagnostics = { globals = { "vim" } } } }
+	end
+
+	lspconfig[server].setup(opts)
+end
+
+require("rust-tools").setup {}
+
+local ls = require "luasnip"
 local cmp = require "cmp"
 cmp.setup {
 	snippet = {
@@ -34,7 +83,17 @@ cmp.setup {
 
 require("luasnip.loaders.from_snipmate").lazy_load { paths = "~/.config/home-manager/src/nvim/snippets" }
 
-local lspconfig = require "lspconfig"
+require("guard").setup {
+	fmt_on_save = true,
+	lsp_as_default_formatter = true,
+}
+
+local ft = require "guard.filetype"
+ft("python"):fmt "black"
+ft("go"):fmt "gofmt"
+ft("typescript,javascript,json,yaml,astro,svelte"):fmt "prettier"
+ft("rust"):fmt "rustfmt"
+ft("lua"):fmt "stylua"
 
 require("nvim-treesitter.configs").setup {
 	ensure_installed = {
@@ -43,6 +102,7 @@ require("nvim-treesitter.configs").setup {
 		"c",
 		"cpp",
 		"css",
+		"dart",
 		"go",
 		"html",
 		"java",
@@ -60,21 +120,6 @@ require("nvim-treesitter.configs").setup {
 	highlight = { enable = true },
 }
 
-local ft = require "guard.filetype"
-
-ft("python"):fmt "black"
-ft("go"):fmt "gofmt"
-ft("typescript,javascript,json,yaml,astro,svelte"):fmt "prettier"
-ft("rust"):fmt "rustfmt"
-ft("lua"):fmt "stylua"
-
-require("guard").setup {
-	fmt_on_save = true,
-	lsp_as_default_formatter = true,
-}
-
-require("rust-tools").setup {}
-
 vim.api.nvim_create_autocmd("BufWinEnter", { command = "nnoremap <Leader>h :RustHoverActions<CR>", pattern = "*.rs" })
 vim.api.nvim_create_autocmd(
 	"BufWinEnter",
@@ -84,50 +129,8 @@ vim.api.nvim_create_autocmd(
 	"BufWinEnter",
 	{ command = "nnoremap <Leader>r :lua vim.lsp.buf.rename()<CR>", pattern = "*.rs" }
 )
+vim.api.nvim_create_autocmd(
+	"BufWinEnter",
+	{ command = "nnoremap <Leader>a :lua vim.lsp.buf.code_action()<CR>", pattern = "*.rs" }
+)
 vim.api.nvim_create_autocmd("BufWinEnter", { command = "nnoremap <Leader>e :RustRun<CR>", pattern = "*.rs" })
-
-require("mason").setup {
-	PATH = "append",
-}
-
-local servers = {
-	"astro",
-	"bashls",
-	"clangd",
-	"cssls",
-	"eslint",
-	"gopls",
-	"html",
-	"jedi_language_server",
-	"lua_ls",
-	"rnix",
-	"svelte",
-	"tailwindcss",
-	"tsserver",
-	"yamlls",
-}
-
-require("mason-lspconfig").setup {
-	ensure_installed = servers,
-	automatic_installation = true,
-}
-
-for _, server in pairs(servers) do
-	local opts = {
-		on_attach = function(_, bufnr)
-			vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-			local opts = { buffer = bufnr }
-
-			vim.keymap.set("n", "<Leader>h", vim.lsp.buf.hover, opts)
-			vim.keymap.set("n", "<Leader>i", vim.lsp.buf.definition, opts)
-			vim.keymap.set("n", "<Leader>r", vim.lsp.buf.rename, opts)
-		end,
-		capabilities = require("cmp_nvim_lsp").default_capabilities(),
-	}
-
-	if server == "lua_ls" then
-		opts.settings = { Lua = { diagnostics = { globals = { "vim" } } } }
-	end
-
-	lspconfig[server].setup(opts)
-end

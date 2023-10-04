@@ -22,6 +22,7 @@ require("packer").startup(function(use)
 	use "ryanoasis/vim-devicons"
 	use "saadparwaiz1/cmp_luasnip"
 	use "simrat39/rust-tools.nvim"
+	use "stevearc/dressing.nvim"
 	use "tpope/vim-commentary"
 	use "williamboman/mason.nvim"
 	use "williamboman/mason-lspconfig.nvim"
