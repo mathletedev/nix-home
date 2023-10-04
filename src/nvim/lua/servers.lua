@@ -83,17 +83,17 @@ cmp.setup {
 
 require("luasnip.loaders.from_snipmate").lazy_load { paths = "~/.config/home-manager/src/nvim/snippets" }
 
-require("guard").setup {
-	fmt_on_save = true,
-	lsp_as_default_formatter = true,
-}
-
 local ft = require "guard.filetype"
 ft("python"):fmt "black"
 ft("go"):fmt "gofmt"
 ft("typescript,javascript,json,yaml,astro,svelte"):fmt "prettier"
 ft("rust"):fmt "rustfmt"
 ft("lua"):fmt "stylua"
+
+require("guard").setup {
+	fmt_on_save = true,
+	lsp_as_default_formatter = true,
+}
 
 require("nvim-treesitter.configs").setup {
 	ensure_installed = {
