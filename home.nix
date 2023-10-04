@@ -105,7 +105,10 @@ in
     username = "neo";
   };
 
-  fonts.fontconfig.enable = true;
+  nix = {
+    package = pkgs.nix;
+    settings.experimental-features = [ "nix-command" "flakes" ];
+  };
 
   nixpkgs.config.allowUnfree = true;
 
@@ -221,6 +224,8 @@ in
       extraPackages = hp: [ hp.alsa-core hp.alsa-mixer hp.taffybar ];
     };
   };
+
+  fonts.fontconfig.enable = true;
 
   gtk = {
     enable = true;
