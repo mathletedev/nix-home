@@ -86,7 +86,7 @@ require("luasnip.loaders.from_snipmate").lazy_load { paths = "~/.config/home-man
 local ft = require "guard.filetype"
 ft("python"):fmt "black"
 ft("go"):fmt "gofmt"
-ft("typescript,javascript,json,yaml,astro,svelte"):fmt "prettier"
+ft("typescript,javascript,json,css,yaml,astro,svelte"):fmt "prettier"
 ft("rust"):fmt "rustfmt"
 ft("lua"):fmt "stylua"
 
@@ -112,6 +112,7 @@ require("nvim-treesitter.configs").setup {
 		"nix",
 		"python",
 		"rust",
+		"sql",
 		"svelte",
 		"tsx",
 		"typescript",
