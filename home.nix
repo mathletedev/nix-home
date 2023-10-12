@@ -53,6 +53,7 @@ in
       musescore
       neovim
       (nerdfonts.override { fonts = [ "CascadiaCode" ]; })
+      networkmanagerapplet
       nitrogen
       nmap
       nodejs

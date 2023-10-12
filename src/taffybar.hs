@@ -77,7 +77,7 @@ main = do
       cpu        = pollingGraphNew myGraphConfig { graphDataColors = [ colours "red" ], graphLabel = Just "CPU" } 0.5 cpuCallback
       memory     = pollingGraphNew myGraphConfig { graphDataColors = [ colours "mauve" ], graphLabel = Just "MEM" } 0.5 memCallback
       network    = networkGraphNew myGraphConfig { graphDataColors = [ colours "sapphire" ], graphLabel = Just "NET" } Nothing
-      tray       = sniTrayNew
+      tray       = sniTrayThatStartsWatcherEvenThoughThisIsABadWayToDoIt
 
   simpleTaffybar def
     { widgetSpacing = 0

@@ -58,6 +58,7 @@ myLayoutHook = avoidStruts $ tall ||| wide ||| grid ||| full
 
 myStartupHook = do
   spawn "taffybar"
+  spawn "nm-applet --indicator"
   spawn "ibus start"
 
 toggleFloat w = windows (\s ->
@@ -86,7 +87,7 @@ myKeys =
   , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 5%+ unmute")
   , ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%- unmute")
   , ("<XF86AudioMute>",        spawn "amixer set Master toggle")
-  , ("<XF86Calculator>",       spawn "kitty -e qalc")
+  , ("<XF86Calculator>",       spawn (myTerminal ++ " -e qalc"))
   , ("<XF86HomePage>",         spawn (myBrowser ++ " https://todoist.com"))
   , ("<XF86Mail>",             spawn (myBrowser ++ " https://mail.proton.me/u/0/inbox"))
   ]
