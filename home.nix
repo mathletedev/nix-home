@@ -201,10 +201,9 @@ in
         opacity-rule = [
           "100:window_type = 'dock'"
           "100:class_i = 'screenkey'"
+          "100:fullscreen"
           "100:name *= 'ibus'"
           "100:name *= 'Discord'"
-          "100:name *= 'YouTube'"
-          "100:name *= 'Aniwatch.to'"
         ];
         round-borders = 1;
         rounded-corners-exclude = [ "window_type = 'dock'" "class_i = 'screenkey'" ];
