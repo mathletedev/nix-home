@@ -44,6 +44,7 @@ in
       kdenlive
       krita
       libqalculate
+      libreoffice-qt
       libsForQt5.dolphin
       libsForQt5.dolphin-plugins
       libsForQt5.qtstyleplugin-kvantum
@@ -63,7 +64,6 @@ in
       obs-studio
       obsidian
       oneko
-      onlyoffice-bin
       openssl
       p7zip
       papirus-icon-theme
@@ -74,6 +74,7 @@ in
       python311
       redshift
       ripgrep
+      roboto
       rustup
       screenkey
       spotify
