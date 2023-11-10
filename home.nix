@@ -33,6 +33,7 @@ in
       clang-tools
       cmatrix
       discord
+      eb-garamond
       eza
       firefox-devedition-bin
       font-awesome
@@ -40,6 +41,8 @@ in
       gimp
       go
       haskellPackages.xmobar
+      hunspell
+      hunspellDicts.en_GB-ise
       jdk11
       kdenlive
       krita
