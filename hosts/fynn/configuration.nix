@@ -13,6 +13,8 @@
     };
   };
 
+  nix.autoOptimiseStore = true;
+
   networking = {
     firewall = {
       enable = true;
