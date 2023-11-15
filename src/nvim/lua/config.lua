@@ -1,6 +1,6 @@
 vim.diagnostic.config { virtual_text = false }
 
-require("presence"):setup {
+require("presence").setup {
 	neovim_image_text = "Neovim",
 	presence_log_level = "error",
 	presence_editing_text = "Editing « %s »",

@@ -3,12 +3,14 @@ require("packer").startup(function(use)
 
 	use "andweeb/presence.nvim"
 	use { "catppuccin/nvim", as = "catppuccin" }
+	use "folke/neodev.nvim"
 	use "glepnir/dashboard-nvim"
 	use "hrsh7th/cmp-nvim-lsp"
 	use "hrsh7th/nvim-cmp"
 	use "kyazdani42/nvim-web-devicons"
 	use "L3MON4D3/LuaSnip"
 	use "lewis6991/gitsigns.nvim"
+	use "mfussenegger/nvim-dap"
 	use "neovim/nvim-lspconfig"
 	use "nvim-lua/plenary.nvim"
 	use "nvim-lualine/lualine.nvim"
@@ -18,6 +20,7 @@ require("packer").startup(function(use)
 	use "nvimdev/guard.nvim"
 	use "nvimdev/guard-collection"
 	use "onsails/lspkind-nvim"
+	use "rcarriga/nvim-dap-ui"
 	use "romainl/vim-cool"
 	use "ryanoasis/vim-devicons"
 	use "saadparwaiz1/cmp_luasnip"

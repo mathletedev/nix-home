@@ -3,7 +3,7 @@ local lang_maps = {
 		build = "arduino-cli compile --fqbn arduino:avr:uno %:r",
 		exec = "arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:uno %:r",
 	},
-	c = { build = "gcc *.c -lm -o main", exec = "./main" },
+	c = { build = "gcc *.c -lm -g -o main", exec = "./main" },
 	cpp = { build = "g++ % -o %:r", exec = "%:r" },
 	go = { build = "go build", exec = "go run %" },
 	java = { build = "javac %", exec = "java %:r" },
@@ -36,7 +36,13 @@ vim.api.nvim_create_autocmd("BufWinEnter", { command = "set filetype=astro", pat
 vim.api.nvim_create_autocmd("BufWinEnter", { command = "set expandtab", pattern = "*.hs" })
 vim.api.nvim_create_autocmd("BufWinEnter", { command = "set noexpandtab tabstop=2 shiftwidth=2", pattern = "*.rs" })
 
-vim.api.nvim_command "sign define DiagnosticSignError text=● texthl=DiagnosticSignError"
-vim.api.nvim_command "sign define DiagnosticSignWarn text=● texthl=DiagnosticSignWarn"
-vim.api.nvim_command "sign define DiagnosticSignInfo text=● texthl=DiagnosticSignInfo"
-vim.api.nvim_command "sign define DiagnosticSignHint text=● texthl=DiagnosticSignHint"
+vim.fn.sign_define("DiagnosticSignError", { text = "●", texthl = "DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignWarn", { text = "●", texthl = "DiagnosticSignWarn" })
+vim.fn.sign_define("DiagnosticSignInfo", { text = "●", texthl = "DiagnosticSignInfo" })
+vim.fn.sign_define("DiagnosticSignHint", { text = "●", texthl = "DiagnosticSignHint" })
+
+vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticSignInfo" })
+vim.fn.sign_define("DapBreakpointCondition", { text = "", texthl = "DiagnosticSignHint" })
+vim.fn.sign_define("DapBreakpointRejected", { text = "", texthl = "DiagnosticSignError" })
+vim.fn.sign_define("DapLogPoint", { text = "", texthl = "DiagnosticSignInfo" })
+vim.fn.sign_define("DapStopped", { text = "", texthl = "DiagnosticSignOk" })

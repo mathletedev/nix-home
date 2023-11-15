@@ -54,6 +54,7 @@ in
       lua
       lxappearance
       lxgw-wenkai
+      minetest
       musescore
       neovim
       (nerdfonts.override { fonts = [ "CascadiaCode" ]; })

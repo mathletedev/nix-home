@@ -24,4 +24,9 @@ vim.keymap.set("n", "<Leader>f", require("telescope.builtin").find_files)
 vim.keymap.set("n", "<Leader>t", require("telescope.builtin").treesitter)
 
 vim.keymap.set({ "n", "v" }, "<Leader>c", ":Commentary<CR>", { silent = true })
+
+vim.keymap.set("n", "<Leader>o", require("dap").toggle_breakpoint)
+vim.keymap.set("n", "<Leader>p", require("dap").continue)
+vim.keymap.set("n", "<Leader>[", require("dap").terminate)
+
 vim.keymap.set("n", "<Leader>x", require("lsp_lines").toggle)

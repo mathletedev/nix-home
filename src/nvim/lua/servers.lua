@@ -19,6 +19,15 @@ local servers = {
 	"yamlls",
 }
 
+require("neodev").setup {
+	override = function(root_dir, library)
+		if root_dir:find(vim.fn.expand "$HOME/.config/home-manager/src/nvim", 1, true) == 1 then
+			library.enabled = true
+			library.plugins = true
+		end
+	end,
+}
+
 require("mason-lspconfig").setup {
 	ensure_installed = servers,
 	automatic_installation = true,
@@ -40,7 +49,15 @@ for _, server in pairs(servers) do
 	}
 
 	if server == "lua_ls" then
-		opts.settings = { Lua = { diagnostics = { globals = { "vim" } } } }
+		opts.settings = {
+			Lua = {
+				completion = { callSnippet = "Replace" },
+				diagnostics = {
+					disable = { "missing-fields" },
+				},
+				workspace = { checkThirdParty = false },
+			},
+		}
 	end
 
 	lspconfig[server].setup(opts)
@@ -120,6 +137,36 @@ require("nvim-treesitter.configs").setup {
 	},
 	highlight = { enable = true },
 }
+
+local dap = require "dap"
+dap.adapters.cppdbg = {
+	id = "cppdbg",
+	type = "executable",
+	command = vim.fn.expand "$HOME/bin/OpenDebugAD7",
+}
+dap.configurations.cpp = {
+	{
+		name = "Launch file",
+		type = "cppdbg",
+		request = "launch",
+		program = function()
+			return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+		end,
+		cwd = "${workspaceFolder}",
+		stopAtEntry = true,
+	},
+}
+dap.configurations.c = dap.configurations.cpp
+dap.configurations.rust = dap.configurations.cpp
+
+local dapui = require "dapui"
+dapui.setup()
+dap.listeners.after.event_initialized["dapui_config"] = function()
+	dapui.open()
+end
+dap.listeners.before.disconnect["dapui_config"] = function()
+	dapui.close()
+end
 
 vim.api.nvim_create_autocmd("BufWinEnter", { command = "nnoremap <Leader>h :RustHoverActions<CR>", pattern = "*.rs" })
 vim.api.nvim_create_autocmd(
