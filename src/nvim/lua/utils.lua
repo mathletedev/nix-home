@@ -30,8 +30,6 @@ end
 vim.api.nvim_create_autocmd("InsertEnter", { command = "set norelativenumber", pattern = "*" })
 vim.api.nvim_create_autocmd("InsertLeave", { command = "set relativenumber", pattern = "*" })
 
-vim.api.nvim_create_autocmd("TermOpen", { command = "startinsert", pattern = "*" })
-
 vim.api.nvim_create_autocmd("BufWinEnter", { command = "set filetype=astro", pattern = "*.astro" })
 vim.api.nvim_create_autocmd("BufWinEnter", { command = "set expandtab", pattern = "*.hs" })
 vim.api.nvim_create_autocmd("BufWinEnter", { command = "set noexpandtab tabstop=2 shiftwidth=2", pattern = "*.rs" })
@@ -46,3 +44,18 @@ vim.fn.sign_define("DapBreakpointCondition", { text = "", texthl = "Diagnosti
 vim.fn.sign_define("DapBreakpointRejected", { text = "", texthl = "DiagnosticSignError" })
 vim.fn.sign_define("DapLogPoint", { text = "", texthl = "DiagnosticSignInfo" })
 vim.fn.sign_define("DapStopped", { text = "", texthl = "DiagnosticSignOk" })
+
+vim.api.nvim_create_autocmd("BufWinEnter", { command = "nnoremap <Leader>h :RustHoverActions<CR>", pattern = "*.rs" })
+vim.api.nvim_create_autocmd(
+	"BufWinEnter",
+	{ command = "nnoremap <Leader>i :lua vim.lsp.buf.definition()<CR>", pattern = "*.rs" }
+)
+vim.api.nvim_create_autocmd(
+	"BufWinEnter",
+	{ command = "nnoremap <Leader>r :lua vim.lsp.buf.rename()<CR>", pattern = "*.rs" }
+)
+vim.api.nvim_create_autocmd(
+	"BufWinEnter",
+	{ command = "nnoremap <Leader>a :lua vim.lsp.buf.code_action()<CR>", pattern = "*.rs" }
+)
+vim.api.nvim_create_autocmd("BufWinEnter", { command = "nnoremap <Leader>e :RustRun<CR>", pattern = "*.rs" })

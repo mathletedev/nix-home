@@ -27,6 +27,10 @@ vim.keymap.set({ "n", "v" }, "<Leader>c", ":Commentary<CR>", { silent = true })
 
 vim.keymap.set("n", "<Leader>o", require("dap").toggle_breakpoint)
 vim.keymap.set("n", "<Leader>p", require("dap").continue)
-vim.keymap.set("n", "<Leader>[", require("dap").terminate)
+local dap_close = function()
+	require("dap").terminate()
+	require("dapui").close()
+end
+vim.keymap.set("n", "<Leader>[", dap_close)
 
 vim.keymap.set("n", "<Leader>x", require("lsp_lines").toggle)

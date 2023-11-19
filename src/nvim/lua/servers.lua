@@ -63,7 +63,18 @@ for _, server in pairs(servers) do
 	lspconfig[server].setup(opts)
 end
 
-require("rust-tools").setup {}
+require("rust-tools").setup {
+	server = {
+		standalone = false,
+	},
+	dap = {
+		adapter = {
+			id = "cppdbg",
+			type = "executable",
+			command = vim.fn.expand "$HOME/bin/OpenDebugAD7",
+		},
+	},
+}
 
 local ls = require "luasnip"
 local cmp = require "cmp"
@@ -144,20 +155,24 @@ dap.adapters.cppdbg = {
 	type = "executable",
 	command = vim.fn.expand "$HOME/bin/OpenDebugAD7",
 }
-dap.configurations.cpp = {
-	{
-		name = "Launch file",
-		type = "cppdbg",
-		request = "launch",
-		program = function()
-			return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-		end,
-		cwd = "${workspaceFolder}",
-		stopAtEntry = true,
-	},
+local dap_config = {
+	name = "Launch file",
+	type = "cppdbg",
+	request = "launch",
+	program = function()
+		local dir = "/"
+		if vim.bo.filetype == "rust" then
+			dir = "/target/debug/"
+		end
+		---@diagnostic disable-next-line
+		return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. dir, "file")
+	end,
+	cwd = "${workspaceFolder}",
+	stopAtEntry = true,
 }
-dap.configurations.c = dap.configurations.cpp
-dap.configurations.rust = dap.configurations.cpp
+dap.configurations.c = { dap_config }
+dap.configurations.cpp = { dap_config }
+dap.configurations.rust = { dap_config }
 
 local dapui = require "dapui"
 dapui.setup()
@@ -167,18 +182,3 @@ end
 dap.listeners.before.disconnect["dapui_config"] = function()
 	dapui.close()
 end
-
-vim.api.nvim_create_autocmd("BufWinEnter", { command = "nnoremap <Leader>h :RustHoverActions<CR>", pattern = "*.rs" })
-vim.api.nvim_create_autocmd(
-	"BufWinEnter",
-	{ command = "nnoremap <Leader>i :lua vim.lsp.buf.definition()<CR>", pattern = "*.rs" }
-)
-vim.api.nvim_create_autocmd(
-	"BufWinEnter",
-	{ command = "nnoremap <Leader>r :lua vim.lsp.buf.rename()<CR>", pattern = "*.rs" }
-)
-vim.api.nvim_create_autocmd(
-	"BufWinEnter",
-	{ command = "nnoremap <Leader>a :lua vim.lsp.buf.code_action()<CR>", pattern = "*.rs" }
-)
-vim.api.nvim_create_autocmd("BufWinEnter", { command = "nnoremap <Leader>e :RustRun<CR>", pattern = "*.rs" })
