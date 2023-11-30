@@ -24,7 +24,7 @@ import           System.Taffybar.Support.PagerHints (pagerHints)
 import           Graphics.X11.ExtraTypes.XF86
 
 myTerminal = "kitty"
-myBrowser = "firefox-devedition"
+myBrowser = "firefox-developer-edition"
 myModMask = mod4Mask
 myBorderWidth = 0
 myWorkspaces = map show [1..9]
@@ -81,7 +81,7 @@ myKeys =
   , ("M-g",                    sendMessage $ JumpToLayout (icon "\xf047"))
   , ("M-f",                    withFocused toggleFloat)
   , ("M-t",                    withFocused $ windows . (flip W.float $ W.RationalRect 0 0 1 1))
-  , ("M-l",                    spawn "slock")
+  , ("M-l",                    spawn "xscreensaver-command -lock")
   , ("<Print>",                spawn "flameshot screen")
   , ("S-<Print>",              spawn "flameshot gui")
   , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 5%+ unmute")

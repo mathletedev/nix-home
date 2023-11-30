@@ -76,7 +76,6 @@ in
       pipes
       prettierd
       python311
-      redshift
       ripgrep
       roboto
       rustup
@@ -90,6 +89,7 @@ in
       tty-clock
       unzip
       vlc
+      vscode-extensions.ms-vscode.cpptools
       xclip
       xdotool
       zip
@@ -108,7 +108,7 @@ in
       QT_STYLE_OVERRIDE = "kvantum";
     };
     shellAliases = { ls = "eza --all --long --git"; };
-    stateVersion = "23.11";
+    stateVersion = "24.05";
     username = "neo";
   };
 
@@ -218,6 +218,7 @@ in
     };
     status-notifier-watcher.enable = true;
     udiskie.enable = true;
+    xscreensaver.enable = true;
   };
 
   xsession = {

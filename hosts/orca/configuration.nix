@@ -1,13 +1,12 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports = [
-    ./hardware-configuration.nix
-    # <nixos-hardware/microsoft/surface/common>
-  ];
-  # microsoft-surface.kernelVersion = "6.1.18";
+  imports = [ ./hardware-configuration.nix ];
 
   boot = {
+    kernelPackages = pkgs.linuxPackages_5_4;
+    blacklistedKernelModules = [ "rtl8xxxu" ];
+    extraModulePackages = [ config.boot.kernelPackages.rtl88x2bu ];
     loader = {
       efi.canTouchEfiVariables = true;
       systemd-boot.enable = true;
@@ -17,10 +16,12 @@
   nix.autoOptimiseStore = true;
 
   networking = {
-    firewall.enable = true;
-    hostName = "orca";
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [ 3000 8080 ];
+    };
+    hostName = "fynn";
     networkmanager.enable = true;
-    resolvconf.dnsExtensionMechanism = false;
   };
 
   time.timeZone = "America/Los_Angeles";
@@ -33,14 +34,13 @@
   users = {
     defaultUserShell = pkgs.fish;
     users.neo = {
-      extraGroups = [ "wheel" "networkmanager" "audio" "adbusers" ];
+      extraGroups = [ "wheel" "networkmanager" "audio" "vboxusers" ];
       isNormalUser = true;
     };
   };
 
   services = {
-    blueman.enable = true;
-    logind.lidSwitch = "suspend";
+    openssh.enable = true;
     postgresql = {
       enable = true;
       authentication = lib.mkForce ''
@@ -51,20 +51,18 @@
         host    all             all             ::1/128                 trust
       '';
     };
-    udev.packages = with pkgs; [ android-udev-rules ];
+    udev.packages = [ pkgs.libwacom ];
     udisks2.enable = true;
-    upower.enable = true;
     xserver = {
       enable = true;
-      libinput = {
-        enable = true;
-        touchpad = {
-          middleEmulation = true;
-          naturalScrolling = true;
-          tapping = true;
-        };
+      digimend.enable = true;
+      displayManager = {
+        autoLogin.enable = true;
+        autoLogin.user = "neo";
+        setupCommands = "${pkgs.xorg.xrandr}/bin/xrandr --output HDMI-1 --primary --mode 1920x1080 --left-of VGA-1";
       };
       gdk-pixbuf.modulePackages = with pkgs; [ librsvg ];
+      wacom.enable = true;
       windowManager.xmonad.enable = true;
       xkbOptions = "caps:escape";
     };
@@ -75,30 +73,24 @@
   sound.enable = true;
 
   hardware = {
-    bluetooth = {
-      enable = true;
-      powerOnBoot = true;
-    };
     opengl.driSupport32Bit = true;
     pulseaudio.enable = true;
   };
 
-  environment.systemPackages = with pkgs; [ git neovim ];
+  environment.systemPackages = with pkgs; [ neovim ];
 
   programs = {
-    adb.enable = true;
     dconf.enable = true;
     fish.enable = true;
     slock.enable = true;
   };
 
-  i18n = {
-    defaultLocale = "en_GB.UTF-8";
-    inputMethod = {
-      enabled = "ibus";
-      ibus.engines = with pkgs.ibus-engines; [ libpinyin ];
-    };
+  i18n.inputMethod = {
+    enabled = "ibus";
+    ibus.engines = with pkgs.ibus-engines; [ libpinyin ];
   };
+
+  virtualisation.virtualbox.host.enable = true;
 
   system.stateVersion = "23.11";
 }
