@@ -101,6 +101,7 @@ in
     sessionVariables = {
       BAT_THEME = "catppuccin";
       EDITOR = "nvim";
+      MOZ_USE_XINPUT2 = "1";
       PF_INFO = "ascii title os uptime pkgs wm shell editor";
       QT_STYLE_OVERRIDE = "kvantum";
     };
