@@ -48,9 +48,6 @@ in
       krita
       libqalculate
       libreoffice-qt
-      libsForQt5.dolphin
-      libsForQt5.dolphin-plugins
-      libsForQt5.qtstyleplugin-kvantum
       lua
       lxappearance
       lxgw-wenkai
@@ -70,7 +67,6 @@ in
       oneko
       openssl
       p7zip
-      papirus-icon-theme
       pavucontrol
       pfetch
       pipes
@@ -92,6 +88,7 @@ in
       vscode-extensions.ms-vscode.cpptools
       xclip
       xdotool
+      xfce.thunar
       zip
     ];
     pointerCursor = {
@@ -236,7 +233,22 @@ in
 
   gtk = {
     enable = true;
-    iconTheme.name = "Papirus";
+    iconTheme = {
+      name = "Papirus";
+      package = pkgs.catppuccin-papirus-folders.override {
+        flavor = "mocha";
+        accent = "lavender";
+      };
+    };
+    theme = {
+      name = "Catppuccin-Mocha-Compact-Lavender-Dark";
+      package = pkgs.catppuccin-gtk.override {
+        accents = [ "lavender" ];
+        size = "compact";
+        tweaks = [ "rimless" ];
+        variant = "mocha";
+      };
+    };
   };
 
   xdg.configFile = {

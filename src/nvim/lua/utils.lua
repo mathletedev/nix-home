@@ -9,6 +9,7 @@ local lang_maps = {
 	java = { build = "javac %", exec = "java %:r" },
 	javascript = { exec = "bun %" },
 	python = { exec = "python %" },
+	rust = { exec = "cargo run" },
 	sh = { exec = "%" },
 	typescript = { exec = "bun %" },
 }
@@ -58,4 +59,3 @@ vim.api.nvim_create_autocmd(
 	"BufWinEnter",
 	{ command = "nnoremap <Leader>a :lua vim.lsp.buf.code_action()<CR>", pattern = "*.rs" }
 )
-vim.api.nvim_create_autocmd("BufWinEnter", { command = "nnoremap <Leader>e :RustRun<CR>", pattern = "*.rs" })
