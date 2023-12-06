@@ -238,7 +238,7 @@ in
       name = "Papirus";
       package = pkgs.catppuccin-papirus-folders.override {
         flavor = "mocha";
-        accent = "lavender";
+        accent = "blue";
       };
     };
     theme = {
