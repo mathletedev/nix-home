@@ -3,14 +3,18 @@
 {
   imports = [ ./hardware-configuration.nix ];
 
+  system.stateVersion = "24.05";
+
+  nixpkgs.config.allowUnfree = true;
+
+  nix.settings.auto-optimise-store = true;
+
   boot = {
     loader = {
       efi.canTouchEfiVariables = true;
       systemd-boot.enable = true;
     };
   };
-
-  nix.settings.auto-optimise-store = true;
 
   networking = {
     firewall.enable = true;
@@ -40,9 +44,10 @@
       enable = true;
       tod = {
         enable = true;
-        driver = pkgs.libfprint-2-tod1-vfs0090;
+        driver = pkgs.libfprint-2-tod1-goodix;
       };
     };
+    illum.enable = true;
     logind.lidSwitch = "suspend";
     postgresql = {
       enable = true;
@@ -73,10 +78,6 @@
     };
   };
 
-  gtk.iconCache.enable = true;
-
-  sound.enable = true;
-
   hardware = {
     bluetooth = {
       enable = true;
@@ -86,6 +87,8 @@
     pulseaudio.enable = true;
   };
 
+  sound.enable = true;
+
   environment.systemPackages = with pkgs; [ git neovim ];
 
   programs = {
@@ -94,6 +97,8 @@
     fish.enable = true;
   };
 
+  gtk.iconCache.enable = true;
+
   i18n = {
     defaultLocale = "en_GB.UTF-8";
     inputMethod = {
@@ -101,6 +106,4 @@
       ibus.engines = with pkgs.ibus-engines; [ libpinyin ];
     };
   };
-
-  system.stateVersion = "24.05";
 }
