@@ -1,23 +1,14 @@
 { pkgs, ... }:
 
-let
-  neovimConfig = pkgs.vimUtils.buildVimPlugin {
-    name = "fynn";
-    src = ./src/nvim;
-  };
-  neovim = pkgs.neovim.override {
-    configure = {
-      customRC = "lua require \"init\"";
-      packages.myPlugins = with pkgs.vimPlugins; {
-        start = [ neovimConfig packer-nvim ];
-        opt = [ ];
-      };
-    };
-  };
-in
 {
   home = {
-    file.".npmrc".text = "prefix=~/.npm-packages";
+    file = {
+      ".npmrc".text = "prefix=~/.npm-packages";
+      ".config/nvim" = {
+        source = ./src/nvim;
+        recursive = true;
+      };
+    };
     homeDirectory = "/home/neo";
     keyboard.options = [ "caps:escape" ];
     packages = with pkgs; [
