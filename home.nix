@@ -212,12 +212,33 @@
 
   xsession = {
     enable = true;
-    profileExtra = "nitrogen --restore";
+    profileExtra = "nitrogen --set-tiled --random ~/Pictures/wallpapers --save";
     windowManager.xmonad = {
       enable = true;
       config = ./src/xmonad.hs;
       enableContribAndExtras = true;
       extraPackages = hp: [ hp.alsa-core hp.alsa-mixer hp.taffybar ];
+    };
+  };
+
+  systemd.user = {
+    services.wallpaper = {
+      Unit.Description = "nitrogen random wallpaper";
+      Service = {
+        ExecStart = toString (
+          pkgs.writeShellScript "wallpaper.sh" "${pkgs.nitrogen}/bin/nitrogen --set-tiled --random ~/Pictures/wallpapers --save"
+        );
+        Type = "oneshot";
+      };
+      Install.WantedBy = [ "default.target" ];
+    };
+    timers.wallpaper = {
+      Unit.Description = "timer for wallpaper service";
+      Timer = {
+        OnCalendar = "*:0/10";
+        Unit = "wallpaper";
+      };
+      Install.WantedBy = [ "timers.target" ];
     };
   };
 
