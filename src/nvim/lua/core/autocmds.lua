@@ -32,5 +32,6 @@ vim.api.nvim_create_autocmd("InsertEnter", { command = "set norelativenumber", p
 vim.api.nvim_create_autocmd("InsertLeave", { command = "set relativenumber", pattern = "*" })
 
 vim.api.nvim_create_autocmd("BufWinEnter", { command = "set filetype=astro", pattern = "*.astro" })
+vim.api.nvim_create_autocmd("BufWinEnter", { command = "set expandtab", pattern = "*.nix" })
 vim.api.nvim_create_autocmd("BufWinEnter", { command = "set expandtab", pattern = "*.hs" })
 vim.api.nvim_create_autocmd("BufWinEnter", { command = "set noexpandtab tabstop=2 shiftwidth=2", pattern = "*.rs" })

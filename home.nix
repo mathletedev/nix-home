@@ -13,6 +13,7 @@
     keyboard.options = [ "caps:escape" ];
     packages = with pkgs; [
       android-file-transfer
+      appimage-run
       arduino-cli
       asciiquarium
       audacity
@@ -34,6 +35,7 @@
       haskellPackages.xmobar
       hunspell
       hunspellDicts.en_GB-ise
+      hydroxide
       jdk11
       kdenlive
       krita
@@ -73,6 +75,7 @@
       stylish-haskell
       sumneko-lua-language-server
       taffybar
+      thunderbird
       tty-clock
       unzip
       vlc
@@ -109,11 +112,18 @@
   nixpkgs.config.allowUnfree = true;
 
   programs = {
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
     fish = {
       enable = true;
       functions = {
         fish_user_key_bindings = "fish_vi_key_bindings";
-        fish_greeting = "echo\npfetch";
+        fish_greeting = ''
+          echo
+          pfetch
+        '';
       };
       shellAbbrs = {
         "-" = "cd -";
@@ -124,6 +134,7 @@
         vi = "nvim";
         vim = "nvim";
       };
+      shellInit = "direnv hook fish | source";
     };
     git = {
       enable = true;

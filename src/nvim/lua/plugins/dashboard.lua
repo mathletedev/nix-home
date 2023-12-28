@@ -31,7 +31,7 @@ return {
 						icon = " ",
 						desc = "Settings ",
 						group = "DashboardHeader",
-						action = "edit ~/.config/home-manager/src/nvim/lua/init.lua",
+						action = "edit ~/.config/home-manager/src/nvim/init.lua",
 						key = "v",
 					},
 					{

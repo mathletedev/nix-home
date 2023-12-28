@@ -25,6 +25,7 @@ import           Graphics.X11.ExtraTypes.XF86
 
 myTerminal = "kitty"
 myBrowser = "firefox-developer-edition"
+myFM = "thunar"
 myModMask = mod4Mask
 myBorderWidth = 0
 myWorkspaces = map show [1..9]
@@ -59,6 +60,8 @@ myLayoutHook = avoidStruts $ tall ||| wide ||| grid ||| full
 myStartupHook = do
   spawn "taffybar"
   spawn "nm-applet --indicator"
+  spawn "hydroxide serve"
+  spawnOn "9" "thunderbird"
   spawn "ibus start"
 
 toggleFloat w = windows (\s ->
@@ -77,6 +80,7 @@ myKeys =
   , ("M-<Right>",              sendMessage Expand)
   , ("M-<Return>",             spawn myTerminal)
   , ("M-b",                    spawn myBrowser)
+  , ("M-m",                    spawn myFM)
   , ("M-<Space>",              sendMessage $ JumpToLayout (icon "\xf31e"))
   , ("M-g",                    sendMessage $ JumpToLayout (icon "\xf047"))
   , ("M-f",                    withFocused toggleFloat)
