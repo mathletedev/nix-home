@@ -35,7 +35,6 @@
       haskellPackages.xmobar
       hunspell
       hunspellDicts.en_GB-ise
-      hydroxide
       jdk11
       kdenlive
       krita
@@ -75,7 +74,6 @@
       stylish-haskell
       sumneko-lua-language-server
       taffybar
-      thunderbird
       tty-clock
       unzip
       vlc

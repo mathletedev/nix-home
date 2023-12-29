@@ -60,8 +60,6 @@ myLayoutHook = avoidStruts $ tall ||| wide ||| grid ||| full
 myStartupHook = do
   spawn "taffybar"
   spawn "nm-applet --indicator"
-  spawn "hydroxide serve"
-  spawnOn "9" "thunderbird"
   spawn "ibus start"
 
 toggleFloat w = windows (\s ->
