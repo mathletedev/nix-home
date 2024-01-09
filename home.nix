@@ -33,6 +33,7 @@
       gimp
       go
       haskellPackages.xmobar
+      heroic
       hunspell
       hunspellDicts.en_GB-ise
       jdk11

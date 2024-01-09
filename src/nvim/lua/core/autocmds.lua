@@ -4,7 +4,7 @@ local lang_maps = {
 		exec = "arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:uno %:r",
 	},
 	c = { build = "gcc *.c -lm -g -o main", exec = "./main" },
-	cpp = { build = "g++ % -g -o %:r", exec = "%:r" },
+	cpp = { build = "g++ % -g -o %:r", exec = "./%:r" },
 	go = { build = "go build", exec = "go run %" },
 	java = { build = "javac %", exec = "java %:r" },
 	javascript = { exec = "bun %" },
