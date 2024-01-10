@@ -32,6 +32,7 @@
       gcc
       gimp
       go
+      godot_4
       haskellPackages.xmobar
       heroic
       hunspell
@@ -90,7 +91,11 @@
       size = 16;
       x11.enable = true;
     };
-    sessionPath = [ "$HOME/.config/home-manager/bin" "$HOME/bin" "$HOME/.npm-packages/bin" ];
+    sessionPath = [
+      "$HOME/.config/home-manager/bin"
+      "$HOME/bin"
+      "$HOME/.npm-packages/bin"
+    ];
     sessionVariables = {
       BAT_THEME = "catppuccin";
       EDITOR = "nvim";
@@ -98,7 +103,9 @@
       PF_INFO = "ascii title os uptime pkgs wm shell editor";
       QT_STYLE_OVERRIDE = "kvantum";
     };
-    shellAliases = { ls = "eza --all --long --git"; };
+    shellAliases = {
+      ls = "eza --all --long --git";
+    };
     stateVersion = "24.05";
     username = "neo";
   };
