@@ -23,6 +23,7 @@
       cascadia-code
       cava
       clang-tools
+      cling
       cmatrix
       discord
       eb-garamond
