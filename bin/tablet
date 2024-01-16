@@ -1,0 +1,6 @@
+#!/bin/sh
+
+stylus="`xsetwacom list devices | grep 'stylus' | sed 's/.*id: \([0-9][0-9]*\).*/\1/'`"
+pad="`xsetwacom list devices | grep 'Pad pad' | sed 's/.*id: \([0-9][0-9]*\).*/\1/'`"
+
+xsetwacom set $stylus maptooutput 1920x1080+0+0

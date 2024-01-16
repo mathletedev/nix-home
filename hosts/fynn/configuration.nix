@@ -73,6 +73,7 @@
         };
       };
       gdk-pixbuf.modulePackages = with pkgs; [ librsvg ];
+      wacom.enable = true;
       windowManager.xmonad.enable = true;
       xkbOptions = "caps:escape";
     };
@@ -89,7 +90,7 @@
 
   sound.enable = true;
 
-  environment.systemPackages = with pkgs; [ git neovim ];
+  environment.systemPackages = with pkgs; [ git ];
 
   programs = {
     adb.enable = true;

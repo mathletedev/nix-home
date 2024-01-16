@@ -43,6 +43,7 @@
       krita
       libqalculate
       libreoffice-qt
+      libresprite
       lua
       lxappearance
       lxgw-wenkai
@@ -78,6 +79,7 @@
       sumneko-lua-language-server
       taffybar
       tty-clock
+      ungoogled-chromium
       unzip
       vlc
       vscode-extensions.ms-vscode.cpptools

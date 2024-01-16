@@ -1,0 +1,11 @@
+#!/bin/sh
+
+source tablet
+
+xsetwacom set $stylus button 2 button 3
+xsetwacom set $stylus button 3 button 3
+xsetwacom set $pad button 1 "key b"
+xsetwacom set $pad button 2 "key e"
+xsetwacom set $pad button 3 "key m"
+xsetwacom set $pad button 8 "key ctrl z"
+xsetwacom set $pad button 9 "key ctrl y"
