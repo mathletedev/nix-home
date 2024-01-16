@@ -86,6 +86,7 @@
       xclip
       xdotool
       xfce.thunar
+      xfce.tumbler
       zip
     ];
     pointerCursor = {
