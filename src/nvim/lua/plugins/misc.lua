@@ -16,6 +16,10 @@ return {
 		opts = {},
 	},
 	{
+		"habamax/vim-godot",
+		ft = "gdscript",
+	},
+	{
 		"lewis6991/gitsigns.nvim",
 		opts = {
 			signs = {

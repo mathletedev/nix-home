@@ -14,6 +14,7 @@ return {
 					"cpp",
 					"css",
 					"dart",
+					"gdscript",
 					"go",
 					"html",
 					"java",
