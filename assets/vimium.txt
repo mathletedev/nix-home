@@ -1,0 +1,3 @@
+map <space>k nextTab
+map <space>j previousTab
+map <space>o createTab
