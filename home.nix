@@ -39,6 +39,7 @@
       hunspell
       hunspellDicts.en_GB-ise
       jdk11
+      jetbrains.clion
       kdenlive
       krita
       libqalculate
@@ -156,7 +157,7 @@
     htop.enable = true;
     kitty = {
       enable = true;
-      extraConfig = builtins.readFile ./src/kitty.conf;
+      extraConfig = builtins.readFile ./assets/kitty.conf;
     };
     rofi = {
       enable = true;
