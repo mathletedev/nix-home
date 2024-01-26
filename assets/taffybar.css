@@ -5,7 +5,7 @@
 @define-color base #1e1e2e;
 
 .taffy-window * {
-	font-family: "CaskaydiaCove NF";
+	font-family: "Victor Mono";
 	font-size: 10pt;
 	font-weight: bold;
 	color: @text;

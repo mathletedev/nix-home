@@ -82,6 +82,7 @@
       tty-clock
       ungoogled-chromium
       unzip
+      victor-mono
       vlc
       vscode-extensions.ms-vscode.cpptools
       xclip
@@ -268,6 +269,10 @@
 
   gtk = {
     enable = true;
+    font = {
+      name = "Victor Mono Bold";
+      size = 12;
+    };
     iconTheme = {
       name = "Papirus";
       package = pkgs.catppuccin-papirus-folders.override {

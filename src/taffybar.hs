@@ -25,7 +25,7 @@ colours "mauve"  = parseRGB (203, 166, 247)
 colours "sapphire" = parseRGB (116, 199, 236)
 
 icon x = "<span font_desc='Font Awesome 6 Free Solid'>" ++ x ++ "</span>"
-font x = "<span font_desc='CaskaydiaCove NF Bold 10'>" ++ x ++ "</span>"
+font x = "<span font_desc='Victor Mono Bold 10'>" ++ x ++ "</span>"
 
 myGraphConfig = defaultGraphConfig
   { graphPadding = 0
@@ -71,7 +71,7 @@ memCallback = do
 main = do
   let workspaces = workspacesNew def
       layout     = layoutNew def
-      clock      = textClockNew Nothing (font "%a %b %d %H:%M:%S") 1
+      clock      = textClockNew Nothing (font "%a %Y-%m-%d %H:%M:%S") 1
       volume     = customW 1 getVolume
       battery    = textBatteryNew ("<span fgcolor='#f9e2af'>" ++ icon "\xe0b7" ++ " " ++ font "$percentage$%" ++ "</span>")
       cpu        = pollingGraphNew myGraphConfig { graphDataColors = [ colours "red" ], graphLabel = Just "CPU" } 0.5 cpuCallback
