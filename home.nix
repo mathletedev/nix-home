@@ -14,7 +14,6 @@
     packages = with pkgs; [
       android-file-transfer
       appimage-run
-      arduino-cli
       asciiquarium
       audacity
       bat
@@ -80,6 +79,7 @@
       sumneko-lua-language-server
       taffybar
       tty-clock
+      ubuntu_font_family
       ungoogled-chromium
       unzip
       victor-mono
@@ -192,7 +192,7 @@
         global = {
           background = "#1e1e2e";
           corner_radius = 10;
-          font = "CaskaydiaCove Nerd Font 10";
+          font = "Ubuntu 11";
           foreground = "#cdd6f4";
           frame_color = "#89b4fa";
           frame_width = 4;
@@ -270,8 +270,8 @@
   gtk = {
     enable = true;
     font = {
-      name = "Victor Mono Bold";
-      size = 12;
+      name = "Ubuntu";
+      size = 11;
     };
     iconTheme = {
       name = "Papirus";

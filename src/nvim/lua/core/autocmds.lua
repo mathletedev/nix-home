@@ -1,7 +1,7 @@
 local lang_maps = {
 	arduino = {
-		build = "arduino-cli compile --fqbn arduino:avr:uno %:r",
-		exec = "arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:uno %:r",
+		build = "arduino-cli compile --fqbn arduino:avr:uno %",
+		exec = "arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:uno %",
 	},
 	c = { build = "gcc *.c -lm -g -o main", exec = "./main" },
 	cpp = { build = "g++ % -g -o %:r", exec = "./%:r" },

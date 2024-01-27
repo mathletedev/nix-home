@@ -8,6 +8,7 @@ vim.keymap.set("n", "<Leader>k", ":bnext<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>q", ":bprevious<CR>:bdelete #<CR>", { silent = true })
 
 vim.keymap.set("n", "<Leader>y", ":%y<CR>")
+vim.keymap.set("n", "<Leader>v", ":edit ~/.config/home-manager/src/nvim<CR>")
 
 vim.keymap.set("n", "k", "gk", { silent = true })
 vim.keymap.set("n", "j", "gj", { silent = true })

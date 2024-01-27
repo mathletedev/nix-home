@@ -5,54 +5,54 @@
 @define-color base #1e1e2e;
 
 .taffy-window * {
-	font-family: "Victor Mono";
-	font-size: 10pt;
+  font-family: "Ubuntu";
+  font-size: 11pt;
 	font-weight: bold;
-	color: @text;
+  color: @text;
 }
 
 .taffy-box {
-	background-color: @base;
+  background-color: @base;
 }
 
 .inner-pad {
-	background-color: @surface;
-	border-radius: 10px;
-	padding: 7px;
-	margin: 3px;
-	transition: background-color 0.5s;
+  background-color: @surface;
+  border-radius: 10px;
+  padding: 7px;
+  margin: 3px;
+  transition: background-color 0.5s;
 }
 
 .active .inner-pad {
-	background-color: @blue;
+  background-color: @blue;
 }
 
 .visible .inner-pad {
-	background-color: @overlay;
+  background-color: @overlay;
 }
 
 .workspace-label {
-	padding-right: 4px;
-	padding-left: 4px;
-	transition: color 0.5s;
+  padding-right: 4px;
+  padding-left: 4px;
+  transition: color 0.5s;
 }
 
 .active .workspace-label {
-	color: @base;
+  color: @base;
 }
 
 .contents {
-	transition: background-color 0.5s;
+  transition: background-color 0.5s;
 }
 
 .contents .window-icon {
-	opacity: 0.5;
+  opacity: 0.5;
 }
 
 .active .contents .window-icon {
-	opacity: 1;
+  opacity: 1;
 }
 
 .sni-tray {
-	padding: 8px;
+  padding: 8px;
 }

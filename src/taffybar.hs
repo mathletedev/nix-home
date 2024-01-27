@@ -25,7 +25,7 @@ colours "mauve"  = parseRGB (203, 166, 247)
 colours "sapphire" = parseRGB (116, 199, 236)
 
 icon x = "<span font_desc='Font Awesome 6 Free Solid'>" ++ x ++ "</span>"
-font x = "<span font_desc='Victor Mono Bold 10'>" ++ x ++ "</span>"
+font x = "<span font_desc='Ubuntu Bold 11'>" ++ x ++ "</span>"
 
 myGraphConfig = defaultGraphConfig
   { graphPadding = 0
