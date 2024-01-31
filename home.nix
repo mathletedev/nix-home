@@ -87,8 +87,13 @@
       vscode-extensions.ms-vscode.cpptools
       xclip
       xdotool
-      xfce.thunar
-      xfce.tumbler
+      (xfce.thunar.override {
+        thunarPlugins = [
+          gnome.file-roller
+          xfce.thunar-archive-plugin
+          xfce.tumbler
+        ];
+      })
       zip
     ];
     pointerCursor = {
