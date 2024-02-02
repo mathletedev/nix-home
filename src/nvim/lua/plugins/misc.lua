@@ -19,6 +19,7 @@ return {
 		"habamax/vim-godot",
 		ft = "gdscript",
 	},
+	"HiPhish/rainbow-delimiters.nvim",
 	{
 		"lewis6991/gitsigns.nvim",
 		opts = {
