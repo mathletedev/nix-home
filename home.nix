@@ -14,6 +14,7 @@
     packages = with pkgs; [
       android-file-transfer
       appimage-run
+      arandr
       asciiquarium
       audacity
       bat

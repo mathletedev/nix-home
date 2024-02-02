@@ -79,6 +79,7 @@ myKeys =
   , ("M-<Return>",             spawn myTerminal)
   , ("M-b",                    spawn myBrowser)
   , ("M-m",                    spawn myFM)
+  , ("M-d",                    spawn "arandr")
   , ("M-<Space>",              sendMessage $ JumpToLayout (icon "\xf31e"))
   , ("M-g",                    sendMessage $ JumpToLayout (icon "\xf047"))
   , ("M-f",                    withFocused toggleFloat)
