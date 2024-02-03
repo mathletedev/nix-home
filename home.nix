@@ -3,18 +3,21 @@
 {
   home = {
     file = {
-      ".npmrc".text = "prefix=~/.npm-packages";
       ".config/nvim" = {
         source = ./src/nvim;
         recursive = true;
       };
+      ".config/hypr/hyprpaper.conf".text = ''
+        preload = ~/Pictures/wallpapers/Miles Morales.jpg
+        wallpaper = eDP-1, ~/Pictures/wallpapers/Miles Morales.jpg
+      '';
+      ".npmrc".text = "prefix=~/.npm-packages";
     };
     homeDirectory = "/home/neo";
     keyboard.options = [ "caps:escape" ];
     packages = with pkgs; [
       android-file-transfer
       appimage-run
-      arandr
       asciiquarium
       audacity
       bat
@@ -34,10 +37,11 @@
       gimp
       go
       godot_4
-      haskellPackages.xmobar
+      grimblast
       heroic
       hunspell
       hunspellDicts.en_GB-ise
+      hyprpaper
       jdk11
       jetbrains.clion
       kdenlive
@@ -46,7 +50,6 @@
       libreoffice-qt
       libresprite
       lua
-      lxappearance
       lxgw-wenkai
       minetest
       musescore
@@ -78,7 +81,6 @@
       stylua
       stylish-haskell
       sumneko-lua-language-server
-      taffybar
       tty-clock
       ubuntu_font_family
       ungoogled-chromium
@@ -86,8 +88,7 @@
       victor-mono
       vlc
       vscode-extensions.ms-vscode.cpptools
-      xclip
-      xdotool
+      wl-clipboard
       (xfce.thunar.override {
         thunarPlugins = [
           gnome.file-roller
@@ -98,10 +99,10 @@
       zip
     ];
     pointerCursor = {
+      gtk.enable = true;
       name = "Bibata-Modern-Classic";
       package = pkgs.bibata-cursors;
       size = 16;
-      x11.enable = true;
     };
     sessionPath = [
       "$HOME/.config/home-manager/bin"
@@ -179,7 +180,7 @@
         show-icons = true;
         sidebar-mode = true;
       };
-      theme = ~/.config/home-manager/assets/catppuccin.rasi;
+      theme = ~/.config/home-manager/assets/rofi.rasi;
     };
     starship = {
       enable = true;
@@ -188,6 +189,50 @@
         add_newline = false;
         line_break = { disabled = true; };
       };
+    };
+    waybar = {
+      enable = true;
+      settings = {
+        mainBar = {
+          layer = "top";
+          modules-left = [ "custom/nixos" "hyprland/workspaces" ];
+          modules-center = [ "clock" ];
+          modules-right = [ "battery" "pulseaudio" "tray" ];
+          "custom/nixos" = {
+            format = " ";
+            on-click = "rofi -show drun";
+          };
+          "hyprland/workspaces" = {
+            format = "{icon}";
+          };
+          clock = {
+            interval = 1;
+            format = "{:%A • %Y-%m-%d • %H:%M:%S}";
+          };
+          battery = {
+            interval = 1;
+            format = " {icon}";
+            format-charging = "󰚥 ";
+            states = {
+              warning = 30;
+              critical = 15;
+            };
+            format-warning = " {icon}";
+            format-critical = " {icon}";
+            format-full = " ";
+            format-icons = [ " " " " " " " " " " ];
+          };
+          pulseaudio = {
+            format = "{icon}";
+            format-muted = "󰖁 ";
+            format-icons = {
+              default = [ " " " " " " ];
+            };
+            on-click = "pavucontrol &";
+          };
+        };
+      };
+      style = ./assets/waybar.css;
     };
   };
 
@@ -198,77 +243,24 @@
         global = {
           background = "#1e1e2e";
           corner_radius = 10;
-          font = "Ubuntu 11";
+          font = "Ubuntu 12";
           foreground = "#cdd6f4";
           frame_color = "#89b4fa";
-          frame_width = 4;
-          offset = "16x50";
+          frame_width = 2;
+          offset = "3x3";
           width = 400;
         };
         urgency_critical = { frame_color = "#f38ba8"; };
         urgency_low = { frame_color = "#a6e3a1"; };
       };
     };
-    flameshot.enable = true;
-    picom = {
-      enable = true;
-      settings = {
-        active-opacity = 1;
-        backend = "glx";
-        blur-method = "dual_kawase";
-        blur-strength = 4;
-        corner-radius = 10;
-        fading = true;
-        focus-exclude = [ "class_i = 'rofi'" "x = 0 && y = 0 && override_redirect = true" ];
-        inactive-opacity = 0.6;
-        opacity-rule = [
-          "100:window_type = 'dock'"
-          "100:class_i = 'screenkey'"
-          "100:fullscreen"
-          "100:name *= 'ibus'"
-          "100:name *= 'Discord'"
-        ];
-        round-borders = 1;
-        rounded-corners-exclude = [ "window_type = 'dock'" "class_i = 'screenkey'" ];
-        shadow = true;
-        vSync = true;
-      };
-    };
-    status-notifier-watcher.enable = true;
     udiskie.enable = true;
-    xscreensaver.enable = true;
   };
 
-  xsession = {
+  wayland.windowManager.hyprland = {
     enable = true;
-    profileExtra = "nitrogen --set-tiled --random ~/Pictures/wallpapers --save";
-    windowManager.xmonad = {
-      enable = true;
-      config = ./src/xmonad.hs;
-      enableContribAndExtras = true;
-      extraPackages = hp: [ hp.alsa-core hp.alsa-mixer hp.taffybar ];
-    };
-  };
-
-  systemd.user = {
-    services.wallpaper = {
-      Unit.Description = "nitrogen random wallpaper";
-      Service = {
-        ExecStart = toString (
-          pkgs.writeShellScript "wallpaper.sh" "${pkgs.nitrogen}/bin/nitrogen --set-tiled --random ~/Pictures/wallpapers --save"
-        );
-        Type = "oneshot";
-      };
-      Install.WantedBy = [ "default.target" ];
-    };
-    timers.wallpaper = {
-      Unit.Description = "timer for wallpaper service";
-      Timer = {
-        OnCalendar = "*:0/10";
-        Unit = "wallpaper";
-      };
-      Install.WantedBy = [ "timers.target" ];
-    };
+    extraConfig = builtins.readFile ./src/hyprland.conf;
+    xwayland.enable = true;
   };
 
   fonts.fontconfig.enable = true;
@@ -295,10 +287,5 @@
         variant = "mocha";
       };
     };
-  };
-
-  xdg.configFile = {
-    "taffybar/taffybar.hs".source = ./src/taffybar.hs;
-    "taffybar/taffybar.css".source = ./assets/taffybar.css;
   };
 }

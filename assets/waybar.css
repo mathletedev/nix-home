@@ -1,0 +1,75 @@
+* {
+  font-family: "Ubuntu";
+  font-size: 18px;
+  color: #cdd6f4;
+  border: none;
+  min-height: 0;
+}
+
+window#waybar {
+  background: transparent;
+}
+
+#custom-nixos,
+#workspaces,
+#clock,
+#battery,
+#pulseaudio,
+#tray {
+  margin-top: 2px;
+  margin-bottom: 0;
+  padding: 4px;
+  background-color: #1e1e2e;
+}
+
+#custom-nixos {
+  margin-left: 4px;
+  padding-left: 6px;
+  padding-right: 0px;
+  border-left: 2px solid #b4befe;
+  border-top: 2px solid #b4befe;
+  border-bottom: 2px solid #b4befe;
+  border-radius: 10px 0 0 10px;
+}
+
+#workspaces {
+  padding-right: 6px;
+  border-right: 2px solid #b4befe;
+  border-top: 2px solid #b4befe;
+  border-bottom: 2px solid #b4befe;
+  border-radius: 0 10px 10px 0;
+}
+
+#workspaces button {
+  padding: 1px;
+}
+
+#clock {
+  padding-left: 6px;
+  padding-right: 6px;
+  border: 2px solid #b4befe;
+  border-radius: 10px;
+}
+
+#battery {
+  border-left: 2px solid #b4befe;
+  border-top: 2px solid #b4befe;
+  border-bottom: 2px solid #b4befe;
+  border-radius: 10px 0 0 10px;
+}
+
+#pulseaudio {
+  margin-right: 4px;
+  border-right: 2px solid #b4befe;
+  border-top: 2px solid #b4befe;
+  border-bottom: 2px solid #b4befe;
+  border-radius: 0 10px 10px 0;
+}
+
+#tray {
+  padding-left: 6px;
+  padding-right: 6px;
+  margin-right: 4px;
+  border: 2px solid #b4befe;
+  border-radius: 10px;
+}
