@@ -182,7 +182,7 @@
         sidebar-mode = true;
       };
       package = pkgs.rofi-wayland;
-      theme = ~/.config/home-manager/assets/rofi.rasi;
+      theme = ./assets/rofi.rasi;
     };
     starship = {
       enable = true;

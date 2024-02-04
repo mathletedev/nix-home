@@ -1,3 +1,0 @@
-#!/bin/sh
-
-xrandr --output HDMI-1 --same-as eDP-1 --scale-from 1920x1200
