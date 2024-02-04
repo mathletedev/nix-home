@@ -16,6 +16,8 @@
     };
   };
 
+  security.rtkit.enable = true;
+
   networking = {
     firewall.enable = true;
     hostName = "fynn";
@@ -33,7 +35,7 @@
   users = {
     defaultUserShell = pkgs.fish;
     users.neo = {
-      extraGroups = [ "wheel" "networkmanager" "audio" "adbusers" ];
+      extraGroups = [ "wheel" "networkmanager" "audio" "adbusers" "dialout" ];
       isNormalUser = true;
     };
   };
@@ -48,7 +50,16 @@
       };
     };
     illum.enable = true;
+    input-remapper.enable = true;
     logind.lidSwitch = "suspend";
+    pipewire = {
+      alsa = {
+        enable = true;
+        support32Bit = true;
+      };
+      enable = true;
+      pulse.enable = true;
+    };
     postgresql = {
       enable = true;
       authentication = lib.mkForce ''
@@ -59,23 +70,12 @@
         host    all             all             ::1/128                 trust
       '';
     };
-    udev.packages = with pkgs; [ android-udev-rules ];
+    udev.packages = with pkgs; [ android-udev-rules libwacom ];
     udisks2.enable = true;
     upower.enable = true;
     xserver = {
+      displayManager.startx.enable = true;
       enable = true;
-      libinput = {
-        enable = true;
-        touchpad = {
-          middleEmulation = true;
-          naturalScrolling = true;
-          tapping = true;
-        };
-      };
-      gdk-pixbuf.modulePackages = with pkgs; [ librsvg ];
-      wacom.enable = true;
-      windowManager.xmonad.enable = true;
-      xkbOptions = "caps:escape";
     };
   };
 
@@ -85,10 +85,7 @@
       powerOnBoot = true;
     };
     opengl.driSupport32Bit = true;
-    pulseaudio.enable = true;
   };
-
-  sound.enable = true;
 
   environment.systemPackages = with pkgs; [ git ];
 
@@ -96,15 +93,20 @@
     adb.enable = true;
     dconf.enable = true;
     fish.enable = true;
+    hyprland = {
+      enable = true;
+      xwayland.enable = true;
+    };
   };
 
   gtk.iconCache.enable = true;
 
-  i18n = {
-    defaultLocale = "en_GB.UTF-8";
-    inputMethod = {
-      enabled = "ibus";
-      ibus.engines = with pkgs.ibus-engines; [ libpinyin ];
-    };
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-hyprland
+    ];
   };
+
+  i18n.defaultLocale = "en_GB.UTF-8";
 }

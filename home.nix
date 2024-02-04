@@ -7,15 +7,12 @@
         source = ./src/nvim;
         recursive = true;
       };
-      ".config/hypr/hyprpaper.conf".text = ''
-        preload = ~/Pictures/wallpapers/Miles Morales.jpg
-        wallpaper = eDP-1, ~/Pictures/wallpapers/Miles Morales.jpg
-      '';
       ".npmrc".text = "prefix=~/.npm-packages";
     };
     homeDirectory = "/home/neo";
     keyboard.options = [ "caps:escape" ];
     packages = with pkgs; [
+      alsa-utils
       android-file-transfer
       appimage-run
       asciiquarium
@@ -37,11 +34,11 @@
       gimp
       go
       godot_4
+      grim
       grimblast
       heroic
       hunspell
       hunspellDicts.en_GB-ise
-      hyprpaper
       jdk11
       jetbrains.clion
       kdenlive
@@ -76,11 +73,13 @@
       roboto
       rustup
       screenkey
+      slurp
       spotify
       steam
       stylua
       stylish-haskell
       sumneko-lua-language-server
+      swww
       tty-clock
       ubuntu_font_family
       ungoogled-chromium
@@ -96,6 +95,7 @@
           xfce.tumbler
         ];
       })
+      xwaylandvideobridge
       zip
     ];
     pointerCursor = {
@@ -113,6 +113,7 @@
       BAT_THEME = "catppuccin";
       EDITOR = "nvim";
       MOZ_USE_XINPUT2 = "1";
+      NIXOS_OZONE_WL = "1";
       PF_INFO = "ascii title os uptime pkgs wm shell editor";
       QT_STYLE_OVERRIDE = "kvantum";
     };
@@ -180,6 +181,7 @@
         show-icons = true;
         sidebar-mode = true;
       };
+      package = pkgs.rofi-wayland;
       theme = ~/.config/home-manager/assets/rofi.rasi;
     };
     starship = {
@@ -200,7 +202,9 @@
           modules-right = [ "battery" "pulseaudio" "tray" ];
           "custom/nixos" = {
             format = " ";
-            on-click = "rofi -show drun";
+            on-click = ''
+              BG="$(find ~/Pictures/wallpapers -name '*.*' | shuf -n 1)" && swww img "$BG" --transition-type any
+            '';
           };
           "hyprland/workspaces" = {
             format = "{icon}";
@@ -212,14 +216,14 @@
           battery = {
             interval = 1;
             format = " {icon}";
-            format-charging = "󰚥 ";
+            format-charging = " 󰚥";
             states = {
               warning = 30;
               critical = 15;
             };
             format-warning = " {icon}";
             format-critical = " {icon}";
-            format-full = " ";
+            format-full = "  ";
             format-icons = [ " " " " " " " " " " ];
           };
           pulseaudio = {
@@ -229,6 +233,10 @@
               default = [ " " " " " " ];
             };
             on-click = "pavucontrol &";
+          };
+          tray = {
+            icon-size = 20;
+            spacing = 6;
           };
         };
       };
@@ -247,7 +255,7 @@
           foreground = "#cdd6f4";
           frame_color = "#89b4fa";
           frame_width = 2;
-          offset = "3x3";
+          offset = "8x8";
           width = 400;
         };
         urgency_critical = { frame_color = "#f38ba8"; };
@@ -287,5 +295,14 @@
         variant = "mocha";
       };
     };
+  };
+
+  i18n.inputMethod = {
+    enabled = "fcitx5";
+    fcitx5.addons = with pkgs; [
+      fcitx5-chinese-addons
+      fcitx5-gtk
+      libpinyin
+    ];
   };
 }
