@@ -72,6 +72,7 @@
       ripgrep
       roboto
       rustup
+      scrcpy
       screenkey
       slurp
       spotify
@@ -191,6 +192,10 @@
         add_newline = false;
         line_break = { disabled = true; };
       };
+    };
+    swaylock = {
+      settings.color = "000000";
+      enable = true;
     };
     waybar = {
       enable = true;
