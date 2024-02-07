@@ -16,8 +16,6 @@
     };
   };
 
-  security.rtkit.enable = true;
-
   networking = {
     firewall.enable = true;
     hostName = "fynn";
@@ -79,12 +77,18 @@
     };
   };
 
+  security = {
+    pam.services.swaylock = { };
+    rtkit.enable = true;
+  };
+
   hardware = {
     bluetooth = {
       enable = true;
       powerOnBoot = true;
     };
     opengl.driSupport32Bit = true;
+    opentabletdriver.enable = true;
   };
 
   environment.systemPackages = with pkgs; [ git ];
