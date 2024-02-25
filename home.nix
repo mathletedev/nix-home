@@ -41,6 +41,7 @@
       hunspellDicts.en_GB-ise
       jdk11
       jetbrains.clion
+      jq # for swap-workspace, remove after Hyprland v0.35.0
       kdenlive
       krita
       libqalculate
@@ -66,6 +67,7 @@
       p7zip
       pavucontrol
       pfetch
+      piper
       pipes
       prettierd
       python311
@@ -88,6 +90,7 @@
       victor-mono
       vlc
       vscode-extensions.ms-vscode.cpptools
+      way-displays
       wl-clipboard
       (xfce.thunar.override {
         thunarPlugins = [
@@ -96,6 +99,7 @@
           xfce.tumbler
         ];
       })
+      xournal
       xwaylandvideobridge
       zip
     ];

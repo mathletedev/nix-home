@@ -1,6 +1,9 @@
 return {
 	{
 		"glepnir/dashboard-nvim",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
 		opts = {
 			config = {
 				header = {
@@ -33,13 +36,6 @@ return {
 						group = "DashboardHeader",
 						action = "edit ~/.config/home-manager/src/nvim",
 						key = "v",
-					},
-					{
-						icon = "󰞈 ",
-						desc = "Update ",
-						group = "DashboardHeader",
-						action = "PackerSync",
-						key = "u",
 					},
 				},
 			},
