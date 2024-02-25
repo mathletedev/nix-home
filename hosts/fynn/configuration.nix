@@ -68,6 +68,7 @@
         host    all             all             ::1/128                 trust
       '';
     };
+    ratbagd.enable = true;
     udev.packages = with pkgs; [ android-udev-rules libwacom ];
     udisks2.enable = true;
     upower.enable = true;
