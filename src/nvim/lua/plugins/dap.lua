@@ -4,6 +4,7 @@ return {
 		event = "BufWinEnter",
 		dependencies = {
 			"rcarriga/nvim-dap-ui",
+			"theHamsta/nvim-dap-virtual-text",
 		},
 		config = function()
 			local dap = require "dap"
@@ -43,6 +44,8 @@ return {
 			dap.listeners.before.disconnect["dapui_config"] = function()
 				dapui.close()
 			end
+
+			require("nvim-dap-virtual-text").setup()
 
 			vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticSignInfo" })
 			vim.fn.sign_define("DapBreakpointCondition", { text = "", texthl = "DiagnosticSignHint" })

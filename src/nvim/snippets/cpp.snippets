@@ -47,10 +47,10 @@ snippet dfs
 	}
 
 snippet dsu
-	struct DSU {
+	struct dsu {
 		std::vector<int> e;
 
-		DSU(int N) { e.assign(N, -1); }
+		dsu(int N) { e.assign(N, -1); }
 
 		int find(int x) { return e[x] < 0 ? x : e[x] = find(e[x]); }
 		bool same_set(int x, int y) { return find(x) == find(y); }

@@ -60,7 +60,6 @@
       nodePackages.eslint_d
       nodePackages.prettier
       notify-desktop
-      obs-studio
       obsidian
       oneko
       openssl
@@ -75,7 +74,7 @@
       roboto
       rustup
       scrcpy
-      screenkey
+      showmethekey
       slurp
       spotify
       steam
@@ -173,6 +172,7 @@
       enable = true;
       extraConfig = builtins.readFile ./assets/kitty.conf;
     };
+    obs-studio.enable = true;
     rofi = {
       enable = true;
       extraConfig = {
