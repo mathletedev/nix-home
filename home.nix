@@ -20,10 +20,12 @@
       bat
       betterdiscordctl
       black
+      bun
       cascadia-code
       cava
       clang-tools
       cling
+      cmake
       cmatrix
       discord
       eb-garamond
@@ -32,6 +34,7 @@
       font-awesome
       gcc
       gimp
+      gnumake
       go
       godot_4
       grim
@@ -82,6 +85,7 @@
       stylish-haskell
       sumneko-lua-language-server
       swww
+      tradingview
       tty-clock
       ubuntu_font_family
       ungoogled-chromium

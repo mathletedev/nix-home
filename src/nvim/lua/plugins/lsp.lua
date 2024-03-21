@@ -63,6 +63,13 @@ return {
 						vim.keymap.set("n", "<Leader>a", vim.lsp.buf.code_action, opts)
 					end,
 					capabilities = require("cmp_nvim_lsp").default_capabilities(),
+					handlers = {
+						["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
+						["textDocument/signatureHelp"] = vim.lsp.with(
+							vim.lsp.handlers.signature_help,
+							{ border = "rounded" }
+						),
+					},
 				}
 
 				if server == "lua_ls" then
