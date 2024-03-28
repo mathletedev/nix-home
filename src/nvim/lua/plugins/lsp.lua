@@ -47,7 +47,12 @@ return {
 
 			require("fidget").setup {}
 
-			vim.diagnostic.config { virtual_text = false }
+			vim.diagnostic.config {
+				virtual_text = false,
+				virtual_lines = {
+					only_current_line = true,
+				},
+			}
 			require("lsp_lines").setup()
 			vim.keymap.set("n", "<Leader>x", require("lsp_lines").toggle)
 

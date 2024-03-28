@@ -255,6 +255,10 @@
       };
       style = ./assets/waybar.css;
     };
+    zoxide = {
+      enable = true;
+      options = [ "--cmd cd" ];
+    };
   };
 
   services = {

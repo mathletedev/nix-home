@@ -22,6 +22,7 @@ return {
 					"json",
 					"lua",
 					"make",
+					"markdown",
 					"nix",
 					"python",
 					"rust",

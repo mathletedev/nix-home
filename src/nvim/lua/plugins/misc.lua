@@ -32,6 +32,11 @@ return {
 			},
 		},
 	},
+	{
+		"lukas-reineke/headlines.nvim",
+		dependencies = "nvim-treesitter/nvim-treesitter",
+		opts = {},
+	},
 	{ "nvim-lua/plenary.nvim", lazy = true },
 	"romainl/vim-cool",
 	"stevearc/dressing.nvim",
