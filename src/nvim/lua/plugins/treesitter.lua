@@ -1,6 +1,7 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
+		dependencies = "nvim-treesitter/nvim-treesitter-context",
 		build = function()
 			require("nvim-treesitter.install").update { with_sync = true }()
 		end,
@@ -35,6 +36,8 @@ return {
 				sync_install = false,
 				highlight = { enable = true },
 			}
+
+			require("treesitter-context").setup {}
 		end,
 	},
 }

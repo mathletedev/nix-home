@@ -42,3 +42,4 @@ vim.api.nvim_create_autocmd("FileType", { command = "set expandtab", pattern = "
 vim.api.nvim_create_autocmd("FileType", { command = "set commentstring=#\\ %s", pattern = "nix" })
 vim.api.nvim_create_autocmd("FileType", { command = "set expandtab", pattern = "nix" })
 vim.api.nvim_create_autocmd("FileType", { command = "set noexpandtab tabstop=2 shiftwidth=2", pattern = "rust" })
+vim.api.nvim_create_autocmd("FileType", { command = "set filetype=cpp", pattern = "tpp" })

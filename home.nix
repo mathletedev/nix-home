@@ -20,7 +20,7 @@
       bat
       betterdiscordctl
       black
-      bun
+      # bun
       cascadia-code
       cava
       clang-tools
@@ -166,7 +166,10 @@
     };
     git = {
       enable = true;
-      extraConfig.credential.helper = "store";
+      extraConfig = {
+        credential.helper = "store";
+        init.defaultBranch = "main";
+      };
       userName = "Neal Wang";
       userEmail = "nealwang.sh@protonmail.com";
     };
