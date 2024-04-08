@@ -45,7 +45,7 @@ return {
 				dapui.close()
 			end
 
-			require("nvim-dap-virtual-text").setup()
+			require("nvim-dap-virtual-text").setup {}
 
 			vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticSignInfo" })
 			vim.fn.sign_define("DapBreakpointCondition", { text = "", texthl = "DiagnosticSignHint" })

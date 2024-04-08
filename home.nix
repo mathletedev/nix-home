@@ -20,7 +20,7 @@
       bat
       betterdiscordctl
       black
-      # bun
+      bun
       cascadia-code
       cava
       clang-tools
@@ -44,7 +44,6 @@
       hunspellDicts.en_GB-ise
       jdk11
       jetbrains.clion
-      jq # for swap-workspace, remove after Hyprland v0.35.0
       kdenlive
       krita
       libqalculate
@@ -54,6 +53,7 @@
       lxgw-wenkai
       minetest
       musescore
+      neovide
       neovim
       (nerdfonts.override { fonts = [ "CascadiaCode" ]; })
       networkmanagerapplet
@@ -158,9 +158,9 @@
         n = "kitty &";
       };
       shellAliases = {
-        home = "nvim ~/.config/home-manager";
-        vi = "nvim";
-        vim = "nvim";
+        home = "neovide ~/.config/home-manager";
+        vi = "neovide";
+        vim = "neovide";
       };
       shellInit = "direnv hook fish | source";
     };

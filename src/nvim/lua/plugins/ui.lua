@@ -11,10 +11,25 @@ return {
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = {
+			"akinsho/bufferline.nvim",
 			"catppuccin/nvim",
 			"kyazdani42/nvim-web-devicons",
 		},
 		config = function()
+			require("bufferline").setup {
+				options = {
+					diagnostics = "nvim_lsp",
+					diagnostics_indicator = function(count, level, _, _)
+						local icon = level:match "error" and " " or " "
+						return " " .. icon .. count
+					end,
+					separator_style = "slant",
+				},
+			}
+
+			vim.keymap.set("n", "<Leader>p", ":BufferLinePick<CR>")
+			vim.keymap.set("n", "<Leader>`", ":BufferLineTogglePin<CR>")
+
 			local cp = require("catppuccin.palettes").get_palette()
 			local custom_catppuccin = require "lualine.themes.catppuccin"
 
@@ -50,16 +65,6 @@ return {
 					lualine_x = {},
 					lualine_y = {},
 					lualine_z = {},
-				},
-				tabline = {
-					lualine_a = {
-						{
-							"buffers",
-							separator = { left = "", right = "" },
-							right_padding = 2,
-							symbols = { alternate_file = "" },
-						},
-					},
 				},
 			}
 		end,
