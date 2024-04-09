@@ -7,6 +7,14 @@
         source = ./src/nvim;
         recursive = true;
       };
+      ".config/neovide/config.toml".text = ''
+        [font]
+        normal = [ "Cascadia Code" ]
+        size = 16
+
+        [font.features]
+        CascadiaCode-Italic = [ "+ss01"  ]
+      '';
       ".npmrc".text = "prefix=~/.npm-packages";
     };
     homeDirectory = "/home/neo";
@@ -110,7 +118,8 @@
       gtk.enable = true;
       name = "Bibata-Modern-Classic";
       package = pkgs.bibata-cursors;
-      size = 16;
+      size = 24;
+      x11.enable = true;
     };
     sessionPath = [
       "$HOME/.config/home-manager/bin"
@@ -127,6 +136,9 @@
     };
     shellAliases = {
       ls = "eza --all --long --git";
+      vi = "neovide --size 1x1";
+      home = "vi ~/.config/home-manager";
+      vim = "vi";
     };
     stateVersion = "24.05";
     username = "neo";
@@ -157,11 +169,6 @@
         "-" = "cd -";
         n = "kitty &";
       };
-      shellAliases = {
-        home = "neovide ~/.config/home-manager";
-        vi = "neovide";
-        vim = "neovide";
-      };
       shellInit = "direnv hook fish | source";
     };
     git = {
@@ -177,7 +184,7 @@
     htop.enable = true;
     kitty = {
       enable = true;
-      extraConfig = builtins.readFile ./assets/kitty.conf;
+      extraConfig = builtins.readFile ./src/kitty.conf;
     };
     obs-studio.enable = true;
     rofi = {

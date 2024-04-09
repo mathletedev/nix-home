@@ -24,11 +24,11 @@ return {
 			)
 			vim.api.nvim_create_autocmd(
 				"BufWinEnter",
-				{ command = "nnoremap <Leader>r :lua vim.lsp.buf.rename()<CR>", pattern = "*.rs" }
+				{ command = "nnoremap <Leader>r :Lspsaga rename<CR>", pattern = "*.rs" }
 			)
 			vim.api.nvim_create_autocmd(
 				"BufWinEnter",
-				{ command = "nnoremap <Leader>a :lua vim.lsp.buf.code_action()<CR>", pattern = "*.rs" }
+				{ command = "nnoremap <Leader>a :Lspsaga code_action<CR>", pattern = "*.rs" }
 			)
 		end,
 	},

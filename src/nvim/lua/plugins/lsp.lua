@@ -5,6 +5,7 @@ return {
 			"folke/neodev.nvim",
 			"hrsh7th/cmp-nvim-lsp",
 			"j-hui/fidget.nvim",
+			"nvimdev/lspsaga.nvim",
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
@@ -47,6 +48,18 @@ return {
 
 			require("fidget").setup {}
 
+			require("lspsaga").setup {
+				code_action = {
+					keys = { quit = "<Esc>" },
+				},
+				lightbulb = { enable = false },
+				rename = {
+					keys = { quit = "<Esc>" },
+				},
+			}
+			vim.keymap.set("n", "<Leader>r", ":Lspsaga rename<CR>")
+			vim.keymap.set("n", "<Leader>a", ":Lspsaga code_action<CR>")
+
 			vim.diagnostic.config {
 				virtual_text = false,
 				virtual_lines = {
@@ -63,9 +76,9 @@ return {
 						local opts = { buffer = bufnr }
 
 						vim.keymap.set("n", "<Leader>h", vim.lsp.buf.hover, opts)
-						vim.keymap.set("n", "<Leader>i", vim.lsp.buf.definition, opts)
-						vim.keymap.set("n", "<Leader>r", vim.lsp.buf.rename, opts)
-						vim.keymap.set("n", "<Leader>a", vim.lsp.buf.code_action, opts)
+						vim.keymap.set("n", "<Leader>gd", vim.lsp.buf.definition, opts)
+						vim.keymap.set("n", "<Leader>gi", vim.lsp.buf.implementation, opts)
+						vim.keymap.set("n", "<Leader>gr", vim.lsp.buf.references, opts)
 					end,
 					capabilities = require("cmp_nvim_lsp").default_capabilities(),
 					handlers = {

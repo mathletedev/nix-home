@@ -27,8 +27,8 @@ return {
 				},
 			}
 
-			vim.keymap.set("n", "<Leader>p", ":BufferLinePick<CR>")
-			vim.keymap.set("n", "<Leader>`", ":BufferLineTogglePin<CR>")
+			vim.keymap.set("n", "<Leader>p", ":BufferLinePick<CR>", { silent = true })
+			vim.keymap.set("n", "<Leader>`", ":BufferLineTogglePin<CR>", { silent = true })
 
 			local cp = require("catppuccin.palettes").get_palette()
 			local custom_catppuccin = require "lualine.themes.catppuccin"
