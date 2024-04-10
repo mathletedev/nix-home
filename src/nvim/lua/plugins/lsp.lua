@@ -73,7 +73,7 @@ return {
 				local opts = {
 					on_attach = function(_, bufnr)
 						vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-						local opts = { buffer = bufnr }
+						local opts = { buffer = bufnr, silent = true }
 
 						vim.keymap.set("n", "<Leader>h", vim.lsp.buf.hover, opts)
 						vim.keymap.set("n", "<Leader>gd", vim.lsp.buf.definition, opts)
@@ -100,6 +100,12 @@ return {
 							workspace = { checkThirdParty = false },
 						},
 					}
+				end
+
+				if server == "clangd" then
+					local capabilities = require("cmp_nvim_lsp").default_capabilities()
+					capabilities.offsetEncoding = { "utf-16" }
+					opts.capabilities = capabilities
 				end
 
 				require("lspconfig")[server].setup(opts)

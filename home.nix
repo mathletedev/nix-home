@@ -13,7 +13,7 @@
         size = 16
 
         [font.features]
-        CascadiaCode-Italic = [ "+ss01"  ]
+        "Cascadia Code" = [ "+ss01"  ]
       '';
       ".npmrc".text = "prefix=~/.npm-packages";
     };

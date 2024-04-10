@@ -6,6 +6,7 @@ return {
 			"L3MON4D3/LuaSnip",
 			"onsails/lspkind.nvim",
 			"saadparwaiz1/cmp_luasnip",
+			"zbirenbaum/copilot.lua",
 		},
 		config = function()
 			local cmp = require "cmp"
@@ -29,6 +30,8 @@ return {
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_next_item()
+						elseif require("copilot.suggestion").is_visible() then
+							require("copilot.suggestion").accept()
 						elseif ls.expand_or_jumpable() then
 							ls.expand_or_jump()
 						else

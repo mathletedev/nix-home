@@ -20,7 +20,15 @@ return {
 			)
 			vim.api.nvim_create_autocmd(
 				"BufWinEnter",
-				{ command = "nnoremap <Leader>i :lua vim.lsp.buf.definition()<CR>", pattern = "*.rs" }
+				{ command = "nnoremap <Leader>gd :lua vim.lsp.buf.definition()<CR>", pattern = "*.rs" }
+			)
+			vim.api.nvim_create_autocmd(
+				"BufWinEnter",
+				{ command = "nnoremap <Leader>gi :lua vim.lsp.buf.implementation()<CR>", pattern = "*.rs" }
+			)
+			vim.api.nvim_create_autocmd(
+				"BufWinEnter",
+				{ command = "nnoremap <Leader>gr :lua vim.lsp.buf.references()<CR>", pattern = "*.rs" }
 			)
 			vim.api.nvim_create_autocmd(
 				"BufWinEnter",
