@@ -1,5 +1,8 @@
 { pkgs, ... }:
 
+let
+  nix-gaming = import (builtins.fetchTarball "https://github.com/fufexan/nix-gaming/archive/master.tar.gz");
+in
 {
   home = {
     file = {
@@ -28,6 +31,7 @@
       bat
       betterdiscordctl
       black
+      blanket
       bun
       cascadia-code
       cava
@@ -41,6 +45,7 @@
       firefox-devedition-bin
       font-awesome
       gcc
+      gdtoolkit
       gimp
       gnumake
       go
@@ -66,6 +71,7 @@
       (nerdfonts.override { fonts = [ "CascadiaCode" ]; })
       networkmanagerapplet
       nitrogen
+      nix-gaming.packages.${pkgs.hostPlatform.system}.wine-ge
       nmap
       nodejs
       nodePackages.eslint_d
@@ -93,7 +99,6 @@
       stylish-haskell
       sumneko-lua-language-server
       swww
-      tradingview
       tty-clock
       ubuntu_font_family
       ungoogled-chromium
@@ -110,7 +115,7 @@
           xfce.tumbler
         ];
       })
-      xournal
+      xournalpp
       xwaylandvideobridge
       zip
     ];
@@ -132,6 +137,7 @@
       MOZ_USE_XINPUT2 = "1";
       NIXOS_OZONE_WL = "1";
       PF_INFO = "ascii title os uptime pkgs wm shell editor";
+      PROTON_VERSION = "Proton Experimental";
       QT_STYLE_OVERRIDE = "kvantum";
     };
     shellAliases = {

@@ -16,4 +16,8 @@ vim.lsp.start {
 		vim.keymap.set("n", "<Leader>r", vim.lsp.buf.rename, opts)
 		vim.keymap.set("n", "<Leader>a", vim.lsp.buf.code_action, opts)
 	end,
+	handlers = {
+		["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
+		["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
+	},
 }

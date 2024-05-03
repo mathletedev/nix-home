@@ -4,13 +4,19 @@ return {
 		dependencies = {
 			"folke/neodev.nvim",
 			"hrsh7th/cmp-nvim-lsp",
-			"j-hui/fidget.nvim",
-			"nvimdev/lspsaga.nvim",
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
-			"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
 		},
 		config = function()
+			require("neodev").setup {
+				override = function(root_dir, library)
+					if root_dir:find(vim.fn.expand "$HOME/.config/home-manager/src/nvim", 1, true) == 1 then
+						library.enabled = true
+						library.plugins = true
+					end
+				end,
+			}
+
 			require("mason").setup {
 				PATH = "append",
 			}
@@ -37,37 +43,12 @@ return {
 				automatic_installation = true,
 			}
 
-			require("neodev").setup {
-				override = function(root_dir, library)
-					if root_dir:find(vim.fn.expand "$HOME/.config/home-manager/src/nvim", 1, true) == 1 then
-						library.enabled = true
-						library.plugins = true
-					end
-				end,
-			}
-
-			require("fidget").setup {}
-
-			require("lspsaga").setup {
-				code_action = {
-					keys = { quit = "<Esc>" },
-				},
-				lightbulb = { enable = false },
-				rename = {
-					keys = { quit = "<Esc>" },
-				},
-			}
-			vim.keymap.set("n", "<Leader>r", ":Lspsaga rename<CR>")
-			vim.keymap.set("n", "<Leader>a", ":Lspsaga code_action<CR>")
-
 			vim.diagnostic.config {
 				virtual_text = false,
 				virtual_lines = {
 					only_current_line = true,
 				},
 			}
-			require("lsp_lines").setup()
-			vim.keymap.set("n", "<Leader>x", require("lsp_lines").toggle)
 
 			for _, server in pairs(servers) do
 				local opts = {
@@ -115,6 +96,33 @@ return {
 			vim.fn.sign_define("DiagnosticSignWarn", { text = "●", texthl = "DiagnosticSignWarn" })
 			vim.fn.sign_define("DiagnosticSignInfo", { text = "●", texthl = "DiagnosticSignInfo" })
 			vim.fn.sign_define("DiagnosticSignHint", { text = "●", texthl = "DiagnosticSignHint" })
+		end,
+	},
+	{
+		"j-hui/fidget.nvim",
+		opts = {},
+	},
+	{
+		"nvimdev/lspsaga.nvim",
+		config = function()
+			require("lspsaga").setup {
+				code_action = {
+					keys = { quit = "<Esc>" },
+				},
+				lightbulb = { enable = false },
+				rename = {
+					keys = { quit = "<Esc>" },
+				},
+			}
+			vim.keymap.set("n", "<Leader>r", ":Lspsaga rename<CR>")
+			vim.keymap.set("n", "<Leader>a", ":Lspsaga code_action<CR>")
+		end,
+	},
+	{
+		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+		config = function()
+			require("lsp_lines").setup()
+			vim.keymap.set("n", "<Leader>x", require("lsp_lines").toggle)
 		end,
 	},
 }

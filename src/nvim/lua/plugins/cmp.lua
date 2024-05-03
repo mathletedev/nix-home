@@ -28,10 +28,10 @@ return {
 					["<C-Space>"] = cmp.mapping.complete(),
 					["<CR>"] = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = true },
 					["<Tab>"] = cmp.mapping(function(fallback)
-						if cmp.visible() then
-							cmp.select_next_item()
-						elseif require("copilot.suggestion").is_visible() then
+						if require("copilot.suggestion").is_visible() then
 							require("copilot.suggestion").accept()
+						elseif cmp.visible() then
+							cmp.select_next_item()
 						elseif ls.expand_or_jumpable() then
 							ls.expand_or_jump()
 						else

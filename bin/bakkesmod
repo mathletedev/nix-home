@@ -1,0 +1,3 @@
+#/bin/sh
+
+WINEFSYNC=1 WINEPREFIX=~/Games/Heroic/Prefixes/rocketleague wine ~/Games/Heroic/Prefixes/rocketleague/drive_c/Program\ Files/BakkesMod/BakkesMod.exe
