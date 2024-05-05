@@ -13,7 +13,6 @@ return {
 		dependencies = {
 			"akinsho/bufferline.nvim",
 			"catppuccin/nvim",
-			"kyazdani42/nvim-web-devicons",
 		},
 		config = function()
 			require("bufferline").setup {
@@ -66,6 +65,17 @@ return {
 					lualine_y = {},
 					lualine_z = {},
 				},
+			}
+		end,
+	},
+	{
+		"nvim-tree/nvim-web-devicons",
+		dependencies = {
+			"DaikyXendo/nvim-material-icon",
+		},
+		config = function()
+			require("nvim-web-devicons").setup {
+				override = require("nvim-material-icon").get_icons(),
 			}
 		end,
 	},
