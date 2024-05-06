@@ -17,7 +17,9 @@ return {
 				yaml = { "prettierd" },
 			},
 			format_on_save = {
+				async = true,
 				lsp_fallback = true,
+				quiet = true,
 				timeout_ms = 500,
 			},
 			formatters = {
