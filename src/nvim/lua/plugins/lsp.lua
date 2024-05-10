@@ -25,6 +25,7 @@ return {
 				"astro",
 				"bashls",
 				"clangd",
+				"clojure_lsp",
 				"cssls",
 				"eslint",
 				"gopls",
@@ -49,6 +50,8 @@ return {
 					only_current_line = true,
 				},
 			}
+
+			table.insert(servers, "gleam")
 
 			for _, server in pairs(servers) do
 				local opts = {

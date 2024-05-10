@@ -4,6 +4,7 @@ local lang_maps = {
 		exec = "arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:uno %",
 	},
 	c = { build = "gcc *.c -lm -g -o main", exec = "./main" },
+	clojure = { exec = "lein run" },
 	cpp = { build = "mkdir -p build && cd build && cmake .. && make", exec = "cd build && ./main" },
 	go = { build = "go build", exec = "go run %" },
 	java = { build = "javac %", exec = "java %:r" },
