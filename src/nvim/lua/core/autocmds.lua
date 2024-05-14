@@ -7,6 +7,7 @@ local lang_maps = {
 	clojure = { exec = "lein run" },
 	cpp = { build = "mkdir -p build && cd build && cmake .. && make", exec = "cd build && ./main" },
 	go = { build = "go build", exec = "go run %" },
+	haskell = { build = "ghc --make %", exec = "./%:r" },
 	java = { build = "javac %", exec = "java %:r" },
 	javascript = { exec = "bun %" },
 	python = { exec = "python %" },

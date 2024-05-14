@@ -19,6 +19,7 @@ return {
 					"gdscript",
 					"gleam",
 					"go",
+					"haskell",
 					"html",
 					"java",
 					"json",

@@ -37,21 +37,28 @@ in
       cava
       clang-tools
       cling
+      cljfmt
+      clojure
+      clojure-lsp
       cmake
       cmatrix
       discord
       eb-garamond
+      erlang
       eza
       firefox-devedition-bin
       font-awesome
       gcc
       gdtoolkit
+      ghc
       gimp
+      gleam
       gnumake
       go
       godot_4
       grim
       grimblast
+      haskell-language-server
       heroic
       hunspell
       hunspellDicts.en_GB-ise
@@ -59,6 +66,7 @@ in
       jetbrains.clion
       kdenlive
       krita
+      leiningen
       libqalculate
       libreoffice-qt
       libresprite
@@ -80,6 +88,7 @@ in
       obsidian
       oneko
       openssl
+      ormolu
       p7zip
       pavucontrol
       pfetch

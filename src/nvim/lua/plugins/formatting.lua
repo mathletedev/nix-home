@@ -7,6 +7,7 @@ return {
 				css = { "prettierd" },
 				gdscript = { "gdformat" },
 				go = { "gofmt" },
+				haskell = { "ormolu" },
 				javascript = { "prettierd" },
 				json = { "prettierd" },
 				lua = { "stylua" },

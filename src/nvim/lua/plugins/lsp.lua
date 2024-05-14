@@ -21,27 +21,77 @@ return {
 				PATH = "append",
 			}
 
-			local servers = {
-				"astro",
-				"bashls",
-				"clangd",
-				"clojure_lsp",
-				"cssls",
-				"eslint",
-				"gopls",
-				"html",
-				"jedi_language_server",
-				"lua_ls",
-				"rnix",
-				"svelte",
-				"tailwindcss",
-				"tsserver",
-				"yamlls",
+			local on_attach = function(_, bufnr)
+				vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+				local opts = { buffer = bufnr, silent = true }
+
+				vim.keymap.set("n", "<Leader>h", vim.lsp.buf.hover, opts)
+				vim.keymap.set("n", "<Leader>gd", vim.lsp.buf.definition, opts)
+				vim.keymap.set("n", "<Leader>gi", vim.lsp.buf.implementation, opts)
+				vim.keymap.set("n", "<Leader>gr", vim.lsp.buf.references, opts)
+			end
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			local handlers = {
+				["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
+				["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
 			}
 
+			local lspconfig = require "lspconfig"
+
 			require("mason-lspconfig").setup {
-				ensure_installed = servers,
 				automatic_installation = true,
+				ensure_installed = {
+					"astro",
+					"bashls",
+					"clangd",
+					"clojure_lsp",
+					"cssls",
+					"eslint",
+					"gopls",
+					"html",
+					"jedi_language_server",
+					"lua_ls",
+					"rnix",
+					"svelte",
+					"tailwindcss",
+					"tsserver",
+					"yamlls",
+				},
+				handlers = {
+					function(server)
+						lspconfig[server].setup {
+							on_attach = on_attach,
+							capabilities = capabilities,
+							handlers = handlers,
+						}
+					end,
+					["clangd"] = function()
+						local alt_capabilities = require("cmp_nvim_lsp").default_capabilities()
+						alt_capabilities.offsetEncoding = { "utf-16" }
+
+						lspconfig.clangd.setup {
+							on_attach = on_attach,
+							capabilities = capabilities,
+							handlers = handlers,
+						}
+					end,
+					["lua_ls"] = function()
+						lspconfig.lua_ls.setup {
+							on_attach = on_attach,
+							capabilities = capabilities,
+							handlers = handlers,
+							settings = {
+								Lua = {
+									completion = { callSnippet = "Replace" },
+									diagnostics = {
+										disable = { "missing-fields" },
+									},
+									workspace = { checkThirdParty = false },
+								},
+							},
+						}
+					end,
+				},
 			}
 
 			vim.diagnostic.config {
@@ -50,50 +100,6 @@ return {
 					only_current_line = true,
 				},
 			}
-
-			table.insert(servers, "gleam")
-
-			for _, server in pairs(servers) do
-				local opts = {
-					on_attach = function(_, bufnr)
-						vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-						local opts = { buffer = bufnr, silent = true }
-
-						vim.keymap.set("n", "<Leader>h", vim.lsp.buf.hover, opts)
-						vim.keymap.set("n", "<Leader>gd", vim.lsp.buf.definition, opts)
-						vim.keymap.set("n", "<Leader>gi", vim.lsp.buf.implementation, opts)
-						vim.keymap.set("n", "<Leader>gr", vim.lsp.buf.references, opts)
-					end,
-					capabilities = require("cmp_nvim_lsp").default_capabilities(),
-					handlers = {
-						["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
-						["textDocument/signatureHelp"] = vim.lsp.with(
-							vim.lsp.handlers.signature_help,
-							{ border = "rounded" }
-						),
-					},
-				}
-
-				if server == "lua_ls" then
-					opts.settings = {
-						Lua = {
-							completion = { callSnippet = "Replace" },
-							diagnostics = {
-								disable = { "missing-fields" },
-							},
-							workspace = { checkThirdParty = false },
-						},
-					}
-				end
-
-				if server == "clangd" then
-					local capabilities = require("cmp_nvim_lsp").default_capabilities()
-					capabilities.offsetEncoding = { "utf-16" }
-					opts.capabilities = capabilities
-				end
-
-				require("lspconfig")[server].setup(opts)
-			end
 
 			vim.fn.sign_define("DiagnosticSignError", { text = "●", texthl = "DiagnosticSignError" })
 			vim.fn.sign_define("DiagnosticSignWarn", { text = "●", texthl = "DiagnosticSignWarn" })
