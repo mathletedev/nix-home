@@ -269,7 +269,7 @@ in
             format = "<span size='x-large'>{icon}</span>";
             format-muted = "󰖁";
             format-icons = {
-              default = [ "" "" "" ];
+              default = [ "" "" "" "" ];
             };
             on-click = "pavucontrol &";
           };
