@@ -48,7 +48,8 @@ in
       eza
       firefox-devedition-bin
       font-awesome
-      gcc
+      gcc14
+      gdb
       gdtoolkit
       ghc
       gimp
@@ -59,6 +60,7 @@ in
       grim
       grimblast
       haskell-language-server
+      haskellPackages.cabal-install
       heroic
       hunspell
       hunspellDicts.en_GB-ise
@@ -114,7 +116,6 @@ in
       unzip
       victor-mono
       vlc
-      vscode-extensions.ms-vscode.cpptools
       way-displays
       wl-clipboard
       (xfce.thunar.override {

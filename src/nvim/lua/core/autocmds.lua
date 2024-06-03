@@ -7,7 +7,7 @@ local lang_maps = {
 	clojure = { exec = "lein run" },
 	cpp = { build = "mkdir -p build && cd build && cmake .. && make", exec = "cd build && ./main" },
 	go = { build = "go build", exec = "go run %" },
-	haskell = { build = "ghc --make %", exec = "./%:r" },
+	haskell = { exec = "cabal run" },
 	java = { build = "javac %", exec = "java %:r" },
 	javascript = { exec = "bun %" },
 	python = { exec = "python %" },
@@ -40,8 +40,6 @@ vim.api.nvim_create_autocmd(
 )
 vim.api.nvim_create_autocmd("FileType", { command = "nnoremap <Leader>ue :!~/dev/cp/main<CR>", pattern = "cpp" })
 vim.api.nvim_create_autocmd("FileType", { command = "set commentstring=//\\ %s", pattern = "c,cpp" })
-vim.api.nvim_create_autocmd("FileType", { command = "set expandtab", pattern = "haskell" })
 vim.api.nvim_create_autocmd("FileType", { command = "set commentstring=#\\ %s", pattern = "nix" })
 vim.api.nvim_create_autocmd("FileType", { command = "set expandtab", pattern = "nix" })
-vim.api.nvim_create_autocmd("FileType", { command = "set noexpandtab tabstop=2 shiftwidth=2", pattern = "rust" })
 vim.api.nvim_create_autocmd("FileType", { command = "set filetype=cpp", pattern = "tpp" })

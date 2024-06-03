@@ -9,15 +9,15 @@ return {
 		config = function()
 			local dap = require "dap"
 
-			dap.adapters.cppdbg = {
-				id = "cppdbg",
+			dap.adapters.gdb = {
 				type = "executable",
-				command = vim.fn.expand "$HOME/bin/OpenDebugAD7",
+				command = "gdb",
+				args = { "-i", "dap" },
 			}
 
 			local dap_config = {
-				name = "Launch file",
-				type = "cppdbg",
+				name = "Launch",
+				type = "gdb",
 				request = "launch",
 				program = function()
 					local dir = "/"
@@ -28,7 +28,7 @@ return {
 					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. dir, "file")
 				end,
 				cwd = "${workspaceFolder}",
-				stopAtEntry = true,
+				stopAtBeginningOfMainSubprogram = false,
 			}
 
 			dap.configurations.c = { dap_config }

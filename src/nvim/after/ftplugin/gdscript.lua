@@ -6,7 +6,7 @@ vim.lsp.start {
 	name = "Godot",
 	cmd = cmd,
 	root_dir = vim.fs.dirname(vim.fs.find({ "project.godot", ".git" }, { upward = true })[1]),
-	on_attach = function(client, bufnr)
+	on_attach = function(_, bufnr)
 		vim.api.nvim_command("echo serverstart(\"" .. pipe .. "\")")
 
 		local opts = { buffer = bufnr }

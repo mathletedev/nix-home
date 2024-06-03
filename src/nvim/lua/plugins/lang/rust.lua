@@ -1,22 +1,11 @@
 return {
 	{
-		"simrat39/rust-tools.nvim",
-		ft = "rust",
+		"mrcjkb/rustaceanvim",
+		lazy = false,
 		config = function()
-			require("rust-tools").setup {
-				server = { standalone = false },
-				dap = {
-					adapter = {
-						id = "cppdbg",
-						type = "executable",
-						command = vim.fn.expand "$HOME/bin/OpenDebugAD7",
-					},
-				},
-			}
-
 			vim.api.nvim_create_autocmd(
 				"BufWinEnter",
-				{ command = "nnoremap <Leader>h :RustHoverActions<CR>", pattern = "*.rs" }
+				{ command = "nnoremap <Leader>h :lua vim.lsp.buf.hover()<CR>", pattern = "*.rs" }
 			)
 			vim.api.nvim_create_autocmd(
 				"BufWinEnter",
@@ -36,7 +25,7 @@ return {
 			)
 			vim.api.nvim_create_autocmd(
 				"BufWinEnter",
-				{ command = "nnoremap <Leader>a :Lspsaga code_action<CR>", pattern = "*.rs" }
+				{ command = "nnoremap <Leader>a :lua vim.cmd.RustLsp('codeAction')<CR>", pattern = "*.rs" }
 			)
 		end,
 	},
