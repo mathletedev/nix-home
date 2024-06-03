@@ -18,13 +18,12 @@ window#waybar {
 #tray {
   margin-top: 2px;
   margin-bottom: 0;
-  padding: 4px;
   background-color: #1e1e2e;
 }
 
 #custom-nixos {
   margin-left: 4px;
-  padding-left: 6px;
+  padding-left: 8px;
   padding-right: 0px;
   color: #89b4fa;
   border-left: 2px solid #b4befe;
@@ -53,6 +52,7 @@ window#waybar {
 }
 
 #battery {
+  padding-left: 8px;
   border-left: 2px solid #b4befe;
   border-top: 2px solid #b4befe;
   border-bottom: 2px solid #b4befe;
@@ -60,6 +60,8 @@ window#waybar {
 }
 
 #pulseaudio {
+  padding-left: 4px;
+  padding-right: 12px;
   margin-right: 4px;
   border-right: 2px solid #b4befe;
   border-top: 2px solid #b4befe;

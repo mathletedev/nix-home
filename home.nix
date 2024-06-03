@@ -240,7 +240,7 @@ in
           modules-center = [ "clock" ];
           modules-right = [ "battery" "pulseaudio" "tray" ];
           "custom/nixos" = {
-            format = " ";
+            format = "<span size='x-large'></span> ";
             on-click = ''
               BG="$(find ~/Pictures/wallpapers -name '*.*' | shuf -n 1)" && swww img "$BG" --transition-type any
             '';
@@ -254,22 +254,22 @@ in
           };
           battery = {
             interval = 1;
-            format = " {icon}";
-            format-charging = " 󰚥";
+            format = " <span size='x-large'>{icon}</span> ";
+            format-charging = " 󰚥 ";
             states = {
               warning = 30;
               critical = 15;
             };
-            format-warning = " {icon}";
-            format-critical = " {icon}";
+            format-warning = " <span size='x-large'>{icon}</span> ";
+            format-critical = " <span size='x-large'>{icon}</span> ";
             format-full = "  ";
-            format-icons = [ " " " " " " " " " " ];
+            format-icons = [ "" "" "" "" "" ];
           };
           pulseaudio = {
-            format = "{icon}";
-            format-muted = "󰖁 ";
+            format = "<span size='x-large'>{icon}</span>";
+            format-muted = "󰖁";
             format-icons = {
-              default = [ " " " " " " ];
+              default = [ "" "" "" ];
             };
             on-click = "pavucontrol &";
           };

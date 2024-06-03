@@ -1,4 +1,5 @@
 local port = os.getenv "GDScript_Port" or "6005"
+---@diagnostic disable-next-line
 local cmd = vim.lsp.rpc.connect("127.0.0.1", port)
 local pipe = "/tmp/godot.pipe"
 
@@ -9,7 +10,7 @@ vim.lsp.start {
 	on_attach = function(_, bufnr)
 		vim.api.nvim_command("echo serverstart(\"" .. pipe .. "\")")
 
-		local opts = { buffer = bufnr }
+		local opts = { buffer = bufnr, silent = true }
 
 		vim.keymap.set("n", "<Leader>h", vim.lsp.buf.hover, opts)
 		vim.keymap.set("n", "<Leader>i", vim.lsp.buf.definition, opts)
