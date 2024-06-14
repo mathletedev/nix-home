@@ -1,3 +1,4 @@
+-- miscellanous plugins
 return {
 	{
 		"andweeb/presence.nvim",
@@ -15,10 +16,6 @@ return {
 		"folke/todo-comments.nvim",
 		opts = {},
 	},
-	{
-		"habamax/vim-godot",
-		ft = "gdscript",
-	},
 	"HiPhish/rainbow-delimiters.nvim",
 	{
 		"lewis6991/gitsigns.nvim",
@@ -32,13 +29,16 @@ return {
 			},
 		},
 	},
+	-- markdown preview
 	{
 		"lukas-reineke/headlines.nvim",
 		dependencies = "nvim-treesitter/nvim-treesitter",
 		opts = {},
 	},
 	{ "nvim-lua/plenary.nvim", lazy = true },
+	-- hlsearch functionality
 	"romainl/vim-cool",
+	-- cool UI
 	"stevearc/dressing.nvim",
 	{
 		"tpope/vim-commentary",

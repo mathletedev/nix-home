@@ -1,3 +1,4 @@
+-- formatting plugins
 return {
 	{
 		"stevearc/conform.nvim",
@@ -17,11 +18,9 @@ return {
 				typescript = { "prettierd" },
 				yaml = { "prettierd" },
 			},
-			format_on_save = {
-				async = true,
+			format_after_save = {
 				lsp_fallback = true,
 				quiet = true,
-				timeout_ms = 500,
 			},
 			formatters = {
 				gdformat = {
