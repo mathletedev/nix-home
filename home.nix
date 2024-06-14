@@ -137,9 +137,10 @@ in
       x11.enable = true;
     };
     sessionPath = [
+      "$HOME/.bun/bin"
       "$HOME/.config/home-manager/bin"
-      "$HOME/bin"
       "$HOME/.npm-packages/bin"
+      "$HOME/bin"
     ];
     sessionVariables = {
       BAT_THEME = "catppuccin";
@@ -255,14 +256,14 @@ in
           battery = {
             interval = 1;
             format = " <span size='x-large'>{icon}</span> ";
-            format-charging = " 󰚥 ";
+            format-charging = " <span size='x-large'>󰚥</span> ";
             states = {
               warning = 30;
               critical = 15;
             };
             format-warning = " <span size='x-large'>{icon}</span> ";
             format-critical = " <span size='x-large'>{icon}</span> ";
-            format-full = "  ";
+            format-full = " <span size='x-large'></span> ";
             format-icons = [ "" "" "" "" "" ];
           };
           pulseaudio = {
