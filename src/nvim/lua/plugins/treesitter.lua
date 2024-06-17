@@ -20,6 +20,7 @@ return {
 					"go",
 					"haskell",
 					"html",
+					"hyprlang",
 					"java",
 					"json",
 					"lua",

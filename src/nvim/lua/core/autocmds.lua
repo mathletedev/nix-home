@@ -21,24 +21,18 @@ local lang_maps = {
 
 for lang, data in pairs(lang_maps) do
 	if data.build ~= nil then
-		vim.api.nvim_create_autocmd(
-			"FileType",
-			{
-				command = "nnoremap <Leader>b :!" .. data.build .. "<CR>",
-				pattern = lang,
-			}
-		)
+		vim.api.nvim_create_autocmd("FileType", {
+			command = "nnoremap <Leader>b :!" .. data.build .. "<CR>",
+			pattern = lang,
+		})
 	end
 
-	vim.api.nvim_create_autocmd(
-		"FileType",
-		{
-			command = "nnoremap <Leader>e :split<CR>:terminal "
-				.. data.exec
-				.. "<CR>",
-			pattern = lang,
-		}
-	)
+	vim.api.nvim_create_autocmd("FileType", {
+		command = "nnoremap <Leader>e :split<CR>:terminal "
+			.. data.exec
+			.. "<CR>",
+		pattern = lang,
+	})
 end
 
 vim.api.nvim_create_autocmd(
@@ -53,29 +47,6 @@ vim.api.nvim_create_autocmd(
 vim.api.nvim_create_autocmd(
 	"FileType",
 	{ command = "set filetype=astro", pattern = "astro" }
-)
-vim.api.nvim_create_autocmd(
-	"FileType",
-	{
-		command = "nnoremap <Leader>ub :!g++ % -g -o ~/dev/cp/main<CR>",
-		pattern = "cpp",
-	}
-)
-vim.api.nvim_create_autocmd(
-	"FileType",
-	{ command = "nnoremap <Leader>ue :!~/dev/cp/main<CR>", pattern = "cpp" }
-)
-vim.api.nvim_create_autocmd(
-	"FileType",
-	{ command = "set commentstring=//\\ %s", pattern = "c,cpp" }
-)
-vim.api.nvim_create_autocmd(
-	"FileType",
-	{ command = "set commentstring=#\\ %s", pattern = "nix" }
-)
-vim.api.nvim_create_autocmd(
-	"FileType",
-	{ command = "set expandtab", pattern = "nix" }
 )
 vim.api.nvim_create_autocmd(
 	"FileType",
