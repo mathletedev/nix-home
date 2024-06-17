@@ -26,8 +26,18 @@ return {
 				},
 			}
 
-			vim.keymap.set("n", "<Leader>p", ":BufferLinePick<CR>", { silent = true })
-			vim.keymap.set("n", "<Leader>`", ":BufferLineTogglePin<CR>", { silent = true })
+			vim.keymap.set(
+				"n",
+				"<Leader>p",
+				":BufferLinePick<CR>",
+				{ silent = true }
+			)
+			vim.keymap.set(
+				"n",
+				"<Leader>`",
+				":BufferLineTogglePin<CR>",
+				{ silent = true }
+			)
 
 			local cp = require("catppuccin.palettes").get_palette()
 			local custom_catppuccin = require "lualine.themes.catppuccin"
@@ -50,12 +60,28 @@ return {
 					section_separators = { left = "", right = "" },
 				},
 				sections = {
-					lualine_a = { { "mode", separator = { left = "" }, right_padding = 2 } },
-					lualine_b = { "filename", "branch", { "diff", colored = false } },
+					lualine_a = {
+						{
+							"mode",
+							separator = { left = "" },
+							right_padding = 2,
+						},
+					},
+					lualine_b = {
+						"filename",
+						"branch",
+						{ "diff", colored = false },
+					},
 					lualine_c = {},
 					lualine_x = {},
 					lualine_y = { "filetype", "progress" },
-					lualine_z = { { "location", separator = { right = "" }, left_padding = 2 } },
+					lualine_z = {
+						{
+							"location",
+							separator = { right = "" },
+							left_padding = 2,
+						},
+					},
 				},
 				inactive_sections = {
 					lualine_a = { "filename" },

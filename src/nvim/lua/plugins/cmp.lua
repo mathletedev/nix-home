@@ -13,7 +13,9 @@ return {
 			local ls = require "luasnip"
 			local lspkind = require "lspkind"
 
-			require("luasnip/loaders/from_snipmate").lazy_load { paths = { "~/.config/home-manager/src/nvim/snippets" } }
+			require("luasnip/loaders/from_snipmate").lazy_load {
+				paths = { "~/.config/home-manager/src/nvim/snippets" },
+			}
 
 			cmp.setup {
 				formatting = {
@@ -26,7 +28,10 @@ return {
 				},
 				mapping = cmp.mapping.preset.insert {
 					["<C-Space>"] = cmp.mapping.complete(),
-					["<CR>"] = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = true },
+					["<CR>"] = cmp.mapping.confirm {
+						behavior = cmp.ConfirmBehavior.Replace,
+						select = true,
+					},
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if require("copilot.suggestion").is_visible() then
 							require("copilot.suggestion").accept()

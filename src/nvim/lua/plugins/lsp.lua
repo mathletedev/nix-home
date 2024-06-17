@@ -10,7 +10,13 @@ return {
 		config = function()
 			require("neodev").setup {
 				override = function(root_dir, library)
-					if root_dir:find(vim.fn.expand "$HOME/.config/home-manager/src/nvim", 1, true) == 1 then
+					if
+						root_dir:find(
+							vim.fn.expand "$HOME/.config/home-manager/src/nvim",
+							1,
+							true
+						) == 1
+					then
 						library.enabled = true
 						library.plugins = true
 					end
@@ -22,18 +28,33 @@ return {
 			}
 
 			local on_attach = function(_, bufnr)
-				vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+				vim.api.nvim_buf_set_option(
+					bufnr,
+					"omnifunc",
+					"v:lua.vim.lsp.omnifunc"
+				)
 				local opts = { buffer = bufnr, silent = true }
 
 				vim.keymap.set("n", "<Leader>h", vim.lsp.buf.hover, opts)
 				vim.keymap.set("n", "<Leader>gd", vim.lsp.buf.definition, opts)
-				vim.keymap.set("n", "<Leader>gi", vim.lsp.buf.implementation, opts)
+				vim.keymap.set(
+					"n",
+					"<Leader>gi",
+					vim.lsp.buf.implementation,
+					opts
+				)
 				vim.keymap.set("n", "<Leader>gr", vim.lsp.buf.references, opts)
 			end
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			local handlers = {
-				["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
-				["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
+				["textDocument/hover"] = vim.lsp.with(
+					vim.lsp.handlers.hover,
+					{ border = "rounded" }
+				),
+				["textDocument/signatureHelp"] = vim.lsp.with(
+					vim.lsp.handlers.signature_help,
+					{ border = "rounded" }
+				),
 			}
 
 			local lspconfig = require "lspconfig"
@@ -66,7 +87,8 @@ return {
 						}
 					end,
 					["clangd"] = function()
-						local alt_capabilities = require("cmp_nvim_lsp").default_capabilities()
+						local alt_capabilities =
+							require("cmp_nvim_lsp").default_capabilities()
 						alt_capabilities.offsetEncoding = { "utf-16" }
 
 						lspconfig.clangd.setup {
@@ -101,10 +123,22 @@ return {
 				},
 			}
 
-			vim.fn.sign_define("DiagnosticSignError", { text = "●", texthl = "DiagnosticSignError" })
-			vim.fn.sign_define("DiagnosticSignWarn", { text = "●", texthl = "DiagnosticSignWarn" })
-			vim.fn.sign_define("DiagnosticSignInfo", { text = "●", texthl = "DiagnosticSignInfo" })
-			vim.fn.sign_define("DiagnosticSignHint", { text = "●", texthl = "DiagnosticSignHint" })
+			vim.fn.sign_define(
+				"DiagnosticSignError",
+				{ text = "●", texthl = "DiagnosticSignError" }
+			)
+			vim.fn.sign_define(
+				"DiagnosticSignWarn",
+				{ text = "●", texthl = "DiagnosticSignWarn" }
+			)
+			vim.fn.sign_define(
+				"DiagnosticSignInfo",
+				{ text = "●", texthl = "DiagnosticSignInfo" }
+			)
+			vim.fn.sign_define(
+				"DiagnosticSignHint",
+				{ text = "●", texthl = "DiagnosticSignHint" }
+			)
 		end,
 	},
 	{

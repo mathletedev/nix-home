@@ -1,2 +1,3 @@
-quote_style = "ForceDouble"
 call_parentheses = "None"
+column_width = 80
+quote_style = "ForceDouble"

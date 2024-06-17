@@ -98,6 +98,7 @@ in
       pipes
       prettierd
       python311
+      qalculate-gtk
       ripgrep
       roboto
       rustup

@@ -26,7 +26,11 @@ return {
 						dir = "/target/debug/"
 					end
 					---@diagnostic disable-next-line
-					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. dir, "file")
+					return vim.fn.input(
+						"Path to executable: ",
+						vim.fn.getcwd() .. dir,
+						"file"
+					)
 				end,
 				cwd = "${workspaceFolder}",
 				stopAtBeginningOfMainSubprogram = false,
@@ -48,11 +52,26 @@ return {
 
 			require("nvim-dap-virtual-text").setup {}
 
-			vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticSignInfo" })
-			vim.fn.sign_define("DapBreakpointCondition", { text = "", texthl = "DiagnosticSignHint" })
-			vim.fn.sign_define("DapBreakpointRejected", { text = "", texthl = "DiagnosticSignError" })
-			vim.fn.sign_define("DapLogPoint", { text = "", texthl = "DiagnosticSignInfo" })
-			vim.fn.sign_define("DapStopped", { text = "", texthl = "DiagnosticSignOk" })
+			vim.fn.sign_define(
+				"DapBreakpoint",
+				{ text = "", texthl = "DiagnosticSignInfo" }
+			)
+			vim.fn.sign_define(
+				"DapBreakpointCondition",
+				{ text = "", texthl = "DiagnosticSignHint" }
+			)
+			vim.fn.sign_define(
+				"DapBreakpointRejected",
+				{ text = "", texthl = "DiagnosticSignError" }
+			)
+			vim.fn.sign_define(
+				"DapLogPoint",
+				{ text = "", texthl = "DiagnosticSignInfo" }
+			)
+			vim.fn.sign_define(
+				"DapStopped",
+				{ text = "", texthl = "DiagnosticSignOk" }
+			)
 
 			vim.keymap.set("n", "<Leader>d", require("dap").continue)
 			vim.keymap.set("n", "<Leader>s", require("dap").toggle_breakpoint)
