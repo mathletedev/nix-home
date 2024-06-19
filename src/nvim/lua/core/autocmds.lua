@@ -44,11 +44,12 @@ vim.api.nvim_create_autocmd(
 	{ command = "set relativenumber", pattern = "*" }
 )
 
-vim.api.nvim_create_autocmd(
-	"FileType",
-	{ command = "set filetype=astro", pattern = "astro" }
-)
-vim.api.nvim_create_autocmd(
-	"FileType",
-	{ command = "set filetype=cpp", pattern = "tpp" }
-)
+vim.filetype.add {
+	extension = {
+		astro = "astro",
+		tpp = "cpp",
+	},
+	pattern = {
+		["hyprland.conf"] = "hyprlang",
+	},
+}
