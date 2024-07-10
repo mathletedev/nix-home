@@ -74,6 +74,7 @@ in
       libresprite
       lua
       lxgw-wenkai
+      lxqt.lxqt-policykit
       minetest
       musescore
       neovide
@@ -115,6 +116,7 @@ in
       ubuntu_font_family
       ungoogled-chromium
       unzip
+      ventoy
       victor-mono
       vlc
       way-displays
