@@ -12,7 +12,11 @@
   boot = {
     loader = {
       efi.canTouchEfiVariables = true;
-      systemd-boot.enable = true;
+      grub = {
+        enable = true;
+        device = "nodev";
+        useOSProber = true;
+      };
     };
   };
 
@@ -79,7 +83,8 @@
   };
 
   security = {
-    pam.services.swaylock = { };
+    pam.services.hyprlock = { };
+    polkit.enable = true;
     rtkit.enable = true;
   };
 

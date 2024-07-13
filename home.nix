@@ -202,6 +202,17 @@ in
     };
     home-manager.enable = true;
     htop.enable = true;
+    hyprlock = {
+      enable = true;
+      settings = {
+        background = [
+          {
+            path = "/home/neo/Pictures/wallpapers/Countach.jpg";
+            color = "#1e1e2e";
+          }
+        ];
+      };
+    };
     kitty = {
       enable = true;
       extraConfig = builtins.readFile ./src/kitty.conf;
@@ -230,10 +241,6 @@ in
         add_newline = false;
         line_break = { disabled = true; };
       };
-    };
-    swaylock = {
-      settings.color = "000000";
-      enable = true;
     };
     waybar = {
       enable = true;
