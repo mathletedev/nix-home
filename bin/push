@@ -4,6 +4,6 @@ read -e msg
 
 [ $(pwd) == "/home/neo" ] && pushd ~/.config/nixpkgs
 
-eval "git add . && git commit -m \"$msg\" && git push"
+eval "git add -A && git commit -m \"$msg\" && git push"
 
 [ $(pwd) == "/home/neo" ] && popd
