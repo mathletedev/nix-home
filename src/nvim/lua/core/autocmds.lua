@@ -9,6 +9,7 @@ local lang_maps = {
 		build = "mkdir -p build && cd build && cmake .. && make",
 		exec = "cd build && ./main",
 	},
+	gleam = { exec = "gleam run" },
 	go = { build = "go build", exec = "go run %" },
 	haskell = { exec = "cabal run" },
 	java = { build = "javac %", exec = "java %:r" },

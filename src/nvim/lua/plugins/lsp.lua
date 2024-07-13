@@ -116,6 +116,12 @@ return {
 				},
 			}
 
+			lspconfig.gleam.setup {
+				on_attach = on_attach,
+				capabilities = capabilities,
+				handlers = handlers,
+			}
+
 			vim.diagnostic.config {
 				virtual_text = false,
 				virtual_lines = {
