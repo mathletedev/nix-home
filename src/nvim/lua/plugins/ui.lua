@@ -94,5 +94,16 @@ return {
 			}
 		end,
 	},
-	"DaikyXendo/nvim-material-icon",
+	{
+		"DaikyXendo/nvim-material-icon",
+		opts = {
+			override_by_extension = {
+				["gleam"] = {
+					icon = "",
+					color = "#ffaff3",
+					name = "Gleam",
+				},
+			},
+		},
+	},
 }
