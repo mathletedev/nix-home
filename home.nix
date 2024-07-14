@@ -85,13 +85,13 @@ in
       nix-gaming.packages.${pkgs.hostPlatform.system}.wine-ge
       nmap
       nodejs
-      nodePackages.eslint_d
       nodePackages.prettier
       notify-desktop
       obsidian
       oneko
       openssl
       ormolu
+      oxlint
       p7zip
       pavucontrol
       pfetch

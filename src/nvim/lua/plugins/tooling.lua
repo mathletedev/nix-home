@@ -1,5 +1,6 @@
--- formatting plugins
+-- tooling plugins
 return {
+	-- formatting
 	{
 		"stevearc/conform.nvim",
 		opts = {
@@ -10,12 +11,14 @@ return {
 				go = { "gofmt" },
 				haskell = { "ormolu" },
 				javascript = { "prettierd" },
+				javascriptreact = { "prettierd" },
 				json = { "prettierd" },
 				lua = { "stylua" },
 				python = { "black" },
 				rust = { "rustfmt" },
 				svelte = { "prettierd" },
 				typescript = { "prettierd" },
+				typescriptreact = { "prettierd" },
 				yaml = { "prettierd" },
 			},
 			format_after_save = {
@@ -30,5 +33,25 @@ return {
 				},
 			},
 		},
+	},
+	-- linting
+	{
+		"mfussenegger/nvim-lint",
+		config = function()
+			local lint = require "lint"
+
+			lint.linters_by_ft = {
+				astro = { "oxlint" },
+				javascript = { "oxlint" },
+				svelte = { "oxlint" },
+				typescript = { "oxlint" },
+			}
+
+			vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+				callback = function()
+					lint.try_lint()
+				end,
+			})
+		end,
 	},
 }

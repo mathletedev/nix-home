@@ -67,7 +67,6 @@ return {
 					"clangd",
 					"clojure_lsp",
 					"cssls",
-					"eslint",
 					"gopls",
 					"html",
 					"jedi_language_server",
