@@ -15,6 +15,7 @@ return {
 					"clojure",
 					"cpp",
 					"css",
+					"elixir",
 					"gdscript",
 					"gleam",
 					"go",

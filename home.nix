@@ -44,6 +44,8 @@ in
       cmatrix
       discord
       eb-garamond
+      elixir
+      elixir-ls
       erlang
       eza
       firefox-devedition-bin
