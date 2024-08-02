@@ -50,6 +50,7 @@ vim.filetype.add {
 	extension = {
 		astro = "astro",
 		tpp = "cpp",
+		mdx = "markdown.mdx",
 	},
 	pattern = {
 		["hyprland.conf"] = "hyprlang",

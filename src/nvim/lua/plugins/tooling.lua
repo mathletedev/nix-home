@@ -14,6 +14,7 @@ return {
 				javascriptreact = { "prettierd" },
 				json = { "prettierd" },
 				lua = { "stylua" },
+				mdx = { "prettierd" },
 				python = { "black" },
 				rust = { "rustfmt" },
 				svelte = { "prettierd" },
