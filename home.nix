@@ -1,6 +1,7 @@
 { pkgs, ... }:
 
 let
+  pkgsUnstable = import <nixpkgs-unstable> { };
   nix-gaming = import (builtins.fetchTarball "https://github.com/fufexan/nix-gaming/archive/master.tar.gz");
 in
 {
@@ -32,7 +33,7 @@ in
       betterdiscordctl
       black
       blanket
-      bun
+      pkgsUnstable.bun
       cascadia-code
       cava
       clang-tools
@@ -55,7 +56,7 @@ in
       gdtoolkit
       ghc
       gimp
-      gleam
+      pkgsUnstable.gleam
       gnumake
       go
       godot_4
@@ -80,7 +81,7 @@ in
       minetest
       musescore
       neovide
-      neovim
+      pkgsUnstable.neovim
       (nerdfonts.override { fonts = [ "CascadiaCode" ]; })
       networkmanagerapplet
       nitrogen
@@ -93,7 +94,7 @@ in
       oneko
       openssl
       ormolu
-      oxlint
+      pkgsUnstable.oxlint
       p7zip
       pavucontrol
       pfetch

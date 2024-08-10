@@ -169,6 +169,15 @@ return {
 		end,
 	},
 	{
+		"ray-x/lsp_signature.nvim",
+		opts = {
+			bind = true,
+			handler_opts = {
+				border = "rounded",
+			},
+		},
+	},
+	{
 		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
 		opts = {},
 	},
