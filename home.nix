@@ -158,9 +158,10 @@ in
       QT_STYLE_OVERRIDE = "kvantum";
     };
     shellAliases = {
-      ls = "eza --all --long --git";
-      vi = "neovide --size 1x1";
       home = "vi ~/.config/home-manager";
+      ls = "eza --all --long --git";
+      nix-xilinx = "nix run gitlab:doronbehar/nix-xilinx#xilinx-shell";
+      vi = "neovide --size 1x1";
       vim = "vi";
     };
     stateVersion = "24.05";
