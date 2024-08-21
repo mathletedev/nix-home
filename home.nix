@@ -2,7 +2,7 @@
 
 let
   pkgsUnstable = import <nixpkgs-unstable> { };
-  nix-gaming = import (builtins.fetchTarball "https://github.com/fufexan/nix-gaming/archive/master.tar.gz");
+  # nix-gaming = import (builtins.fetchTarball "https://github.com/fufexan/nix-gaming/archive/master.tar.gz");
 in
 {
   home = {
@@ -18,6 +18,10 @@ in
 
         [font.features]
         "Cascadia Code" = [ "+ss01"  ]
+      '';
+      ".config/xilinx/nix.sh".text = ''
+        INSTALL_DIR=$HOME/tools/Xilinx
+        VERSION=2024.1
       '';
       ".npmrc".text = "prefix=~/.npm-packages";
     };
@@ -85,7 +89,7 @@ in
       (nerdfonts.override { fonts = [ "CascadiaCode" ]; })
       networkmanagerapplet
       nitrogen
-      nix-gaming.packages.${pkgs.hostPlatform.system}.wine-ge
+      # nix-gaming.packages.${pkgs.hostPlatform.system}.wine-ge
       nmap
       nodejs
       nodePackages.prettier
@@ -133,6 +137,7 @@ in
       })
       xournalpp
       xwaylandvideobridge
+      xz
       zip
     ];
     pointerCursor = {
@@ -163,6 +168,7 @@ in
       nix-xilinx = "nix run gitlab:doronbehar/nix-xilinx#xilinx-shell";
       vi = "neovide --size 1x1";
       vim = "vi";
+      vivado = "nix run gitlab:doronbehar/nix-xilinx#vivado";
     };
     stateVersion = "24.05";
     username = "neo";
@@ -271,13 +277,6 @@ in
             interval = 1;
             format = " <span size='x-large'>{icon}</span> ";
             format-charging = " <span size='x-large'>󰚥</span> ";
-            states = {
-              warning = 30;
-              critical = 15;
-            };
-            format-warning = " <span size='x-large'>{icon}</span> ";
-            format-critical = " <span size='x-large'>{icon}</span> ";
-            format-full = " <span size='x-large'></span> ";
             format-icons = [ "" "" "" "" "" ];
           };
           pulseaudio = {

@@ -35,6 +35,7 @@ return {
 					"svelte",
 					"tsx",
 					"typescript",
+					"verilog",
 					"yaml",
 				},
 				sync_install = false,

@@ -69,6 +69,7 @@ return {
 					"cssls",
 					"elixirls",
 					"gopls",
+					"hdl_checker",
 					"html",
 					"jedi_language_server",
 					"lua_ls",
