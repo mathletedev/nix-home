@@ -7,11 +7,11 @@
 This repository contains my development environment that I use for school and work.
 Feel free to copy my dotfiles or leave suggestions!
 
-## 🎨 Colour Scheme ([Catppuccin](https://github.com/catppuccin/catppuccin))
+## 🎨 Colour Scheme • [Catppuccin](https://github.com/catppuccin/catppuccin)
 
 The common theme across all my applications! I use the **Mocha** flavour.
 
-## 📝 Editor ([Neovim](https://neovim.io))
+## 📝 Editor • [Neovim](https://neovim.io)
 
 A sweet command-based editor that speeds up coding.
 Even if you don't want to use Neovim, I recommend getting a Vim bindings plugin in an editor like VSCode.
@@ -35,18 +35,18 @@ I use [lazy.nvim](https://github.com/folke/lazy.nvim) to manage plugins.
 
 </details>
 
-## 💾 Terminal ([kitty](https://sw.kovidgoyal.net/kitty))
+## 💾 Terminal • [kitty](https://sw.kovidgoyal.net/kitty)
 
 I use [fish](https://fishshell.com) to make using the CLI easier.
 [Starship](https://starship.rs) gives a clean look to the prompt!
 
-## 🪟 Tiling Compositor ([Hyprland](https://hyprland.org))
+## 🪟 Tiling Compositor • [Hyprland](https://hyprland.org)
 
 Tiling windows means I can navigate quickly and effortlessly to what I need.
 I recommend compiling a list of keybinds that you find easy to remember and use.
 I previously used [XMonad](https://xmonad.org); its configs are under the `archive/xmonad` branch.
 
-## 🛠️ Managing dotfiles ([Home Manager](https://nix-community.github.io/home-manager))
+## 🛠️ Managing dotfiles • [Home Manager](https://nix-community.github.io/home-manager)
 
 I dislike having a system that requires mental gymnastics to understand.
 Home Manager allows for a declarative approach to installing and configuring software.
