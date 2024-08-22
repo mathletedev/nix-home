@@ -242,7 +242,7 @@ in
         sidebar-mode = true;
       };
       package = pkgs.rofi-wayland;
-      theme = ./assets/rofi.rasi;
+      theme = ./src/rofi.rasi;
     };
     starship = {
       enable = true;
@@ -276,7 +276,7 @@ in
           battery = {
             interval = 1;
             format = " <span size='x-large'>{icon}</span> ";
-            format-charging = " <span size='x-large'>󰚥</span> ";
+            format-charging = " <span size='x-large'>󱐋</span> ";
             format-icons = [ "" "" "" "" "" ];
           };
           pulseaudio = {
@@ -293,7 +293,7 @@ in
           };
         };
       };
-      style = ./assets/waybar.css;
+      style = ./src/waybar.css;
     };
     zoxide = {
       enable = true;
