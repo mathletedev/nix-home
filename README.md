@@ -2,6 +2,8 @@
 
 > [NixOS](https://nixos.org) & [Home Manager](https://nix-community.github.io/home-manager) configuration files
 
+![image](https://github.com/user-attachments/assets/e27efc0a-7b33-48e7-b991-cad44bf03ffb)
+
 This repository contains my development environment that I use for school and work.
 Feel free to copy my dotfiles or leave suggestions!
 
