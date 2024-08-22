@@ -19,6 +19,7 @@ All of my config for Neovim is under `src/nvim`.
 I use [lazy.nvim](https://github.com/folke/lazy.nvim) to manage plugins.
 
 <details><summary>Awesome plugins</summary>
+
 - `mason.nvim`: LSP manager
 - `nvim-treesitter`: Improved syntax highlighting
 - `nvim-cmp`: Code completion engine
@@ -31,6 +32,7 @@ I use [lazy.nvim](https://github.com/folke/lazy.nvim) to manage plugins.
 - `dashboard-nvim`: Startup page
 - `nvim-material-icon`: Icon set for files
 - `presence.nvim`: Discord rich presence to flex
+
 </details>
 
 ## Terminal ([kitty](https://sw.kovidgoyal.net/kitty))
