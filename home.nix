@@ -278,6 +278,10 @@ in
             format = " <span size='x-large'>{icon}</span> ";
             format-charging = " <span size='x-large'>󱐋</span> ";
             format-icons = [ "" "" "" "" "" ];
+            states = {
+              warning = 30;
+              critical = 15;
+            };
           };
           pulseaudio = {
             format = "<span size='x-large'>{icon}</span>";
