@@ -49,6 +49,7 @@ in
       cmatrix
       discord
       eb-garamond
+      pkgsUnstable.electron-mail
       elixir
       elixir-ls
       erlang
@@ -105,6 +106,7 @@ in
       piper
       pipes
       prettierd
+      protonvpn-gui
       python311
       qalculate-gtk
       ripgrep
