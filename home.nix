@@ -55,6 +55,7 @@ in
       erlang
       eza
       firefox-devedition-bin
+      foliate
       font-awesome
       gcc14
       gdb
@@ -124,6 +125,7 @@ in
       tty-clock
       ubuntu_font_family
       ungoogled-chromium
+      usbutils
       unzip
       ventoy
       victor-mono
