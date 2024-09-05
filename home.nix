@@ -28,6 +28,7 @@ in
     homeDirectory = "/home/neo";
     keyboard.options = [ "caps:escape" ];
     packages = with pkgs; [
+      air
       alsa-utils
       android-file-transfer
       appimage-run
