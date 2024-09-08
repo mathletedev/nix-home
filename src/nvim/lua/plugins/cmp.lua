@@ -18,24 +18,19 @@ return {
 			}
 
 			cmp.setup {
-				formatting = {
-					format = lspkind.cmp_format {},
-				},
-				snippet = {
-					expand = function(args)
-						ls.lsp_expand(args.body)
-					end,
+				sources = {
+					{ name = "copilot" },
+					{ name = "nvim_lsp" },
+					{ name = "luasnip" },
 				},
 				mapping = cmp.mapping.preset.insert {
 					["<C-Space>"] = cmp.mapping.complete(),
-					["<CR>"] = cmp.mapping.confirm {
+					["<Tab>"] = cmp.mapping.confirm {
 						behavior = cmp.ConfirmBehavior.Replace,
 						select = true,
 					},
-					["<Tab>"] = cmp.mapping(function(fallback)
-						if require("copilot.suggestion").is_visible() then
-							require("copilot.suggestion").accept()
-						elseif cmp.visible() then
+					["C-n"] = cmp.mapping(function(fallback)
+						if cmp.visible() then
 							cmp.select_next_item()
 						elseif ls.expand_or_jumpable() then
 							ls.expand_or_jump()
@@ -43,7 +38,7 @@ return {
 							fallback()
 						end
 					end, { "i", "s" }),
-					["<S-Tab>"] = cmp.mapping(function(fallback)
+					["C-p"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_prev_item()
 						elseif ls.jumpable(-1) then
@@ -53,7 +48,23 @@ return {
 						end
 					end, { "i", "s" }),
 				},
-				sources = { { name = "nvim_lsp" }, { name = "luasnip" } },
+				formatting = {
+					format = lspkind.cmp_format {
+						mode = "symbol",
+						symbol_map = {
+							Copilot = "",
+						},
+					},
+				},
+				snippet = {
+					expand = function(args)
+						ls.lsp_expand(args.body)
+					end,
+				},
+				window = {
+					completion = cmp.config.window.bordered(),
+					documentation = cmp.config.window.bordered(),
+				},
 			}
 		end,
 	},
