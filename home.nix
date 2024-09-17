@@ -7,6 +7,10 @@ in
 {
   home = {
     file = {
+      ".config/helix" = {
+        source = ./src/helix;
+        recursive = true;
+      };
       ".config/nvim" = {
         source = ./src/nvim;
         recursive = true;
@@ -215,6 +219,7 @@ in
       userName = "Neal Wang";
       userEmail = "nealwang.sh@protonmail.com";
     };
+    helix.enable = true;
     home-manager.enable = true;
     htop.enable = true;
     hyprlock = {

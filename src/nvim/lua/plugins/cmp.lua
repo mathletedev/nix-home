@@ -25,7 +25,7 @@ return {
 				},
 				mapping = cmp.mapping.preset.insert {
 					["<C-Space>"] = cmp.mapping.complete(),
-					["<Tab>"] = cmp.mapping.confirm {
+					["<C-k>"] = cmp.mapping.confirm {
 						behavior = cmp.ConfirmBehavior.Replace,
 						select = true,
 					},
