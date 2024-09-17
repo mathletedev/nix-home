@@ -29,7 +29,7 @@ return {
 						behavior = cmp.ConfirmBehavior.Replace,
 						select = true,
 					},
-					["C-n"] = cmp.mapping(function(fallback)
+					["<C-n>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_next_item()
 						elseif ls.expand_or_jumpable() then
@@ -38,7 +38,7 @@ return {
 							fallback()
 						end
 					end, { "i", "s" }),
-					["C-p"] = cmp.mapping(function(fallback)
+					["<C-p>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_prev_item()
 						elseif ls.jumpable(-1) then
