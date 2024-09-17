@@ -65,7 +65,7 @@ in
       gimp
       pkgsUnstable.gleam
       gnumake
-      go
+      pkgsUnstable.go_1_23
       godot_4
       grim
       grimblast
