@@ -26,12 +26,13 @@ return {
 				},
 			}
 
-			vim.keymap.set(
-				"n",
-				"<Leader>p",
-				":BufferLinePick<CR>",
-				{ silent = true }
-			)
+			-- <Leader>p used by harpoon
+			-- vim.keymap.set(
+			-- 	"n",
+			-- 	"<Leader>p",
+			-- 	":BufferLinePick<CR>",
+			-- 	{ silent = true }
+			-- )
 			vim.keymap.set(
 				"n",
 				"<Leader>`",
