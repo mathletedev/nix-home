@@ -113,7 +113,8 @@ in
       pipes
       prettierd
       protonvpn-gui
-      python311
+      python3
+      python312Packages.pip
       qalculate-gtk
       ripgrep
       roboto
