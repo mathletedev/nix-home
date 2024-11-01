@@ -69,8 +69,8 @@ in
       gimp
       pkgsUnstable.gleam
       gnumake
-      pkgsUnstable.go_1_23
-      godot_4
+      pkgsUnstable.go
+      pkgsUnstable.godot_4
       grim
       grimblast
       haskell-language-server
@@ -78,6 +78,7 @@ in
       heroic
       hunspell
       hunspellDicts.en_GB-ise
+      inkscape
       jdk11
       jetbrains.clion
       kdenlive
