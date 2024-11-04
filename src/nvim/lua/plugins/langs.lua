@@ -28,4 +28,19 @@ return {
 			}
 		end,
 	},
+	{
+		"nvim-flutter/flutter-tools.nvim",
+		lazy = false,
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"stevearc/dressing.nvim",
+		},
+		config = function()
+			local lsp = require("core.common").lsp
+
+			require("flutter-tools").setup {
+				lsp = lsp,
+			}
+		end,
+	},
 }

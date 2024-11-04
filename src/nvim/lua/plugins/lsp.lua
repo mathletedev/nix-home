@@ -27,37 +27,8 @@ return {
 				PATH = "append",
 			}
 
-			local on_attach = function(_, bufnr)
-				vim.api.nvim_buf_set_option(
-					bufnr,
-					"omnifunc",
-					"v:lua.vim.lsp.omnifunc"
-				)
-				local opts = { buffer = bufnr, silent = true }
-
-				vim.keymap.set("n", "<Leader>h", vim.lsp.buf.hover, opts)
-				vim.keymap.set("n", "<Leader>gd", vim.lsp.buf.definition, opts)
-				vim.keymap.set(
-					"n",
-					"<Leader>gi",
-					vim.lsp.buf.implementation,
-					opts
-				)
-				vim.keymap.set("n", "<Leader>gr", vim.lsp.buf.references, opts)
-			end
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-			local handlers = {
-				["textDocument/hover"] = vim.lsp.with(
-					vim.lsp.handlers.hover,
-					{ border = "rounded" }
-				),
-				["textDocument/signatureHelp"] = vim.lsp.with(
-					vim.lsp.handlers.signature_help,
-					{ border = "rounded" }
-				),
-			}
-
 			local lspconfig = require "lspconfig"
+			local lsp = require("core.common").lsp
 
 			require("mason-lspconfig").setup {
 				automatic_installation = true,
@@ -83,9 +54,9 @@ return {
 				handlers = {
 					function(server)
 						lspconfig[server].setup {
-							on_attach = on_attach,
-							capabilities = capabilities,
-							handlers = handlers,
+							on_attach = lsp.on_attach,
+							capabilities = lsp.capabilities,
+							handlers = lsp.handlers,
 						}
 					end,
 					["clangd"] = function()
@@ -94,16 +65,16 @@ return {
 						alt_capabilities.offsetEncoding = { "utf-16" }
 
 						lspconfig.clangd.setup {
-							on_attach = on_attach,
-							capabilities = capabilities,
-							handlers = handlers,
+							on_attach = lsp.on_attach,
+							capabilities = lsp.capabilities,
+							handlers = lsp.handlers,
 						}
 					end,
 					["lua_ls"] = function()
 						lspconfig.lua_ls.setup {
-							on_attach = on_attach,
-							capabilities = capabilities,
-							handlers = handlers,
+							on_attach = lsp.on_attach,
+							capabilities = lsp.capabilities,
+							handlers = lsp.handlers,
 							settings = {
 								Lua = {
 									completion = { callSnippet = "Replace" },
@@ -119,9 +90,9 @@ return {
 			}
 
 			lspconfig.gleam.setup {
-				on_attach = on_attach,
-				capabilities = capabilities,
-				handlers = handlers,
+				on_attach = lsp.on_attach,
+				capabilities = lsp.capabilities,
+				handlers = lsp.handlers,
 			}
 
 			vim.diagnostic.config {

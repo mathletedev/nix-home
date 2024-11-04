@@ -47,19 +47,15 @@ in
       cava
       clang-tools
       cling
-      cljfmt
-      clojure
-      clojure-lsp
       cmake
       cmatrix
       discord
       eb-garamond
       pkgsUnstable.electron-mail
-      elixir
-      elixir-ls
       erlang
       eza
       firefox-devedition-bin
+      flutter
       foliate
       font-awesome
       gcc14
@@ -83,7 +79,6 @@ in
       jetbrains.clion
       kdenlive
       krita
-      leiningen
       libqalculate
       libreoffice-qt
       libresprite
