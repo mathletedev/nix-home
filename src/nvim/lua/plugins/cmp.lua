@@ -75,7 +75,7 @@ return {
 				disable_keymaps = true,
 			}
 
-			vim.keymap.set("i", "<C-Tab>", function()
+			vim.keymap.set("i", "<C-j>", function()
 				local suggestion = require "supermaven-nvim.completion_preview"
 
 				if suggestion.has_suggestion() then

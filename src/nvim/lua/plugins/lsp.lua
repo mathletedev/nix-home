@@ -132,7 +132,10 @@ return {
 					keys = { quit = "<Esc>" },
 				},
 				finder = {
-					keys = { quit = "<Esc>" },
+					keys = {
+						quit = "<Esc>",
+						toggle_or_open = "<CR>",
+					},
 				},
 				lightbulb = { enable = false },
 				rename = {
