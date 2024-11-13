@@ -6,7 +6,7 @@ return {
 			"L3MON4D3/LuaSnip",
 			"onsails/lspkind.nvim",
 			"saadparwaiz1/cmp_luasnip",
-			"zbirenbaum/copilot.lua",
+			"supermaven-inc/supermaven-nvim",
 		},
 		config = function()
 			local cmp = require "cmp"
@@ -19,7 +19,7 @@ return {
 
 			cmp.setup {
 				sources = {
-					{ name = "copilot" },
+					{ name = "supermaven" },
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 				},
@@ -52,7 +52,7 @@ return {
 					format = lspkind.cmp_format {
 						mode = "symbol",
 						symbol_map = {
-							Copilot = "",
+							Supermaven = "",
 						},
 					},
 				},
@@ -66,6 +66,22 @@ return {
 					documentation = cmp.config.window.bordered(),
 				},
 			}
+		end,
+	},
+	{
+		"supermaven-inc/supermaven-nvim",
+		config = function()
+			require("supermaven-nvim").setup {
+				disable_keymaps = true,
+			}
+
+			vim.keymap.set("i", "<C-Tab>", function()
+				local suggestion = require "supermaven-nvim.completion_preview"
+
+				if suggestion.has_suggestion() then
+					suggestion.on_accept_suggestion()
+				end
+			end)
 		end,
 	},
 }
