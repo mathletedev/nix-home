@@ -33,6 +33,7 @@ return {
 					"rust",
 					"sql",
 					"svelte",
+					"tcl",
 					"tsx",
 					"typescript",
 					"verilog",

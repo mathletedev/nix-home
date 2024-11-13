@@ -12,12 +12,7 @@ vim.lsp.start {
 	on_attach = function(_, bufnr)
 		vim.api.nvim_command("echo serverstart(\"" .. pipe .. "\")")
 
-		local opts = { buffer = bufnr, silent = true }
-
-		vim.keymap.set("n", "<Leader>h", vim.lsp.buf.hover, opts)
-		vim.keymap.set("n", "<Leader>i", vim.lsp.buf.definition, opts)
-		vim.keymap.set("n", "<Leader>r", vim.lsp.buf.rename, opts)
-		vim.keymap.set("n", "<Leader>a", vim.lsp.buf.code_action, opts)
+		require("core.common").lsp.on_attach(_, bufnr)
 	end,
 	handlers = {
 		["textDocument/hover"] = vim.lsp.with(

@@ -1,6 +1,10 @@
 return {
 	lsp = {
 		on_attach = function(_, bufnr)
+			if bufnr == nil then
+				bufnr = vim.fn.bufnr()
+			end
+
 			vim.api.nvim_buf_set_option(
 				bufnr,
 				"omnifunc",
@@ -8,10 +12,10 @@ return {
 			)
 			local opts = { buffer = bufnr, silent = true }
 
-			vim.keymap.set("n", "<Leader>h", vim.lsp.buf.hover, opts)
-			vim.keymap.set("n", "<Leader>gd", vim.lsp.buf.definition, opts)
-			vim.keymap.set("n", "<Leader>gi", vim.lsp.buf.implementation, opts)
-			vim.keymap.set("n", "<Leader>gr", vim.lsp.buf.references, opts)
+			vim.keymap.set("n", "<Leader>h", ":Lspsaga hover_doc<CR>", opts)
+			vim.keymap.set("n", "<Leader>a", ":Lspsaga code_action<CR>", opts)
+			vim.keymap.set("n", "<Leader>r", ":Lspsaga rename<CR>", opts)
+			vim.keymap.set("n", "<Leader>d", ":Lspsaga finder<CR>", opts)
 		end,
 		capabilities = require("cmp_nvim_lsp").default_capabilities(),
 		handlers = {

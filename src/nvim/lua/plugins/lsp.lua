@@ -131,13 +131,14 @@ return {
 				code_action = {
 					keys = { quit = "<Esc>" },
 				},
+				finder = {
+					keys = { quit = "<Esc>" },
+				},
 				lightbulb = { enable = false },
 				rename = {
 					keys = { quit = "<Esc>" },
 				},
 			}
-			vim.keymap.set("n", "<Leader>r", ":Lspsaga rename<CR>")
-			vim.keymap.set("n", "<Leader>a", ":Lspsaga code_action<CR>")
 		end,
 	},
 	{

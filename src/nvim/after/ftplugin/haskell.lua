@@ -1,6 +1,5 @@
-vim.keymap.set("n", "<Leader>h", vim.lsp.buf.hover)
-vim.keymap.set("n", "<Leader>gd", vim.lsp.buf.definition)
-vim.keymap.set("n", "<Leader>gi", vim.lsp.buf.implementation)
-vim.keymap.set("n", "<Leader>gr", vim.lsp.buf.references)
-vim.keymap.set("n", "<Leader>r", ":Lspsaga rename<CR>")
-vim.keymap.set("n", "<Leader>a", ":Lspsaga code_action<CR>")
+vim.o.expandtab = true
+vim.o.shiftwidth = 2
+vim.o.tabstop = 2
+
+require("core.common").lsp.on_attach(_, nil)
