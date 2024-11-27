@@ -3,7 +3,7 @@
 {
   imports = [ ./hardware-configuration.nix ];
 
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
 
   nixpkgs.config.allowUnfree = true;
 
@@ -73,7 +73,46 @@
       '';
     };
     ratbagd.enable = true;
-    udev.packages = with pkgs; [ android-udev-rules libwacom ];
+    udev = {
+      extraRules = ''
+        SUBSYSTEM=="usb", ATTRS{idVendor}=="0d28", ATTRS{idProduct}=="0204", MODE="0666"
+      '';
+      packages = with pkgs; [
+        android-udev-rules
+        libwacom
+        (writeTextFile {
+          name = "52-xilinx-digilent-usb.rules";
+          text = ''
+            ATTR{idVendor}=="1443", MODE:="666"
+            ACTION=="add", ATTR{idVendor}=="0403", ATTR{manufacturer}=="Digilent", MODE:="666"
+          '';
+
+          destination = "/etc/udev/rules.d/52-xilinx-digilent-usb.rules";
+        })
+        (writeTextFile {
+          name = "52-xilinx-ftdi-usb.rules";
+          text = ''
+            ACTION=="add", ATTR{idVendor}=="0403", ATTR{manufacturer}=="Xilinx", MODE:="666"
+          '';
+
+          destination = "/etc/udev/rules.d/52-xilinx-ftdi-usb.rules";
+        })
+        (writeTextFile {
+          name = "52-xilinx-pcusb.rules";
+          text = ''
+            ATTR{idVendor}=="03fd", ATTR{idProduct}=="0008", MODE="666"
+            ATTR{idVendor}=="03fd", ATTR{idProduct}=="0007", MODE="666"
+            ATTR{idVendor}=="03fd", ATTR{idProduct}=="0009", MODE="666"
+            ATTR{idVendor}=="03fd", ATTR{idProduct}=="000d", MODE="666"
+            ATTR{idVendor}=="03fd", ATTR{idProduct}=="000f", MODE="666"
+            ATTR{idVendor}=="03fd", ATTR{idProduct}=="0013", MODE="666"
+            ATTR{idVendor}=="03fd", ATTR{idProduct}=="0015", MODE="666"
+          '';
+
+          destination = "/etc/udev/rules.d/52-xilinx-pcusb.rules";
+        })
+      ];
+    };
     udisks2.enable = true;
     upower.enable = true;
     xserver = {
@@ -93,7 +132,7 @@
       enable = true;
       powerOnBoot = true;
     };
-    opengl.driSupport32Bit = true;
+    graphics.enable32Bit = true;
     opentabletdriver.enable = true;
   };
 
@@ -103,10 +142,6 @@
     adb.enable = true;
     dconf.enable = true;
     fish.enable = true;
-    hyprland = {
-      enable = true;
-      xwayland.enable = true;
-    };
   };
 
   gtk.iconCache.enable = true;

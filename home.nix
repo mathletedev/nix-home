@@ -18,7 +18,7 @@ in
       ".config/neovide/config.toml".text = ''
         [font]
         normal = [ "Cascadia Code" ]
-        size = 16
+        size = 12
 
         [font.features]
         "Cascadia Code" = [ "+ss01"  ]
@@ -44,7 +44,7 @@ in
       blanket
       pkgsUnstable.bun
       cascadia-code
-      cava
+      # cava
       clang-tools
       cling
       cmake
@@ -60,7 +60,7 @@ in
       font-awesome
       gcc14
       gdb
-      gdtoolkit
+      gdtoolkit_4
       ghc
       gimp
       pkgsUnstable.gleam
@@ -136,7 +136,7 @@ in
       wl-clipboard
       (xfce.thunar.override {
         thunarPlugins = [
-          gnome.file-roller
+          file-roller
           xfce.thunar-archive-plugin
           xfce.tumbler
         ];
@@ -172,7 +172,7 @@ in
       home = "vi ~/.config/home-manager";
       ls = "eza --all --long --git";
       nix-xilinx = "nix run gitlab:doronbehar/nix-xilinx#xilinx-shell";
-      vi = "neovide --size 1x1";
+      vi = "neovide --fork";
       vim = "vi";
       vivado = "nix run gitlab:doronbehar/nix-xilinx#vivado";
     };
