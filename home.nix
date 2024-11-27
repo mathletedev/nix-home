@@ -355,12 +355,9 @@ in
       };
     };
     theme = {
-      name = "Catppuccin-Mocha-Compact-Lavender-Dark";
-      package = pkgs.catppuccin-gtk.override {
-        accents = [ "lavender" ];
-        size = "compact";
-        tweaks = [ "rimless" ];
-        variant = "mocha";
+      name = "Colloid-Dark-Catppuccin";
+      package = pkgs.colloid-gtk-theme.override {
+        tweaks = [ "catppuccin" "black" "rimless" ];
       };
     };
   };
