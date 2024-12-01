@@ -93,6 +93,7 @@ in
       networkmanagerapplet
       nitrogen
       # nix-gaming.packages.${pkgs.hostPlatform.system}.wine-ge
+      nix-output-monitor
       nmap
       nodejs
       nodePackages.prettier

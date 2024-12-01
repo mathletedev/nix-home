@@ -95,6 +95,12 @@ return {
 				handlers = lsp.handlers,
 			}
 
+			lspconfig.gdscript.setup {
+				on_attach = lsp.on_attach,
+				capabilities = lsp.capabilities,
+				handlers = lsp.handlers,
+			}
+
 			vim.diagnostic.config {
 				virtual_text = false,
 				virtual_lines = {

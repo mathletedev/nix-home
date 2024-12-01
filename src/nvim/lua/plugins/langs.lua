@@ -1,10 +1,6 @@
 -- language-specific plugins
 return {
 	{
-		"habamax/vim-godot",
-		ft = "gdscript",
-	},
-	{
 		"mrcjkb/haskell-tools.nvim",
 		ft = "haskell",
 	},
