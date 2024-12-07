@@ -13,6 +13,7 @@
     loader = {
       efi.canTouchEfiVariables = true;
       grub = {
+        efiSupport = true;
         enable = true;
         device = "nodev";
         useOSProber = true;
