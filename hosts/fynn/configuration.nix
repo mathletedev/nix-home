@@ -45,16 +45,20 @@
 
   services = {
     blueman.enable = true;
-    fprintd = {
-      enable = true;
-      tod = {
-        enable = true;
-        driver = pkgs.libfprint-2-tod1-goodix;
-      };
-    };
+    # sometimes stops working
+    # fprintd = {
+    #   enable = true;
+    #   tod = {
+    #     enable = true;
+    #     driver = pkgs.libfprint-2-tod1-goodix;
+    #   };
+    # };
     illum.enable = true;
     input-remapper.enable = true;
-    logind.lidSwitch = "suspend";
+    logind = {
+      lidSwitch = "suspend-then-hibernate";
+      powerKey = "suspend-then-hibernate";
+    };
     pipewire = {
       alsa = {
         enable = true;
@@ -119,6 +123,7 @@
     xserver = {
       displayManager.startx.enable = true;
       enable = true;
+      xkb.options = "caps:swapescape";
     };
   };
 
@@ -140,10 +145,13 @@
   environment.systemPackages = with pkgs; [ git ];
 
   programs = {
-    adb.enable = true;
     dconf.enable = true;
     fish.enable = true;
   };
+
+  systemd.sleep.extraConfig = ''
+    HibernateDelaySec=30m
+  '';
 
   gtk.iconCache.enable = true;
 
