@@ -283,8 +283,8 @@ in
           };
           battery = {
             interval = 1;
-            format = " <span size='x-large'>{icon}</span> ";
-            format-charging = " <span size='x-large'>󱐋</span> ";
+            format = " <span size='x-large'>{icon}</span> <span size='small' rise='4000'>{capacity}% </span>";
+            format-charging = " <span size='x-large'>󱐋</span> <span size='small' rise='4000'>{capacity}% </span>";
             format-icons = [ "" "" "" "" "" ];
             states = {
               warning = 30;
@@ -292,7 +292,7 @@ in
             };
           };
           pulseaudio = {
-            format = "<span size='x-large'>{icon}</span>";
+            format = " <span size='x-large'>{icon}</span> <span size='small' rise='4000'>{volume}%</span>";
             format-muted = "󰖁";
             format-icons = {
               default = [ "" "" "" "" ];
