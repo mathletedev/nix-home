@@ -173,7 +173,8 @@ in
       home = "vi ~/.config/home-manager";
       ls = "eza --all --long --git";
       nix-xilinx = "nix run gitlab:doronbehar/nix-xilinx#xilinx-shell";
-      vi = "neovide --fork";
+      vi = "nvim";
+      # vi = "neovide --fork";
       vim = "vi";
       vivado = "nix run gitlab:doronbehar/nix-xilinx#vivado";
     };
@@ -234,6 +235,7 @@ in
     kitty = {
       enable = true;
       extraConfig = builtins.readFile ./src/kitty.conf;
+      package = pkgsUnstable.kitty;
     };
     obs-studio.enable = true;
     rofi = {
