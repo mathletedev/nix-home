@@ -44,6 +44,7 @@ return {
 					"jedi_language_server",
 					"lua_ls",
 					"mdx_analyzer",
+					"ocamllsp",
 					"rnix",
 					"svelte",
 					"tailwindcss",
