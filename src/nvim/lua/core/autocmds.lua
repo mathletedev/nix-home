@@ -22,6 +22,12 @@ local lang_maps = {
 }
 
 for lang, data in pairs(lang_maps) do
+	local f, _ = io.open("Makefile", "r")
+	if f then
+		data.build = "make build"
+		data.exec = "make exec"
+	end
+
 	if data.build ~= nil then
 		vim.api.nvim_create_autocmd("FileType", {
 			command = "nnoremap <Leader>b :!" .. data.build .. "<CR>",
