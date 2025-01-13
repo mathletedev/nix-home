@@ -29,7 +29,7 @@ return {
 					"markdown",
 					"markdown_inline",
 					"nix",
-					"ocaml",
+					-- "ocaml",
 					"python",
 					"rust",
 					"sql",

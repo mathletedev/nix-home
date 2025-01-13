@@ -15,7 +15,7 @@ return {
 				json = { "prettierd" },
 				lua = { "stylua" },
 				mdx = { "prettierd" },
-				ocaml = { "ocamlformat" },
+				-- ocaml = { "ocamlformat" },
 				python = { "black" },
 				rust = { "rustfmt" },
 				svelte = { "prettierd" },

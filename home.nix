@@ -50,7 +50,7 @@ in
       cmake
       cmatrix
       discord
-      dune_3
+      # dune_3
       eb-garamond
       pkgsUnstable.electron-mail
       erlang
@@ -100,10 +100,10 @@ in
       nodePackages.prettier
       notify-desktop
       obsidian
-      ocaml
-      ocamlPackages.ocaml-lsp
-      ocamlPackages.ocamlformat
-      ocamlPackages.utop
+      # ocaml
+      # ocamlPackages.ocaml-lsp
+      # ocamlPackages.ocamlformat
+      # ocamlPackages.utop
       oneko
       opam
       openssl
