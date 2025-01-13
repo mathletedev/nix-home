@@ -4,6 +4,10 @@ return {
 		name = "catppuccin",
 		priority = 1000,
 		config = function()
+			require("catppuccin").setup {
+				transparent_background = true,
+			}
+
 			vim.g.catppuccin_flavour = "mocha"
 			vim.cmd.colorscheme "catppuccin"
 		end,
@@ -11,7 +15,51 @@ return {
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = {
-			"akinsho/bufferline.nvim",
+			"catppuccin/nvim",
+		},
+		opts = {
+			options = {
+				theme = "catppuccin",
+				component_separators = "|",
+				section_separators = { left = "", right = "" },
+			},
+			sections = {
+				lualine_a = {
+					{
+						"mode",
+						separator = { left = "" },
+						right_padding = 2,
+					},
+				},
+				lualine_b = {
+					"filename",
+					"branch",
+					{ "diff", colored = false },
+				},
+				lualine_c = {},
+				lualine_x = {},
+				lualine_y = { "filetype", "progress" },
+				lualine_z = {
+					{
+						"location",
+						separator = { right = "" },
+						left_padding = 2,
+					},
+				},
+			},
+			inactive_sections = {
+				lualine_a = { "filename" },
+				lualine_b = {},
+				lualine_c = {},
+				lualine_x = {},
+				lualine_y = {},
+				lualine_z = {},
+			},
+		},
+	},
+	{
+		"akinsho/bufferline.nvim",
+		dependencies = {
 			"catppuccin/nvim",
 		},
 		config = function()
@@ -24,75 +72,18 @@ return {
 					end,
 					separator_style = "slant",
 				},
+				-- https://github.com/catppuccin/nvim?tab=readme-ov-file#integrations
+				highlights = require(
+					"catppuccin.groups.integrations.bufferline"
+				).get(),
 			}
 
-			-- <Leader>p used by harpoon
-			-- vim.keymap.set(
-			-- 	"n",
-			-- 	"<Leader>p",
-			-- 	":BufferLinePick<CR>",
-			-- 	{ silent = true }
-			-- )
 			vim.keymap.set(
 				"n",
 				"<Leader>`",
 				":BufferLineTogglePin<CR>",
 				{ silent = true }
 			)
-
-			local cp = require("catppuccin.palettes").get_palette()
-			local custom_catppuccin = require "lualine.themes.catppuccin"
-
-			custom_catppuccin.normal.b.bg = cp.surface0
-			custom_catppuccin.normal.c.bg = cp.base
-			custom_catppuccin.insert.b.bg = cp.surface0
-			custom_catppuccin.command.b.bg = cp.surface0
-			custom_catppuccin.visual.b.bg = cp.surface0
-			custom_catppuccin.replace.b.bg = cp.surface0
-			custom_catppuccin.inactive.a.bg = cp.base
-			custom_catppuccin.inactive.b.bg = cp.base
-			custom_catppuccin.inactive.b.fg = cp.surface0
-			custom_catppuccin.inactive.c.bg = cp.base
-
-			require("lualine").setup {
-				options = {
-					theme = custom_catppuccin,
-					component_separators = "|",
-					section_separators = { left = "", right = "" },
-				},
-				sections = {
-					lualine_a = {
-						{
-							"mode",
-							separator = { left = "" },
-							right_padding = 2,
-						},
-					},
-					lualine_b = {
-						"filename",
-						"branch",
-						{ "diff", colored = false },
-					},
-					lualine_c = {},
-					lualine_x = {},
-					lualine_y = { "filetype", "progress" },
-					lualine_z = {
-						{
-							"location",
-							separator = { right = "" },
-							left_padding = 2,
-						},
-					},
-				},
-				inactive_sections = {
-					lualine_a = { "filename" },
-					lualine_b = {},
-					lualine_c = {},
-					lualine_x = {},
-					lualine_y = {},
-					lualine_z = {},
-				},
-			}
 		end,
 	},
 	{
@@ -112,12 +103,13 @@ return {
 		dependencies = {
 			"DaikyXendo/nvim-material-icon",
 		},
-		config = function()
+		opts = {
+			modes = { ":", "/", "?" },
+		},
+		config = function(_, opts)
 			local wilder = require "wilder"
 
-			wilder.setup {
-				modes = { ":", "/", "?" },
-			}
+			wilder.setup(opts)
 
 			wilder.set_option(
 				"renderer",
@@ -132,5 +124,12 @@ return {
 				})
 			)
 		end,
+	},
+	{
+		"j-hui/fidget.nvim",
+		opts = {
+			-- https://github.com/catppuccin/nvim?tab=readme-ov-file#integrations
+			notification = { window = { winblend = 0 } },
+		},
 	},
 }

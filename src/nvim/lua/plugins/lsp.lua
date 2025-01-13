@@ -128,10 +128,6 @@ return {
 		end,
 	},
 	{
-		"j-hui/fidget.nvim",
-		opts = {},
-	},
-	{
 		"nvimdev/lspsaga.nvim",
 		event = "LspAttach",
 		config = function()
