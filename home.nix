@@ -63,6 +63,7 @@ in
       gdb
       gdtoolkit_4
       ghc
+      ghcid
       gimp
       pkgsUnstable.gleam
       gnumake
