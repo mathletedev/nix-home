@@ -22,7 +22,11 @@
   };
 
   networking = {
-    firewall.enable = true;
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [ 7000 7001 7100 ];
+      allowedUDPPorts = [ 6000 6001 7011 ];
+    };
     hostName = "fynn";
     networkmanager.enable = true;
     resolvconf.dnsExtensionMechanism = false;
@@ -44,6 +48,18 @@
   };
 
   services = {
+    # https://taoa.io/posts/Setting-up-ipad-screen-mirroring-on-nixos
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+      publish = {
+        enable = true;
+        addresses = true;
+        domain = true;
+        userServices = true;
+        workstation = true;
+      };
+    };
     blueman.enable = true;
     # sometimes stops working
     # fprintd = {
@@ -56,8 +72,8 @@
     illum.enable = true;
     input-remapper.enable = true;
     logind = {
-      lidSwitch = "suspend-then-hibernate";
-      powerKey = "suspend-then-hibernate";
+      lidSwitch = "suspend";
+      powerKey = "suspend";
     };
     pipewire = {
       alsa = {
@@ -78,6 +94,13 @@
       '';
     };
     ratbagd.enable = true;
+    tlp = {
+      enable = true;
+      settings = {
+        START_CHARGE_THRESH_BAT0 = 40;
+        STOP_CHARGE_THRESH_BAT0 = 80;
+      };
+    };
     udev = {
       extraRules = ''
         SUBSYSTEM=="usb", ATTRS{idVendor}=="0d28", ATTRS{idProduct}=="0204", MODE="0666"
@@ -149,9 +172,9 @@
     fish.enable = true;
   };
 
-  systemd.sleep.extraConfig = ''
-    HibernateDelaySec=30m
-  '';
+  # systemd.sleep.extraConfig = ''
+  #   HibernateDelaySec=30m
+  # '';
 
   gtk.iconCache.enable = true;
 

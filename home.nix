@@ -137,6 +137,7 @@ in
       ungoogled-chromium
       usbutils
       unzip
+      uxplay
       ventoy
       victor-mono
       vlc
