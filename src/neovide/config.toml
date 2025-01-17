@@ -1,0 +1,6 @@
+[font]
+normal = [ "Cascadia Code" ]
+size = 12
+
+[font.features]
+"Cascadia Code" = [ "+ss01"  ]

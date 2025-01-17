@@ -15,23 +15,19 @@ in
         source = ./src/nvim;
         recursive = true;
       };
-      ".config/neovide/config.toml".text = ''
-        [font]
-        normal = [ "Cascadia Code" ]
-        size = 12
-
-        [font.features]
-        "Cascadia Code" = [ "+ss01"  ]
-      '';
-      ".config/xilinx/nix.sh".text = ''
-        INSTALL_DIR=$HOME/tools/Xilinx
-        VERSION=2024.1
-      '';
-      ".ghc/ghci.conf".text = ''
-        :set prompt "\ESC[1;35m\x03BB> \ESC[m"
-        :set prompt-cont "\ESC[1;35m > \ESC[m"
-      '';
-      ".npmrc".text = "prefix=~/.npm-packages";
+      ".config/neovide" = {
+        source = ./src/neovide;
+        recursive = true;
+      };
+      # ".config/xilinx/nix.sh".text = ''
+      #   INSTALL_DIR=$HOME/tools/Xilinx
+      #   VERSION=2024.1
+      # '';
+      ".ghc" = {
+        source = ./src/.ghc;
+        recursive = true;
+      };
+      ".npmrc".source = ./src/.npmrc;
     };
     homeDirectory = "/home/neo";
     keyboard.options = [ "caps:escape" ];
