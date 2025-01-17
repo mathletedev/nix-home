@@ -19,15 +19,15 @@ in
         source = ./src/neovide;
         recursive = true;
       };
-      # ".config/xilinx/nix.sh".text = ''
-      #   INSTALL_DIR=$HOME/tools/Xilinx
-      #   VERSION=2024.1
-      # '';
       ".ghc" = {
         source = ./src/.ghc;
         recursive = true;
       };
       ".npmrc".source = ./src/.npmrc;
+      # ".config/xilinx/nix.sh".text = ''
+      #   INSTALL_DIR=$HOME/tools/Xilinx
+      #   VERSION=2024.1
+      # '';
     };
     homeDirectory = "/home/neo";
     keyboard.options = [ "caps:escape" ];
@@ -294,6 +294,7 @@ in
             interval = 1;
             format = " <span size='x-large'>{icon}</span> <span size='small' rise='4000'>{capacity} </span>";
             format-charging = " <span size='x-large'>󱐋</span> <span size='small' rise='4000'>{capacity} </span>";
+            format-plugged = " <span size='x-large'></span> <span size='small' rise='4000'>{capacity} </span>";
             format-icons = [ "" "" "" "" "" ];
             states = {
               warning = 30;
