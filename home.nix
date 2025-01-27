@@ -54,6 +54,7 @@ in
       eb-garamond
       pkgsUnstable.electron-mail
       erlang
+      eslint_d
       eza
       firefox-devedition-bin
       flutter
@@ -109,7 +110,7 @@ in
       opam
       openssl
       ormolu
-      pkgsUnstable.oxlint
+      # pkgsUnstable.oxlint
       p7zip
       pavucontrol
       pfetch

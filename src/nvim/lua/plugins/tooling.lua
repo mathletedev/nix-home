@@ -48,10 +48,10 @@ return {
 			local lint = require "lint"
 
 			lint.linters_by_ft = {
-				astro = { "oxlint" },
-				javascript = { "oxlint" },
-				svelte = { "oxlint" },
-				typescript = { "oxlint" },
+				astro = { "eslint_d" },
+				javascript = { "eslint_d" },
+				svelte = { "eslint_d" },
+				typescript = { "eslint_d" },
 			}
 
 			vim.api.nvim_create_autocmd({ "BufWritePost" }, {
