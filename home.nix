@@ -33,6 +33,7 @@ in
     keyboard.options = [ "caps:escape" ];
     packages = with pkgs; [
       air
+      pkgsUnstable.airshipper
       alsa-utils
       android-file-transfer
       appimage-run
@@ -42,6 +43,7 @@ in
       betterdiscordctl
       black
       blanket
+      busybox
       pkgsUnstable.bun
       cascadia-code
       # cava
@@ -133,6 +135,7 @@ in
       stylish-haskell
       sumneko-lua-language-server
       swww
+      tree-sitter
       tty-clock
       ubuntu_font_family
       ungoogled-chromium

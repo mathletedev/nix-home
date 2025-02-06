@@ -24,6 +24,7 @@ return {
 					"hyprlang",
 					"java",
 					"json",
+					"latex",
 					"lua",
 					"make",
 					"markdown",

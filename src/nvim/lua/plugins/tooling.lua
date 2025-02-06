@@ -13,6 +13,7 @@ return {
 				javascript = { "prettierd" },
 				javascriptreact = { "prettierd" },
 				json = { "prettierd" },
+				tex = { "tex" },
 				lua = { "stylua" },
 				mdx = { "prettierd" },
 				-- ocaml = { "ocamlformat" },
@@ -31,6 +32,11 @@ return {
 			formatters = {
 				gdformat = {
 					command = "gdformat",
+					args = "$FILENAME",
+					stdin = false,
+				},
+				tex = {
+					command = "tex-fmt",
 					args = "$FILENAME",
 					stdin = false,
 				},
