@@ -18,10 +18,7 @@ local lang_maps = {
 	python = { exec = "python %" },
 	rust = { exec = "cargo run" },
 	sh = { exec = "%" },
-	tex = {
-		build = "pdflatex -shell-escape %",
-		exec = "open %:p:r.pdf",
-	},
+	tex = { build = "pdflatex -shell-escape %" },
 	typescript = { exec = "bun %" },
 }
 
@@ -34,17 +31,19 @@ for lang, data in pairs(lang_maps) do
 
 	if data.build ~= nil then
 		vim.api.nvim_create_autocmd("FileType", {
-			command = "nnoremap <Leader>b :!" .. data.build .. "<CR>",
 			pattern = lang,
+			command = "nnoremap <Leader>b :!" .. data.build .. "<CR>",
 		})
 	end
 
-	vim.api.nvim_create_autocmd("FileType", {
-		command = "nnoremap <Leader>e :split<CR>:terminal "
-			.. data.exec
-			.. "<CR>",
-		pattern = lang,
-	})
+	if data.exec ~= nil then
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = lang,
+			command = "nnoremap <Leader>e :split<CR>:terminal "
+				.. data.exec
+				.. "<CR>",
+		})
+	end
 end
 
 vim.api.nvim_create_autocmd(

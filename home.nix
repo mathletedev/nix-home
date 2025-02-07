@@ -57,6 +57,7 @@ in
       pkgsUnstable.electron-mail
       erlang
       eslint_d
+      evince
       eza
       firefox-devedition-bin
       flutter
@@ -375,6 +376,16 @@ in
       package = pkgs.colloid-gtk-theme.override {
         tweaks = [ "catppuccin" "black" "rimless" ];
       };
+    };
+  };
+
+  xdg.mimeApps = {
+    enable = true;
+    associations.added = {
+      "application/pdf" = [ "org.gnome.Evince.desktop" ];
+    };
+    defaultApplications = {
+      "application/pdf" = [ "org.gnome.Evince.desktop" ];
     };
   };
 
