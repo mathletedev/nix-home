@@ -43,7 +43,7 @@ in
       betterdiscordctl
       black
       blanket
-      busybox
+      # busybox
       pkgsUnstable.bun
       cascadia-code
       # cava
@@ -385,6 +385,11 @@ in
       "application/pdf" = [ "org.gnome.Evince.desktop" ];
     };
     defaultApplications = {
+      "text/html" = [ "firefox-developer-edition.desktop" ];
+      "x-scheme-handler/http" = [ "firefox-developer-edition.desktop" ];
+      "x-scheme-handler/https" = [ "firefox-developer-edition.desktop" ];
+      "x-scheme-handler/about" = [ "firefox-developer-edition.desktop" ];
+      "x-scheme-handler/unknown" = [ "firefox-developer-edition.desktop" ];
       "application/pdf" = [ "org.gnome.Evince.desktop" ];
     };
   };

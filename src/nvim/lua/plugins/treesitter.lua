@@ -23,6 +23,7 @@ return {
 					"html",
 					"hyprlang",
 					"java",
+					"javascript",
 					"json",
 					"latex",
 					"lua",
