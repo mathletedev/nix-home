@@ -7,6 +7,7 @@ return {
 			formatters_by_ft = {
 				astro = { "prettierd" },
 				css = { "prettierd" },
+				elixir = { "mix" },
 				gdscript = { "gdformat" },
 				go = { "gofmt" },
 				haskell = { "ormolu" },

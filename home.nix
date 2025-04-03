@@ -43,7 +43,7 @@ in
       betterdiscordctl
       black
       blanket
-      # busybox
+      busybox
       pkgsUnstable.bun
       cascadia-code
       # cava
@@ -55,6 +55,7 @@ in
       # dune_3
       eb-garamond
       pkgsUnstable.electron-mail
+      elixir
       erlang
       eslint_d
       evince
@@ -76,6 +77,7 @@ in
       grim
       grimblast
       haskell-language-server
+      haskellPackages.cabal-gild
       haskellPackages.cabal-install
       heroic
       hunspell
@@ -94,6 +96,7 @@ in
       minetest
       musescore
       neovide
+      next-ls
       pkgsUnstable.neovim
       (nerdfonts.override { fonts = [ "CascadiaCode" ]; })
       networkmanagerapplet
@@ -239,7 +242,7 @@ in
       settings = {
         background = [
           {
-            path = "/home/neo/Pictures/wallpapers/Countach.jpg";
+            path = "/home/neo/Pictures/wallpapers/Inception.jpg";
             color = "#1e1e2e";
           }
         ];
