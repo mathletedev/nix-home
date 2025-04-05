@@ -49,11 +49,6 @@ return {
 
 			vim.keymap.set(
 				"n",
-				"<Leader>n",
-				require("telescope").extensions.file_browser.file_browser
-			)
-			vim.keymap.set(
-				"n",
 				"<Leader>f",
 				require("telescope.builtin").find_files
 			)

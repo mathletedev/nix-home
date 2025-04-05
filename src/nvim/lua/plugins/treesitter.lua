@@ -20,6 +20,7 @@ return {
 					"gleam",
 					"go",
 					"haskell",
+					"heex",
 					"html",
 					"hyprlang",
 					"java",

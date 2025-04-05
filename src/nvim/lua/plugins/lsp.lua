@@ -38,12 +38,11 @@ return {
 					"clangd",
 					"clojure_lsp",
 					"cssls",
-					"elixirls",
 					"gopls",
 					"html",
+					"lexical",
 					"lua_ls",
 					"mdx_analyzer",
-					"nextls",
 					-- "ocamllsp",
 					"pyright",
 					"rnix",
@@ -66,33 +65,11 @@ return {
 						local alt_capabilities =
 							require("cmp_nvim_lsp").default_capabilities()
 						alt_capabilities.offsetEncoding = { "utf-16" }
-
-						lspconfig.clangd.setup {
-							on_attach = lsp.on_attach,
-							capabilities = lsp.capabilities,
-							handlers = lsp.handlers,
-						}
-					end,
-					["lua_ls"] = function()
-						lspconfig.lua_ls.setup {
-							on_attach = lsp.on_attach,
-							capabilities = lsp.capabilities,
-							handlers = lsp.handlers,
-							settings = {
-								Lua = {
-									completion = { callSnippet = "Replace" },
-									diagnostics = {
-										disable = { "missing-fields" },
-									},
-									workspace = { checkThirdParty = false },
-								},
-							},
-						}
 					end,
 				},
 			}
 
-			lspconfig.gleam.setup {
+			lspconfig.clangd.setup {
 				on_attach = lsp.on_attach,
 				capabilities = lsp.capabilities,
 				handlers = lsp.handlers,
@@ -102,6 +79,47 @@ return {
 				on_attach = lsp.on_attach,
 				capabilities = lsp.capabilities,
 				handlers = lsp.handlers,
+			}
+
+			lspconfig.gleam.setup {
+				on_attach = lsp.on_attach,
+				capabilities = lsp.capabilities,
+				handlers = lsp.handlers,
+			}
+
+			lspconfig.html.setup {
+				on_attach = lsp.on_attach,
+				capabilities = lsp.capabilities,
+				handlers = lsp.handlers,
+				filetypes = { "html", "heex" },
+			}
+
+			lspconfig.lua_ls.setup {
+				on_attach = lsp.on_attach,
+				capabilities = lsp.capabilities,
+				handlers = lsp.handlers,
+				settings = {
+					Lua = {
+						completion = { callSnippet = "Replace" },
+						diagnostics = {
+							disable = { "missing-fields" },
+						},
+						workspace = { checkThirdParty = false },
+					},
+				},
+			}
+
+			lspconfig.tailwindcss.setup {
+				on_attach = lsp.on_attach,
+				capabilities = lsp.capabilities,
+				handlers = lsp.handlers,
+				settings = {
+					tailwindCSS = {
+						includeLanguages = {
+							heex = "html-eex",
+						},
+					},
+				},
 			}
 
 			vim.diagnostic.config {

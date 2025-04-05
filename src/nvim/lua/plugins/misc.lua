@@ -41,6 +41,26 @@ return {
 		dependencies = "nvim-treesitter/nvim-treesitter",
 		opts = {},
 	},
+	{
+		"mikavilpas/yazi.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			"folke/snacks.nvim",
+		},
+		keys = {
+			{
+				"<Leader>n",
+				":Yazi cwd<CR>",
+				silent = true,
+			},
+		},
+		opts = {
+			open_for_directories = true,
+		},
+		init = function()
+			vim.g.loaded_netrwPlugin = 1
+		end,
+	},
 	{ "nvim-lua/plenary.nvim", lazy = true },
 	-- hlsearch functionality
 	"romainl/vim-cool",

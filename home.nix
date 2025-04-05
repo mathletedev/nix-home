@@ -7,16 +7,24 @@ in
 {
   home = {
     file = {
+      ".config/bat" = {
+        source = ./src/bat;
+        recursive = true;
+      };
       ".config/helix" = {
         source = ./src/helix;
+        recursive = true;
+      };
+      ".config/neovide" = {
+        source = ./src/neovide;
         recursive = true;
       };
       ".config/nvim" = {
         source = ./src/nvim;
         recursive = true;
       };
-      ".config/neovide" = {
-        source = ./src/neovide;
+      ".config/yazi" = {
+        source = ./src/yazi;
         recursive = true;
       };
       ".ghc" = {
@@ -64,6 +72,7 @@ in
       flutter
       foliate
       font-awesome
+      fswatch
       gcc14
       gdb
       gdtoolkit_4
@@ -83,10 +92,12 @@ in
       hunspell
       hunspellDicts.en_GB-ise
       inkscape
+      inotify-tools
       jdk11
       jetbrains.clion
       kdenlive
       krita
+      lexical
       libqalculate
       libreoffice-qt
       libresprite
@@ -96,7 +107,6 @@ in
       minetest
       musescore
       neovide
-      next-ls
       pkgsUnstable.neovim
       (nerdfonts.override { fonts = [ "CascadiaCode" ]; })
       networkmanagerapplet
@@ -161,6 +171,7 @@ in
       xournalpp
       xwaylandvideobridge
       xz
+      yazi
       zip
     ];
     pointerCursor = {
@@ -177,7 +188,7 @@ in
       "$HOME/bin"
     ];
     sessionVariables = {
-      BAT_THEME = "catppuccin";
+      BAT_THEME = "Catppuccin Mocha";
       EDITOR = "nvim";
       MOZ_USE_XINPUT2 = "1";
       NIXOS_OZONE_WL = "1";
@@ -217,6 +228,14 @@ in
         fish_greeting = ''
           echo
           pfetch
+        '';
+        y = ''
+          set tmp (mktemp -t "yazi-cwd.XXXXXX")
+          yazi $argv --cwd-file="$tmp"
+          if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+            builtin cd -- "$cwd"
+          end
+          rm -f -- "$tmp"
         '';
       };
       shellAbbrs = {
