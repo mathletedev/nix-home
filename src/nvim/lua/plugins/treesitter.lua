@@ -40,6 +40,7 @@ return {
 					"tcl",
 					"tsx",
 					"typescript",
+					"typst",
 					"verilog",
 					"yaml",
 				},

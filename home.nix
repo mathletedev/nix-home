@@ -2,8 +2,8 @@
 
 let
   pkgsUnstable = import <nixpkgs-unstable> { };
-  # nix-gaming = import (builtins.fetchTarball "https://github.com/fufexan/nix-gaming/archive/master.tar.gz");
 in
+# nix-gaming = import (builtins.fetchTarball "https://github.com/fufexan/nix-gaming/archive/master.tar.gz");
 {
   home = {
     file = {
@@ -41,6 +41,7 @@ in
     keyboard.options = [ "caps:escape" ];
     packages = with pkgs; [
       air
+      arduino-ide
       pkgsUnstable.airshipper
       alsa-utils
       android-file-transfer
@@ -78,11 +79,11 @@ in
       gdtoolkit_4
       ghc
       ghcid
-      gimp
+      pkgsUnstable.gimp3
       pkgsUnstable.gleam
       gnumake
-      pkgsUnstable.go
-      pkgsUnstable.godot_4
+      go
+      godot_4
       grim
       grimblast
       haskell-language-server
@@ -113,6 +114,7 @@ in
       nitrogen
       # nix-gaming.packages.${pkgs.hostPlatform.system}.wine-ge
       nix-output-monitor
+      nixfmt-rfc-style
       nmap
       nodejs
       nodePackages.prettier
@@ -211,7 +213,10 @@ in
 
   nix = {
     package = pkgs.nix;
-    settings.experimental-features = [ "nix-command" "flakes" ];
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -294,7 +299,9 @@ in
       enableFishIntegration = true;
       settings = {
         add_newline = false;
-        line_break = { disabled = true; };
+        line_break = {
+          disabled = true;
+        };
       };
     };
     waybar = {
@@ -302,9 +309,16 @@ in
       settings = {
         mainBar = {
           layer = "top";
-          modules-left = [ "custom/nixos" "hyprland/workspaces" ];
+          modules-left = [
+            "custom/nixos"
+            "hyprland/workspaces"
+          ];
           modules-center = [ "clock" ];
-          modules-right = [ "battery" "pulseaudio" "tray" ];
+          modules-right = [
+            "battery"
+            "pulseaudio"
+            "tray"
+          ];
           "custom/nixos" = {
             format = "<span size='x-large'></span> ";
             on-click = ''
@@ -323,7 +337,13 @@ in
             format = " <span size='x-large'>{icon}</span> <span size='small' rise='4000'>{capacity} </span>";
             format-charging = " <span size='x-large'>󱐋</span> <span size='small' rise='4000'>{capacity} </span>";
             format-plugged = " <span size='x-large'></span> <span size='small' rise='4000'>{capacity} </span>";
-            format-icons = [ "" "" "" "" "" ];
+            format-icons = [
+              ""
+              ""
+              ""
+              ""
+              ""
+            ];
             states = {
               warning = 30;
               critical = 15;
@@ -333,7 +353,12 @@ in
             format = " <span size='x-large'>{icon}</span> <span size='small' rise='4000'>{volume}</span>";
             format-muted = "󰖁";
             format-icons = {
-              default = [ "" "" "" "" ];
+              default = [
+                ""
+                ""
+                ""
+                ""
+              ];
             };
             on-click = "pavucontrol &";
           };
@@ -365,8 +390,12 @@ in
           offset = "8x8";
           width = 400;
         };
-        urgency_critical = { frame_color = "#f38ba8"; };
-        urgency_low = { frame_color = "#a6e3a1"; };
+        urgency_critical = {
+          frame_color = "#f38ba8";
+        };
+        urgency_low = {
+          frame_color = "#a6e3a1";
+        };
       };
     };
     udiskie.enable = true;
@@ -396,7 +425,11 @@ in
     theme = {
       name = "Colloid-Dark-Catppuccin";
       package = pkgs.colloid-gtk-theme.override {
-        tweaks = [ "catppuccin" "black" "rimless" ];
+        tweaks = [
+          "catppuccin"
+          "black"
+          "rimless"
+        ];
       };
     };
   };

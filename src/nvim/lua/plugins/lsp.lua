@@ -43,12 +43,13 @@ return {
 					"lexical",
 					"lua_ls",
 					"mdx_analyzer",
+					"nil_ls",
 					-- "ocamllsp",
 					"pyright",
-					"rnix",
 					"svelte",
 					"tailwindcss",
 					"texlab",
+					"tinymist",
 					"ts_ls",
 					"verible",
 					"yamlls",
@@ -91,7 +92,7 @@ return {
 				on_attach = lsp.on_attach,
 				capabilities = lsp.capabilities,
 				handlers = lsp.handlers,
-				filetypes = { "html", "heex" },
+				filetypes = { "html", "elixir", "heex" },
 			}
 
 			lspconfig.lua_ls.setup {
@@ -116,6 +117,7 @@ return {
 				settings = {
 					tailwindCSS = {
 						includeLanguages = {
+							elixir = "html-eex",
 							heex = "html-eex",
 						},
 					},
