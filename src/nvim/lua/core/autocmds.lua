@@ -20,6 +20,7 @@ local lang_maps = {
 	sh = { exec = "%" },
 	tex = { build = "pdflatex -shell-escape %" },
 	typescript = { exec = "bun %" },
+	typst = { build = "typst compile %" },
 }
 
 for lang, data in pairs(lang_maps) do

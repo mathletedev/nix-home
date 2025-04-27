@@ -15,6 +15,10 @@ in
         source = ./src/helix;
         recursive = true;
       };
+      ".config/hypr" = {
+        source = ./src/hypr;
+        recursive = true;
+      };
       ".config/neovide" = {
         source = ./src/neovide;
         recursive = true;
@@ -27,6 +31,7 @@ in
         source = ./src/yazi;
         recursive = true;
       };
+      ".face".source = ./src/.face;
       ".ghc" = {
         source = ./src/.ghc;
         recursive = true;
@@ -49,7 +54,6 @@ in
       asciiquarium
       audacity
       bat
-      betterdiscordctl
       black
       blanket
       busybox
@@ -60,7 +64,6 @@ in
       cling
       cmake
       cmatrix
-      discord
       # dune_3
       eb-garamond
       pkgsUnstable.electron-mail
@@ -98,6 +101,7 @@ in
       jetbrains.clion
       kdenlive
       krita
+      pkgsUnstable.legcord
       lexical
       libqalculate
       libreoffice-qt
@@ -261,17 +265,7 @@ in
     helix.enable = true;
     home-manager.enable = true;
     htop.enable = true;
-    hyprlock = {
-      enable = true;
-      settings = {
-        background = [
-          {
-            path = "/home/neo/Pictures/wallpapers/Inception.jpg";
-            color = "#1e1e2e";
-          }
-        ];
-      };
-    };
+    hyprlock.enable = true;
     kitty = {
       enable = true;
       extraConfig = builtins.readFile ./src/kitty.conf;
@@ -403,7 +397,7 @@ in
 
   wayland.windowManager.hyprland = {
     enable = true;
-    extraConfig = builtins.readFile ./src/hyprland.conf;
+    extraConfig = builtins.readFile ./src/hypr/hyprland.conf;
     xwayland.enable = true;
   };
 
