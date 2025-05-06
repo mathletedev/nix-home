@@ -22,6 +22,10 @@ return {
 		"folke/todo-comments.nvim",
 		opts = {},
 	},
+	-- {
+	-- 	"glacambre/firenvim",
+	-- 	build = ":call firenvim#install(0)",
+	-- },
 	"HiPhish/rainbow-delimiters.nvim",
 	{
 		"lewis6991/gitsigns.nvim",

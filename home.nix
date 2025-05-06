@@ -115,7 +115,6 @@ in
       pkgsUnstable.neovim
       (nerdfonts.override { fonts = [ "CascadiaCode" ]; })
       networkmanagerapplet
-      nitrogen
       # nix-gaming.packages.${pkgs.hostPlatform.system}.wine-ge
       nix-output-monitor
       nixfmt-rfc-style

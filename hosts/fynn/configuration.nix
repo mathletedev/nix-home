@@ -1,4 +1,8 @@
-{ config, pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   imports = [ ./hardware-configuration.nix ];
@@ -23,9 +27,18 @@
 
   networking = {
     firewall = {
-      enable = true;
-      allowedTCPPorts = [ 7000 7001 7100 ];
-      allowedUDPPorts = [ 6000 6001 7011 ];
+      # enable = true;
+      enable = false; # for uxplay
+      allowedTCPPorts = [
+        7000
+        7001
+        7100
+      ];
+      allowedUDPPorts = [
+        6000
+        6001
+        7011
+      ];
     };
     hostName = "fynn";
     networkmanager.enable = true;
@@ -42,7 +55,13 @@
   users = {
     defaultUserShell = pkgs.fish;
     users.neo = {
-      extraGroups = [ "wheel" "networkmanager" "audio" "adbusers" "dialout" ];
+      extraGroups = [
+        "wheel"
+        "networkmanager"
+        "audio"
+        "adbusers"
+        "dialout"
+      ];
       isNormalUser = true;
     };
   };
@@ -99,6 +118,8 @@
       settings = {
         START_CHARGE_THRESH_BAT0 = 40;
         STOP_CHARGE_THRESH_BAT0 = 80;
+        # START_CHARGE_THRESH_BAT0 = 99;
+        # STOP_CHARGE_THRESH_BAT0 = 100;
       };
     };
     udev = {
@@ -107,6 +128,7 @@
       '';
       packages = with pkgs; [
         android-udev-rules
+        platformio-core
         libwacom
         (writeTextFile {
           name = "52-xilinx-digilent-usb.rules";
@@ -146,7 +168,10 @@
     xserver = {
       displayManager.startx.enable = true;
       enable = true;
-      xkb.options = "caps:swapescape";
+      xkb = {
+        options = "caps:swapescape";
+        variant = "dvorak";
+      };
     };
   };
 
