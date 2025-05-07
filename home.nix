@@ -27,6 +27,10 @@ in
         source = ./src/nvim;
         recursive = true;
       };
+      ".config/xkb" = {
+        source = ./src/xkb;
+        recursive = true;
+      };
       ".config/yazi" = {
         source = ./src/yazi;
         recursive = true;
