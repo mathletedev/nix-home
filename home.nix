@@ -11,6 +11,10 @@ in
         source = ./src/bat;
         recursive = true;
       };
+      ".config/ghostty" = {
+        source = ./src/ghostty;
+        recursive = true;
+      };
       ".config/helix" = {
         source = ./src/helix;
         recursive = true;
@@ -58,9 +62,11 @@ in
       asciiquarium
       audacity
       bat
+      beekeeper-studio
       black
       blanket
-      busybox
+      brave
+      # busybox
       pkgsUnstable.bun
       cascadia-code
       # cava
@@ -102,7 +108,6 @@ in
       inkscape
       inotify-tools
       jdk11
-      jetbrains.clion
       kdenlive
       krita
       pkgsUnstable.legcord
@@ -161,7 +166,6 @@ in
       tree-sitter
       tty-clock
       ubuntu_font_family
-      ungoogled-chromium
       usbutils
       unzip
       uxplay
@@ -235,6 +239,7 @@ in
     };
     fish = {
       enable = true;
+      package = pkgsUnstable.fish;
       functions = {
         fish_user_key_bindings = "fish_vi_key_bindings";
         fish_greeting = ''
@@ -252,9 +257,12 @@ in
       };
       shellAbbrs = {
         "-" = "cd -";
-        n = "kitty &";
       };
       shellInit = "direnv hook fish | source";
+    };
+    ghostty = {
+      enable = true;
+      enableFishIntegration = true;
     };
     git = {
       enable = true;
@@ -437,11 +445,12 @@ in
       "application/pdf" = [ "org.gnome.Evince.desktop" ];
     };
     defaultApplications = {
-      "text/html" = [ "firefox-developer-edition.desktop" ];
-      "x-scheme-handler/http" = [ "firefox-developer-edition.desktop" ];
-      "x-scheme-handler/https" = [ "firefox-developer-edition.desktop" ];
-      "x-scheme-handler/about" = [ "firefox-developer-edition.desktop" ];
-      "x-scheme-handler/unknown" = [ "firefox-developer-edition.desktop" ];
+      # "text/html" = [ "firefox-developer-edition.desktop" ];
+      "text/html" = [ "brave.desktop" ];
+      "x-scheme-handler/http" = [ "brave.desktop" ];
+      "x-scheme-handler/https" = [ "brave.desktop" ];
+      "x-scheme-handler/about" = [ "brave.desktop" ];
+      "x-scheme-handler/unknown" = [ "brave.desktop" ];
       "application/pdf" = [ "org.gnome.Evince.desktop" ];
     };
   };

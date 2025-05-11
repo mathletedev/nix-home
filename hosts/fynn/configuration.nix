@@ -7,7 +7,7 @@
 {
   imports = [ ./hardware-configuration.nix ];
 
-  system.stateVersion = "24.11";
+  system.stateVersion = "25.05";
 
   nixpkgs.config.allowUnfree = true;
 
@@ -170,7 +170,7 @@
       enable = true;
       xkb = {
         options = "caps:swapescape";
-        variant = "dvorak";
+        # variant = "dvorak";
       };
     };
   };
