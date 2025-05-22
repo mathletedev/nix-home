@@ -74,7 +74,12 @@ return {
 		"tpope/vim-commentary",
 		event = "VeryLazy",
 		keys = {
-			{ "<Leader>c", ":Commentary<CR>", mode = { "n", "v" } },
+			{
+				"<Leader>c",
+				":Commentary<CR>",
+				mode = { "n", "v" },
+				silent = true,
+			},
 		},
 	},
 	{

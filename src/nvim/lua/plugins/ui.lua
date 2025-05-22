@@ -120,9 +120,23 @@ return {
 						border = "FloatBorder",
 					},
 					left = { " ", wilder.popupmenu_devicons() },
+					right = { " ", wilder.popupmenu_scrollbar() },
 					border = "rounded",
 				})
 			)
+
+			-- https://github.com/nvim-telescope/telescope.nvim/issues/3436#issuecomment-2756267300
+			vim.api.nvim_create_autocmd("CmdlineEnter", {
+				callback = function()
+					vim.opt_local.winborder = "none"
+					vim.api.nvim_create_autocmd("CmdlineLeave", {
+						once = true,
+						callback = function()
+							vim.opt_local.winborder = "rounded"
+						end,
+					})
+				end,
+			})
 		end,
 	},
 	{

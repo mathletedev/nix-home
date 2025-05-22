@@ -146,6 +146,7 @@ in
       pfetch
       piper
       pipes
+      postman
       prettierd
       protonvpn-gui
       python3

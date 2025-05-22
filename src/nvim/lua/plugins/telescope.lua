@@ -45,6 +45,21 @@ return {
 				pickers = { find_files = { hidden = true } },
 			}
 
+			-- https://github.com/nvim-telescope/telescope.nvim/issues/3436#issuecomment-2756267300
+			-- FIX: delete when telescope fixes double border
+			vim.api.nvim_create_autocmd("User", {
+				pattern = "TelescopeFindPre",
+				callback = function()
+					vim.opt_local.winborder = "none"
+					vim.api.nvim_create_autocmd("WinLeave", {
+						once = true,
+						callback = function()
+							vim.opt_local.winborder = "rounded"
+						end,
+					})
+				end,
+			})
+
 			telescope.load_extension "file_browser"
 
 			vim.keymap.set(

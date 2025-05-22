@@ -5,3 +5,5 @@ OpenTabletDriver pressure sensitivity: https://opentabletdriver.net/Wiki/FAQ/Lin
 Firefox touchscreen gestures: https://www.reddit.com/r/firefox/comments/c9hsvr/psa_enable_touchscreen_gestures_in_linux_firefox
 
 Godot + Neovim: https://www.reddit.com/r/neovim/comments/13ski66/neovim_configuration_for_godot_4_lsp_as_simple_as
+
+Cleaning up the system: `ncdu /`

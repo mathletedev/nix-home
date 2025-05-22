@@ -11,3 +11,4 @@ vim.o.splitright = true
 vim.o.tabstop = 4
 vim.o.termguicolors = true
 vim.o.updatetime = 100
+vim.o.winborder = "rounded"
