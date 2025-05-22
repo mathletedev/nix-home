@@ -5,6 +5,8 @@ let
 in
 [
   air
+  astro-language-server
+  bash-language-server
   black
   pkgsUnstable.bun
   clang-tools
@@ -23,12 +25,14 @@ in
   pkgsUnstable.gleam
   go
   godot_4
+  gopls
   haskell-language-server
   haskellPackages.cabal-gild
   haskellPackages.cabal-install
   jdk11
   lexical
   lua
+  nil
   nixfmt-rfc-style
   nodejs
   nodePackages.prettier
@@ -40,10 +44,17 @@ in
   ormolu
   # pkgsUnstable.oxlint
   prettierd
+  pyright
   python3
   python312Packages.pip
   rustup
   stylua
   stylish-haskell
   sumneko-lua-language-server
+  svelte-language-server
+  tailwindcss-language-server
+  tinymist
+  typescript-language-server
+  vscode-langservers-extracted
+  yaml-language-server
 ]
