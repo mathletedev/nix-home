@@ -2,6 +2,7 @@
 
 let
   pkgsUnstable = import <nixpkgs-unstable> { };
+  packages = import ./lib/packages;
 in
 # nix-gaming = import (builtins.fetchTarball "https://github.com/fufexan/nix-gaming/archive/master.tar.gz");
 {
@@ -52,142 +53,7 @@ in
     };
     homeDirectory = "/home/neo";
     keyboard.options = [ "caps:escape" ];
-    packages = with pkgs; [
-      air
-      arduino-ide
-      pkgsUnstable.airshipper
-      alsa-utils
-      android-file-transfer
-      appimage-run
-      asciiquarium
-      audacity
-      bat
-      beekeeper-studio
-      black
-      blanket
-      brave
-      # busybox
-      pkgsUnstable.bun
-      cascadia-code
-      # cava
-      clang-tools
-      cling
-      cmake
-      cmatrix
-      # dune_3
-      eb-garamond
-      pkgsUnstable.electron-mail
-      elixir
-      erlang
-      eslint_d
-      evince
-      eza
-      firefox-devedition-bin
-      flutter
-      foliate
-      font-awesome
-      fswatch
-      gcc14
-      gdb
-      gdtoolkit_4
-      ghc
-      ghcid
-      pkgsUnstable.gimp3
-      pkgsUnstable.gleam
-      gnumake
-      go
-      godot_4
-      grim
-      grimblast
-      haskell-language-server
-      haskellPackages.cabal-gild
-      haskellPackages.cabal-install
-      heroic
-      hunspell
-      hunspellDicts.en_GB-ise
-      inkscape
-      inotify-tools
-      jdk11
-      kdenlive
-      krita
-      pkgsUnstable.legcord
-      lexical
-      libqalculate
-      libreoffice-qt
-      libresprite
-      lua
-      lxgw-wenkai
-      lxqt.lxqt-policykit
-      minetest
-      musescore
-      neovide
-      pkgsUnstable.neovim
-      (nerdfonts.override { fonts = [ "CascadiaCode" ]; })
-      networkmanagerapplet
-      # nix-gaming.packages.${pkgs.hostPlatform.system}.wine-ge
-      nix-output-monitor
-      nixfmt-rfc-style
-      nmap
-      nodejs
-      nodePackages.prettier
-      notify-desktop
-      obsidian
-      # ocaml
-      # ocamlPackages.ocaml-lsp
-      # ocamlPackages.ocamlformat
-      # ocamlPackages.utop
-      oneko
-      opam
-      openssl
-      ormolu
-      # pkgsUnstable.oxlint
-      p7zip
-      pavucontrol
-      pfetch
-      piper
-      pipes
-      postman
-      prettierd
-      protonvpn-gui
-      python3
-      python312Packages.pip
-      qalculate-gtk
-      ripgrep
-      roboto
-      rustup
-      scrcpy
-      showmethekey
-      slurp
-      spotify
-      steam
-      stylua
-      stylish-haskell
-      sumneko-lua-language-server
-      swww
-      tree-sitter
-      tty-clock
-      ubuntu_font_family
-      usbutils
-      unzip
-      uxplay
-      ventoy
-      victor-mono
-      vlc
-      way-displays
-      wl-clipboard
-      (xfce.thunar.override {
-        thunarPlugins = [
-          file-roller
-          xfce.thunar-archive-plugin
-          xfce.tumbler
-        ];
-      })
-      xournalpp
-      xwaylandvideobridge
-      xz
-      yazi
-      zip
-    ];
+    packages = packages;
     pointerCursor = {
       gtk.enable = true;
       name = "Bibata-Modern-Classic";
