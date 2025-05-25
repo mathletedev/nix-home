@@ -6,6 +6,7 @@ in
 [
   arduino-ide
   beekeeper-studio
+  godot
   neovide
   pkgsUnstable.neovim
   postman

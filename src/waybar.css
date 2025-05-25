@@ -41,6 +41,8 @@ window#waybar {
 }
 
 #workspaces button {
+  /* override GTK style */
+  min-width: 16px;
   padding: 1px;
 }
 

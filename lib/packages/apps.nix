@@ -10,9 +10,9 @@ in
   evince
   firefox-devedition-bin
   foliate
-  pkgsUnstable.gimp3
+  gimp3
   inkscape
-  kdenlive
+  kdePackages.kdenlive
   krita
   pkgsUnstable.legcord
   libqalculate
@@ -21,6 +21,7 @@ in
   musescore
   obsidian
   qalculate-gtk
+  seahorse
   steam
   vlc
   (xfce.thunar.override {

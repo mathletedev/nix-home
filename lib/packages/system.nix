@@ -14,13 +14,15 @@ in
   hunspell
   hunspellDicts.en_GB-ise
   inotify-tools
-  lxqt.lxqt-policykit
+  libsecret
+  # lxqt.lxqt-policykit
   networkmanagerapplet
   notify-desktop
   pavucontrol
   piper
+  polkit_gnome
   slurp
   swww
   way-displays
-  xwaylandvideobridge
+  kdePackages.xwaylandvideobridge
 ]

@@ -14,6 +14,7 @@ in
   cmake
   # dune_3
   elixir
+  emmet-language-server
   erlang
   eslint_d
   flutter
@@ -24,7 +25,6 @@ in
   ghcid
   pkgsUnstable.gleam
   go
-  godot_4
   gopls
   haskell-language-server
   haskellPackages.cabal-gild

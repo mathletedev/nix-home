@@ -8,7 +8,7 @@ in
   eb-garamond
   font-awesome
   lxgw-wenkai
-  (nerdfonts.override { fonts = [ "CascadiaCode" ]; })
+  nerd-fonts.caskaydia-cove
   roboto
   ubuntu_font_family
   victor-mono

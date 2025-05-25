@@ -3,6 +3,7 @@ local servers = {
 	"bashls",
 	"clangd",
 	"cssls",
+	"emmet_language_server",
 	"gopls",
 	"html",
 	"lexical",

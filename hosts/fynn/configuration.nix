@@ -88,6 +88,7 @@
     #     driver = pkgs.libfprint-2-tod1-goodix;
     #   };
     # };
+    gnome.gnome-keyring.enable = true;
     illum.enable = true;
     input-remapper.enable = true;
     logind = {
@@ -176,7 +177,11 @@
   };
 
   security = {
-    pam.services.hyprlock = { };
+    pam.services = {
+      hyprlock = { };
+      # login.kwallet.forceRun = true;
+      login.enableGnomeKeyring = true;
+    };
     polkit.enable = true;
     rtkit.enable = true;
   };
