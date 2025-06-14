@@ -4,6 +4,7 @@ local servers = {
 	"clangd",
 	"cssls",
 	"emmet_language_server",
+	"gdscript",
 	"gopls",
 	"html",
 	"lexical",

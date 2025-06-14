@@ -1,4 +1,8 @@
-with import <nixpkgs> { };
+with import <nixpkgs> {
+  config = {
+    allowUnfree = true;
+  };
+};
 
 let
   pkgsUnstable = import <nixpkgs-unstable> { };
