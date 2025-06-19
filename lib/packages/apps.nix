@@ -7,7 +7,6 @@ with pkgs;
   brave
   pkgsUnstable.electron-mail
   evince
-  firefox-devedition-bin
   foliate
   gimp3
   inkscape

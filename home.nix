@@ -1,5 +1,4 @@
 {
-  inputs,
   pkgs,
   pkgsUnstable,
   ...
@@ -102,10 +101,6 @@ in
   };
 
   # nixpkgs.config.allowUnfree = true;
-
-  imports = [
-    inputs.zen-browser.homeModules.beta
-  ];
 
   programs = {
     direnv = {
@@ -322,11 +317,12 @@ in
     };
     defaultApplications = {
       # "text/html" = [ "firefox-developer-edition.desktop" ];
-      "text/html" = [ "brave.desktop" ];
-      "x-scheme-handler/http" = [ "brave.desktop" ];
-      "x-scheme-handler/https" = [ "brave.desktop" ];
-      "x-scheme-handler/about" = [ "brave.desktop" ];
-      "x-scheme-handler/unknown" = [ "brave.desktop" ];
+      # "text/html" = [ "brave.desktop" ];
+      "text/html" = [ "zen-beta.desktop" ];
+      "x-scheme-handler/http" = [ "zen-beta.desktop" ];
+      "x-scheme-handler/https" = [ "zen-beta.desktop" ];
+      "x-scheme-handler/about" = [ "zen-beta.desktop" ];
+      "x-scheme-handler/unknown" = [ "zen-beta.desktop" ];
       "application/pdf" = [ "org.gnome.Evince.desktop" ];
     };
   };
