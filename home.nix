@@ -1,11 +1,23 @@
-{ pkgs, ... }:
+{
+  inputs,
+  pkgs,
+  pkgsUnstable,
+  ...
+}:
 
 let
-  pkgsUnstable = import <nixpkgs-unstable> { };
-  packages = import ./lib/packages;
+  packages = import ./lib/packages { inherit pkgs pkgsUnstable; };
+  # nix-gaming = import (builtins.fetchTarball "https://github.com/fufexan/nix-gaming/archive/master.tar.gz");
 in
-# nix-gaming = import (builtins.fetchTarball "https://github.com/fufexan/nix-gaming/archive/master.tar.gz");
 {
+  nix = {
+    package = pkgs.nix;
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+  };
+
   home = {
     file = {
       ".config/bat" = {
@@ -89,15 +101,11 @@ in
     username = "neo";
   };
 
-  nix = {
-    package = pkgs.nix;
-    settings.experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
-  };
+  # nixpkgs.config.allowUnfree = true;
 
-  nixpkgs.config.allowUnfree = true;
+  imports = [
+    inputs.zen-browser.homeModules.beta
+  ];
 
   programs = {
     direnv = {
@@ -242,6 +250,7 @@ in
       };
       style = ./src/waybar.css;
     };
+    zen-browser.enable = true;
     zoxide = {
       enable = true;
       options = [ "--cmd cd" ];

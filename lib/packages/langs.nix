@@ -1,8 +1,6 @@
-with import <nixpkgs> { };
+{ pkgs, pkgsUnstable }:
 
-let
-  pkgsUnstable = import <nixpkgs-unstable> { };
-in
+with pkgs;
 [
   air
   astro-language-server

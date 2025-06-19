@@ -1,14 +1,9 @@
-with import <nixpkgs> {
-  config = {
-    allowUnfree = true;
-  };
-};
+{ pkgs, pkgsUnstable }:
 
-let
-  pkgsUnstable = import <nixpkgs-unstable> { };
-in
+with pkgs;
 [
   audacity
+  blender
   brave
   pkgsUnstable.electron-mail
   evince

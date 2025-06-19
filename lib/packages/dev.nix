@@ -1,15 +1,6 @@
-with import <nixpkgs> {
-  config = {
-    allowUnfree = true;
-    permittedInsecurePackages = [
-      "beekeeper-studio-5.1.5"
-    ];
-  };
-};
+{ pkgs, pkgsUnstable }:
 
-let
-  pkgsUnstable = import <nixpkgs-unstable> { };
-in
+with pkgs;
 [
   arduino-ide
   beekeeper-studio
