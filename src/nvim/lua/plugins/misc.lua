@@ -57,6 +57,11 @@ return {
 				":Yazi cwd<CR>",
 				silent = true,
 			},
+			{
+				"<Leader>N",
+				":Yazi<CR>",
+				silent = true,
+			},
 		},
 		opts = {
 			open_for_directories = true,

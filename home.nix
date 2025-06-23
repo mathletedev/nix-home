@@ -1,6 +1,7 @@
 {
   pkgs,
   pkgsUnstable,
+  zen-browser,
   ...
 }:
 
@@ -64,7 +65,7 @@ in
     };
     homeDirectory = "/home/neo";
     keyboard.options = [ "caps:escape" ];
-    packages = packages;
+    packages = packages ++ [ zen-browser.packages.${pkgs.system}.default ];
     pointerCursor = {
       gtk.enable = true;
       name = "Bibata-Modern-Classic";
@@ -245,7 +246,6 @@ in
       };
       style = ./src/waybar.css;
     };
-    zen-browser.enable = true;
     zoxide = {
       enable = true;
       options = [ "--cmd cd" ];
@@ -274,6 +274,15 @@ in
         };
       };
     };
+    # NOTE: useGrimAdapter is not in official release yet
+    # flameshot = {
+    #   enable = true;
+    #   settings = {
+    #     General = {
+    #       useGrimAdapter = true;
+    #     };
+    #   };
+    # };
     udiskie.enable = true;
   };
 
@@ -318,11 +327,11 @@ in
     defaultApplications = {
       # "text/html" = [ "firefox-developer-edition.desktop" ];
       # "text/html" = [ "brave.desktop" ];
-      "text/html" = [ "zen-beta.desktop" ];
-      "x-scheme-handler/http" = [ "zen-beta.desktop" ];
-      "x-scheme-handler/https" = [ "zen-beta.desktop" ];
-      "x-scheme-handler/about" = [ "zen-beta.desktop" ];
-      "x-scheme-handler/unknown" = [ "zen-beta.desktop" ];
+      "text/html" = [ "zen.desktop" ];
+      "x-scheme-handler/http" = [ "zen.desktop" ];
+      "x-scheme-handler/https" = [ "zen.desktop" ];
+      "x-scheme-handler/about" = [ "zen.desktop" ];
+      "x-scheme-handler/unknown" = [ "zen.desktop" ];
       "application/pdf" = [ "org.gnome.Evince.desktop" ];
     };
   };

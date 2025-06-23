@@ -11,6 +11,7 @@ with pkgs;
   grimblast
   hunspell
   hunspellDicts.en_GB-ise
+  hyprshot
   inotify-tools
   libsecret
   # lxqt.lxqt-policykit

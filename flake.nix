@@ -7,7 +7,7 @@
     };
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
+      url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -40,13 +40,11 @@
       homeConfigurations.neo = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgs;
 
-        modules = [
-          ./home.nix
-          zen-browser.homeModules.beta
-        ];
+        modules = [ ./home.nix ];
 
         extraSpecialArgs = {
           pkgsUnstable = pkgsUnstable;
+          zen-browser = zen-browser;
         };
       };
     };
