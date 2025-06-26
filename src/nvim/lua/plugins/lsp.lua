@@ -44,7 +44,7 @@ return {
 			{ "<Leader>h", ":Lspsaga hover_doc<CR>", silent = true },
 			{ "<Leader>a", ":Lspsaga code_action<CR>", silent = true },
 			{ "<Leader>r", ":Lspsaga rename<CR>", silent = true },
-			{ "<Leader>d", ":Lspsaga finder<CR>", silent = true },
+			{ "<Leader>f", ":Lspsaga finder<CR>", silent = true },
 		},
 	},
 	{

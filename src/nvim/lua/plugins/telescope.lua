@@ -1,9 +1,6 @@
 return {
 	{
 		"nvim-telescope/telescope.nvim",
-		dependencies = {
-			"nvim-telescope/telescope-file-browser.nvim",
-		},
 		config = function()
 			local telescope = require "telescope"
 			telescope.setup {
@@ -41,7 +38,6 @@ return {
 					borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
 					color_devicons = true,
 				},
-				extensions = { file_browser = { hidden = true } },
 				pickers = { find_files = { hidden = true } },
 			}
 
@@ -59,19 +55,28 @@ return {
 					})
 				end,
 			})
-
-			telescope.load_extension "file_browser"
-
-			vim.keymap.set(
-				"n",
-				"<Leader>f",
-				require("telescope.builtin").find_files
-			)
-			vim.keymap.set(
-				"n",
-				"<Leader>t",
-				require("telescope.builtin").treesitter
-			)
 		end,
+		keys = {
+			{
+				"<Leader>tf",
+				require("telescope.builtin").find_files,
+				silent = true,
+			},
+			{
+				"<Leader>tg",
+				require("telescope.builtin").live_grep,
+				silent = true,
+			},
+			{
+				"<Leader>td",
+				require("telescope.builtin").diagnostics,
+				silent = true,
+			},
+			{
+				"<Leader>tt",
+				require("telescope.builtin").treesitter,
+				silent = true,
+			},
+		},
 	},
 }
