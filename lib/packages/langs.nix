@@ -42,7 +42,7 @@ with pkgs;
   ormolu
   # pkgsUnstable.oxlint
   prettierd
-  pyright
+  pkgsUnstable.pyrefly
   python3
   python312Packages.pip
   rustup

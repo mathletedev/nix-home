@@ -11,7 +11,7 @@ local servers = {
 	"lua_ls",
 	"nil_ls",
 	-- "ocamllsp",
-	"pyright",
+	"pyrefly",
 	"svelte",
 	"tailwindcss",
 	"tinymist",

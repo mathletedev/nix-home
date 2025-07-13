@@ -90,7 +90,7 @@ in
     };
     shellAliases = {
       home = "vi ~/.config/home-manager";
-      ls = "eza --all --long --git";
+      ls = "eza --all --long --icons --git";
       nix-xilinx = "nix run gitlab:doronbehar/nix-xilinx#xilinx-shell";
       vi = "nvim";
       # vi = "neovide --fork";
