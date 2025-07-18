@@ -22,7 +22,7 @@ return {
 				mdx = { "prettierd" },
 				nix = { "nixfmt" },
 				-- ocaml = { "ocamlformat" },
-				python = { "black" },
+				python = { "isort", "black" },
 				rust = { "rustfmt" },
 				svelte = { "prettierd" },
 				typescript = { "prettierd" },

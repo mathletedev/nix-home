@@ -27,6 +27,7 @@ with pkgs;
   haskell-language-server
   haskellPackages.cabal-gild
   haskellPackages.cabal-install
+  isort
   jdk11
   lexical
   lua
